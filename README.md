@@ -16,6 +16,7 @@ The app would allow students to:
 - Receive notification of new content via push notification or SMS
 
 The school staff will post board information from the school website. Because the school is currently using Joomla as it’s content management system for the main site (www.usiu.ac.ke), integration with our app will be seamless since nothing more than content needs to be added to the site. Our app will pull that content as RSS feeds, a feature already available on the site.
+
 Instant notifications will be served by a web backend to our app. This simple web service would regularly check the feeds and send notifications to the app if new content is available.
 
-In short, with this project, we intent to substitute the school’s notice boards with a system comprising of an Android app, a PHP web service and the school’s existing content management system.
+In short, with this project, we intent to substitute the school’s notice boards with a system comprising of an [Android app](android/README.md), a [PHP web service](web/README.md) and the school’s existing content management system.
