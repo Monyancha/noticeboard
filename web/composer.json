@@ -1,0 +1,21 @@
+{
+  "name": "USIU Board Web Service",
+  "description": "App backend",
+  "keywords": [
+    "usiu",
+    "notice",
+    "board"
+  ],
+  "license": "Apache",
+  "authors": [
+    {
+      "name": "Salama A. Balekage",
+      "email": "aksalj@gmail.com",
+      "homepage": "http://www.aksal.me/"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "endroid/gcm": "1.2.3"
+  }
+}
