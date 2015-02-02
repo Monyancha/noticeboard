@@ -29,7 +29,12 @@ class SettingsModel extends CI_Model {
     public function getSettings($name) {
         $query = $this->db->get_where(self::TABLE, array('name' => $name));
         $res = $query->result();
-        return json_decode($res['data']);
+        if(count($res) === 1) {
+            return json_decode($res[0]->data);
+        } else {
+            return null;
+        }
+
     }
 
     /**
@@ -60,9 +65,7 @@ class SettingsModel extends CI_Model {
         );
 
         $this->db->where('name', $name);
-        $res = $this->db->update(self::TABLE, $data);
-
-        return $res; // TODO: Check Me!!
+        return $this->db->update(self::TABLE, $data);
     }
 
 }

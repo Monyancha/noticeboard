@@ -50,8 +50,7 @@ class DeviceModel extends CI_Model {
      * @return mixed
      */
     public function removeDevice($uuid) {
-        $res = $this->db->delete(self::TABLE, array('uuid' => $uuid));
-        return $res; // TODO: Check me!!
+        return $this->db->delete(self::TABLE, array('uuid' => $uuid));
     }
 
 }

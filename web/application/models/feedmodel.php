@@ -37,7 +37,11 @@ class FeedModel extends CI_Model {
      */
     public function getFeed($id) {
         $query = $this->db->get_where(self::TABLE, array('id' => $id));
-        return $query->result();
+        $result = $query->result();
+        if(count($result) === 1) {
+            return $result[0];
+        }
+        return null;
     }
 
     /**
@@ -51,7 +55,7 @@ class FeedModel extends CI_Model {
         $data = array(
             'title' => $title ,
             'description' => $description ,
-            'url' => $url
+            'url' => $url // TODO: Validate URL
         );
         $this->db->insert(self::TABLE, $data);
         return $this->db->insert_id();
@@ -73,9 +77,7 @@ class FeedModel extends CI_Model {
         );
 
         $this->db->where('id', $id);
-        $res = $this->db->update(self::TABLE, $data);
-
-        return $res; // TODO: Check Me!!
+        return $this->db->update(self::TABLE, $data);
     }
 
     /**
@@ -84,8 +86,7 @@ class FeedModel extends CI_Model {
      * @return bool True if feed deleted, false otherwise
      */
     public function removeFeed($id) {
-        $res = $this->db->delete(self::TABLE, array('id' => $id));
-        return $res; // TODO: Check me!!
+        return $this->db->delete(self::TABLE, array('id' => $id));
     }
 
 }

@@ -30,7 +30,11 @@ class UserModel extends CI_Model {
         $this->db->select('pwd');
         $query = $this->db->get_where(self::TABLE, array('email' => $email));
         $res = $query->result();
-        return strcmp($res['pwd'], sha1($pwd)) === 0;
+        if(count($res) === 1) {
+            return strcmp($res[0]->pwd, sha1($pwd)) === 0;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -42,7 +46,11 @@ class UserModel extends CI_Model {
         // TODO: DO NOT RETURN PASSWORD
         $this->db->select('id, name, email');
         $query = $this->db->get_where(self::TABLE,array('email' => $email));
-        return $query->result();
+        $result = $query->result();
+        if(count($result) === 1) {
+            return $result[0];
+        }
+        return null;
     }
 
     /**
@@ -64,7 +72,9 @@ class UserModel extends CI_Model {
 
     /**
      * Update a user's name
+     * @param $id
      * @param $name
+     * @return bool
      */
     public function updateUser($id, $name) {
         $data = array(
@@ -72,9 +82,7 @@ class UserModel extends CI_Model {
         );
 
         $this->db->where('id', $id);
-        $res = $this->db->update(self::TABLE, $data);
-
-        return $res; // TODO: Check Me!!
+        return $this->db->update(self::TABLE, $data);
 
     }
 
@@ -86,16 +94,14 @@ class UserModel extends CI_Model {
      * @return bool
      */
     public function updatePassword($email, $oldPwd, $newPwd) {
-        if(validCredentials($email, $oldPwd)) {
+        if($this->validCredentials($email, $oldPwd)) {
 
             $data = array(
                 'pwd' => sha1($newPwd)
             );
             $usr = $this->getUser($email);
             $this->db->where('id', $usr['id']);
-            $res = $this->db->update(self::TABLE, $data);
-
-            return $res; // TODO: Check Me!!
+            return $this->db->update(self::TABLE, $data);
 
         } else {
             return false;
