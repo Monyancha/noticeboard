@@ -17,10 +17,16 @@ class Api extends CI_Controller {
 
 
     var $EMPTY_RESPONSE = array();
+    var $DEFAULT_NOTIFICATIONS_SETTINGS = array(
+        "sms" => true,
+        "app" => true
+    );
 
 
     function __construct() {
         parent::__construct();
+
+        $this->load->driver('cache', array('adapter' => 'file'));
 
         $this->load->model('DeviceModel');
         $this->load->model('FeedModel');
@@ -40,14 +46,34 @@ class Api extends CI_Controller {
      * Sync all feeds and send notifications. Called every minute by a job scheduler like cron.
      */
     public function sync() {
-        $feeds = $this->FeedModel->getFeeds();
-        foreach($feeds as $feed) {
-            // Fetch content
-            // Fetch previous latest content from cache
-            // If new content, alert users
-            // Set latest content to cache
-        }
 
+        $this->load->helper( array('content', 'syndication', 'notification') );
+
+        $devices = $this->DeviceModel->getDevices();
+        $settings = $this->SettingsModel->getSettings('notification');
+        if(!$settings){ $settings = $this->DEFAULT_NOTIFICATIONS_SETTINGS; }
+
+        $registeredFeeds = $this->FeedModel->getFeeds();
+        foreach($registeredFeeds as $registeredFeed) {
+            // Fetch content
+            $feed = readRSS($registeredFeed->url);
+
+            if($feed) {
+                if($message = getNewContent($registeredFeed->id, $feed)) { // Notify students
+                    $title = $registeredFeed->title;
+                    $message = $message->getContent();
+
+                    foreach ($devices as $device) {
+                        if ($settings['sms'] === true) {
+                            sendSMS($device->phone, $title . ": " . $message);
+                        }
+                        if ($settings['app'] === true) {
+                            pushNotification($device->uuid, $registeredFeed->title, $message);
+                        }
+                    }
+                }
+            }
+        }
 
         $this->output
             ->set_content_type('application/json')
@@ -61,16 +87,19 @@ class Api extends CI_Controller {
         $uuid = $this->input->post('uuid');
         $phone = $this->input->post('phone');
 
-        if($this->DeviceModel->addDevice($uuid, $phone) >= 1) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_output(json_encode($this->EMPTY_RESPONSE));
-        } else {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(500, 'Failed to register device')
-                ->set_output(json_encode($this->EMPTY_RESPONSE));
+        if($uuid && $phone) {
+            if ($this->DeviceModel->addDevice($uuid, $phone) >= 1) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode($this->EMPTY_RESPONSE));
+                exit(0);
+            }
         }
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(500, 'Failed to register device')
+            ->set_output(json_encode($this->EMPTY_RESPONSE));
     }
 
     /**

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "251b12b7e74a9168938884cbef82554e",
+    "hash": "fdf87e6427acb4a1b8c87ef80091969a",
     "packages": [
         {
             "name": "endroid/gcm",
@@ -59,6 +59,43 @@
                 "push"
             ],
             "time": "2014-07-27 20:58:14"
+        },
+        {
+            "name": "fguillot/picofeed",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fguillot/picoFeed.git",
+                "reference": "b25b74c8aee8e6af3d9c1b15e0772628ea313e0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fguillot/picoFeed/zipball/b25b74c8aee8e6af3d9c1b15e0772628ea313e0c",
+                "reference": "b25b74c8aee8e6af3d9c1b15e0772628ea313e0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PicoFeed": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "Frédéric Guillot",
+                    "homepage": "http://fredericguillot.com"
+                }
+            ],
+            "description": "Modern library to write or read feeds (RSS/Atom)",
+            "homepage": "http://fguillot.github.io/picoFeed",
+            "time": "2015-01-07 01:50:53"
         },
         {
             "name": "kriswallsmith/buzz",
