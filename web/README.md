@@ -16,6 +16,7 @@ This simple web service will regularly check the feeds and send notifications to
 - Dashboard ( `/dashboard` ):
 	- Add, update and remove feeds.
 	- Set, update notifications type (push notification or SMS or both)
+	- Set, update push notifications and SMS provider settings.
 
 ####HTTP API
 - `GET` from `/api/feeds`: Get registered feeds URLs.

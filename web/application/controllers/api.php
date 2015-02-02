@@ -118,8 +118,6 @@ class Api extends CI_Controller {
                 ->set_status_header(500, 'Failed to unregister device')
                 ->set_output(json_encode($this->EMPTY_RESPONSE));
         }
-
     }
-
 
 }

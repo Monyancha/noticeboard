@@ -39,23 +39,35 @@ function sendSMS($to, $content) {
     $content = _limitCharacters(strip_tags($content), SMS_MAX_CHARACTERS);
 
     // Send SMS
-    echo $to.": ".$content."\n";
+    //echo $to.": ".$content."\n";
 }
 
 /**
  * Send app notification
- * @param $uuid
+ * @param $registrationIds
  * @param $title
  * @param $content
+ * @return bool
  */
-function pushNotification($uuid, $title, $content) {
+function pushNotification($registrationIds, $title, $content) {
+    $CI=&get_instance();
+
+    $PushSettings = array( // //$CI->SettingsModel->getSettings('push_notification');
+        "GCM" => array( // Google Cloud Messaging
+            "API_KEY" => null
+        ),
+        "APNS" => array( // Apple Push Notification Service
+            "TOKEN" => null
+        )
+    );
+
     $message = array(
         "title" => $title,
         "content" => _limitCharacters(strip_tags($content), PUSH_MAX_CHARACTERS)
     );
 
-    print_r($message);
-
-    // Push GCM Message
+    // Push Notification Message (Assume GCM for now)
+    $gcm = new Endroid\Gcm\Gcm($PushSettings['GCM']['API_KEY']);
+    return $gcm->send($message, $registrationIds);
 
 }
