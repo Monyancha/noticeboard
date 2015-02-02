@@ -62,15 +62,7 @@ class Api extends CI_Controller {
                 if($message = getNewContent($registeredFeed->id, $feed)) { // Notify students
                     $title = $registeredFeed->title;
                     $message = $message->getContent();
-
-                    foreach ($devices as $device) {
-                        if ($settings['sms'] === true) {
-                            sendSMS($device->phone, $title . ": " . $message);
-                        }
-                        if ($settings['app'] === true) {
-                            pushNotification($device->uuid, $registeredFeed->title, $message);
-                        }
-                    }
+                    sendNotifications($devices, $settings, $title, $message);
                 }
             }
         }
