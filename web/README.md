@@ -23,6 +23,8 @@ This simple web service will regularly check the feeds and send notifications to
 - `POST` to `/api/register`: Register student device and phone number.
 - `POST` to `/api/unregister`: To remove a student’s phone and device.
 
+All data is sent as `JSON` objects.
+
 ####Database Tables ( `MySQL` )
 - `users`: Staff emails and password.
 - `feeds`: Registered feeds.
