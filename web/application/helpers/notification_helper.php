@@ -32,6 +32,16 @@ function _limitCharacters($text, $max)
 
 
 /**
+ * Tell devices to reset and re-register for push notifications
+ * @param $devices
+ * @return bool
+ */
+function sendResetNotifications($devices) {
+
+    return true;
+}
+
+/**
  * Send notifications to students
  *
  * @param $devices
