@@ -17,6 +17,7 @@
   "require": {
     "php": ">=5.3.0",
     "endroid/gcm": "1.2.3",
+    "twilio/sdk": "3.12.8",
     "fguillot/picofeed": "0.1.1"
   }
 }

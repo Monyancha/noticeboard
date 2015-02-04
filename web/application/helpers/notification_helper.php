@@ -75,18 +75,32 @@ function sendNotifications($devices, $settings, $title, $message)
 
 
 /**
- * Send SMS
+ * Send SMS. Hardcoded to use twilio!
  * @param $receivers
  * @param $content
  * @return bool
  */
 function sendSMS($receivers, $content)
 {
+    $CI =& get_instance();
+
+    // Load SMS Provider library
+    $smsSettings = array( //$CI->SettingsModel->getSettings('sms');
+        "twilio" => array("sid"=>null, "token"=>null, "sender"=>null)
+    );
+    $CI->load->library('Twilio', $smsSettings['twilio']);
+
+
+    // Prep sms body
     $content = _limitCharacters(strip_tags($content), SMS_MAX_CHARACTERS);
 
     // Send SMS
+    $res = false;
+    foreach($receivers as $receiver) {
+        $res &= $CI->Twilio->sendSMS($receiver, $content);
+    }
 
-    return true;
+    return $res;
 }
 
 /**
