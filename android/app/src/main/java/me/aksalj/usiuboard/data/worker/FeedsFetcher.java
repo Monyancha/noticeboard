@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import me.aksalj.usiuboard.data.BoardFeed;
+import me.aksalj.usiuboard.data.api.API;
 import me.aksalj.usiuboard.data.iface.IResultCallback;
 
 /**
@@ -20,12 +21,33 @@ import me.aksalj.usiuboard.data.iface.IResultCallback;
  */
 public class FeedsFetcher extends AsyncTask<Void, Void, ArrayList<BoardFeed>> {
 
-    public FeedsFetcher(IResultCallback<ArrayList<BoardFeed>> callback) {
+    IResultCallback<ArrayList<BoardFeed>> cb;
+    String error = null;
 
+    public FeedsFetcher(IResultCallback<ArrayList<BoardFeed>> callback) {
+        this.cb = callback;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<BoardFeed> boardFeeds) {
+        super.onPostExecute(boardFeeds);
+
+        if(boardFeeds != null) {
+            cb.onResult(boardFeeds);
+        } else {
+            cb.onError(error);
+        }
     }
 
     @Override
     protected ArrayList<BoardFeed> doInBackground(Void... params) {
+        try {
+            return API.getService().getFeeds();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            error = ex.getMessage();
+        }
+
         return null;
     }
 }

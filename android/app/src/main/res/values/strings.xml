@@ -2,7 +2,29 @@
 <resources>
 
     <string name="app_name">USIU Board</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="empty"></string>
+    <string name="no_items">No news items :(</string>
+    <string name="no_content">No content :(</string>
+
+
+
+    <string name="lorem">Sample</string>
+    <string name="lorem_title">Mombasa Trip Cancelled</string>
+    <string name="lorem_source">Sports Office</string>
+    <string name="lorem_time">2 hours ago</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at urna eget eros maximus vestibulum vitae non sem. Donec porta quis dolor eget auctor. Integer in suscipit lorem. Aliquam ut dolor semper, feugiat felis at, tempor urna. Suspendisse eget arcu in massa congue consequat. Morbi ac ullamcorper purus. Phasellus luctus congue urna. Phasellus et turpis ullamcorper, condimentum arcu vehicula, convallis libero. Fusce sed eleifend metus, ac varius lacus.
+
+Sed porta erat id lacus aliquam, at laoreet eros laoreet. Praesent tempor imperdiet lacinia. Donec elementum libero non ex ullamcorper, eget aliquet ipsum laoreet. Nulla imperdiet dictum purus, a pretium nisi commodo vel. Curabitur eget porta leo. Morbi est magna, eleifend eget volutpat posuere, mollis in mauris. Morbi elementum nisi ac augue pharetra convallis. Nunc ut enim rhoncus, tempus eros nec, laoreet neque. Maecenas non nibh ac erat tristique tempus. Mauris nec egestas ipsum. In hac habitasse platea dictumst. Donec nec lorem justo. Donec dolor purus, lobortis sed consequat eu, efficitur in ex. Aenean in lorem sed libero dignissim suscipit. Nam rutrum erat lectus.
+
+Donec risus leo, tristique at risus a, aliquet semper tellus. Curabitur laoreet imperdiet sapien aliquam blandit. Curabitur felis erat, consequat nec felis eu, lacinia pretium dolor. Aliquam erat volutpat. Nullam lobortis placerat velit, vitae condimentum magna pellentesque a. Aenean augue nibh, molestie vitae convallis id, hendrerit in arcu. Etiam eleifend iaculis commodo. Duis eleifend hendrerit ipsum, eget rhoncus mi ullamcorper in. Praesent aliquam sagittis enim, ac aliquet eros semper eget. Duis ac sapien viverra, condimentum ligula sit amet, suscipit augue. Phasellus nunc metus, viverra in lacinia a, sagittis vitae elit. Quisque nec turpis nulla. In ultrices mollis interdum. In vel accumsan massa.
+
+Praesent non libero vitae tellus commodo imperdiet quis ac ligula. Phasellus sed mattis lacus, eget hendrerit orci. Morbi placerat, dui nec laoreet vulputate, nulla ligula egestas sem, quis mattis lectus est vitae lacus. Pellentesque vulputate arcu sit amet accumsan interdum. Phasellus dapibus, augue non rutrum venenatis, orci elit vulputate est, eu consectetur purus nisi laoreet tortor. Curabitur imperdiet est et eros feugiat, quis ultricies metus venenatis. Proin a enim at arcu mollis laoreet. Cras rutrum neque sed dignissim tempor. Praesent euismod dolor sem, in bibendum lorem scelerisque in.
+
+Cras a augue vel massa aliquet ultricies id sit amet erat. Curabitur nec luctus orci. Pellentesque a tristique erat. Nulla facilisi. Nulla facilisi. Sed ut dapibus augue. Nam ut metus nisl. Nulla gravida, ante et efficitur tincidunt, enim est porta purus, a rhoncus elit ligula ac tortor. Proin auctor diam ac sem egestas interdum.</string>
+
 
 </resources>
