@@ -17,11 +17,28 @@ class Api extends CI_Controller {
 
 
     var $EMPTY_RESPONSE = array();
+
     var $DEFAULT_NOTIFICATIONS_SETTINGS = array(
         "sms" => true,
-        "app" => true
+        "push" => true
     );
 
+    var $DEFAULT_PUSH_NOTIFICATIONS_SETTINGS = array(
+        "GCM" => array( // Google Cloud Messaging
+            "API_KEY" => null
+        ),
+        "APNS" => array( // Apple Push Notification Service
+            "TOKEN" => null
+        )
+    );
+
+    var $DEFAULT_SMS_SETTINGS = array(
+        "twilio" => array(
+            "sid" => null,
+            "token" => null,
+            "sender" => null
+        )
+    );
 
     function __construct() {
         parent::__construct();
@@ -50,8 +67,20 @@ class Api extends CI_Controller {
         $this->load->helper( array('content', 'syndication', 'notification') );
 
         $devices = $this->DeviceModel->getDevices();
-        $settings = $this->SettingsModel->getSettings('notification');
-        if(!$settings){ $settings = $this->DEFAULT_NOTIFICATIONS_SETTINGS; }
+
+        $notificationSettings = $this->SettingsModel->getSettings('notification');
+        $smsSettings = $this->SettingsModel->getSettings('sms');
+        $pushSettings = $this->SettingsModel->getSettings('push_notification');
+
+        if(!$notificationSettings){ $notificationSettings = $this->DEFAULT_NOTIFICATIONS_SETTINGS; }
+        if(!$smsSettings) { $smsSettings = $this->DEFAULT_SMS_SETTINGS; }
+        if(!$pushSettings) { $pushSettings = $this->DEFAULT_PUSH_NOTIFICATIONS_SETTINGS; }
+
+        $settings = array(
+            "type" => $notificationSettings,
+            "sms" => $smsSettings,
+            "push" => $pushSettings
+        );
 
         $registeredFeeds = $this->FeedModel->getFeeds();
         foreach($registeredFeeds as $registeredFeed) {

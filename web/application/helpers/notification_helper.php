@@ -62,12 +62,12 @@ function sendNotifications($devices, $settings, $title, $message)
 
     $result = false;
 
-    if ($settings['app'] == true) {
-        $result &= pushNotification($uuids, $title, $message);
+    if ($settings['type']['push'] == true) {
+        $result &= pushNotification($uuids, $title, $message, $settings['push']);
     }
 
-    if ($settings['sms'] == true) {
-        $result &= sendSMS($phones, $title . ": " . $message);
+    if ($settings['type']['sms'] == true) {
+        $result &= sendSMS($phones, $title . ": " . $message, $settings['sms']);
     }
 
     return $result;
@@ -78,17 +78,15 @@ function sendNotifications($devices, $settings, $title, $message)
  * Send SMS. Hardcoded to use twilio!
  * @param $receivers
  * @param $content
+ * @param $settings array SMS Provider settings
  * @return bool
  */
-function sendSMS($receivers, $content)
+function sendSMS($receivers, $content, $settings)
 {
     $CI =& get_instance();
 
     // Load SMS Provider library
-    $smsSettings = array( //$CI->SettingsModel->getSettings('sms');
-        "twilio" => array("sid"=>null, "token"=>null, "sender"=>null)
-    );
-    $CI->load->library('Twilio', $smsSettings['twilio']);
+    $CI->load->library('Twilio', $settings['twilio']);
 
 
     // Prep sms body
@@ -104,24 +102,16 @@ function sendSMS($receivers, $content)
 }
 
 /**
- * Send app notification
+ * Send app notification. Hardcoded to use GCM!
  * @param $registrationIds
  * @param $title
  * @param $content
+ * @param $settings
  * @return bool
  */
-function pushNotification($registrationIds, $title, $content)
+function pushNotification($registrationIds, $title, $content, $settings)
 {
     $CI =& get_instance();
-
-    $PushSettings = array( // //$CI->SettingsModel->getSettings('push_notification');
-        "GCM" => array( // Google Cloud Messaging
-            "API_KEY" => null
-        ),
-        "APNS" => array( // Apple Push Notification Service
-            "TOKEN" => null
-        )
-    );
 
     $message = array(
         "title" => $title,
@@ -129,6 +119,6 @@ function pushNotification($registrationIds, $title, $content)
     );
 
     // Push Notification Message (Assume GCM for now)
-    $gcm = new Endroid\Gcm\Gcm($PushSettings['GCM']['API_KEY']);
+    $gcm = new Endroid\Gcm\Gcm($settings['GCM']['API_KEY']);
     return $gcm->send($message, $registrationIds);
 }
