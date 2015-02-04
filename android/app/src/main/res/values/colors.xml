@@ -9,6 +9,8 @@
     <color name="primary_transparent">#30ffcb08</color>
     <color name="primary_transparent_deep">#90ffcb08</color>
 
+    <color name="accent_transparent">#90012951</color>
+
 
     <color name="holo_green_light">#ff99cc00</color>
     <color name="holo_red_light">#ffff4444</color>
