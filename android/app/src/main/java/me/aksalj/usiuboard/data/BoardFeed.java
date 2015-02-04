@@ -16,4 +16,11 @@ public class BoardFeed {
     public String title;
     public String description;
     public String url;
+
+    public BoardFeed(int id, String title, String description, String url) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+    }
 }

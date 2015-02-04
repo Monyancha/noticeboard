@@ -23,6 +23,7 @@ import me.aksalj.usiuboard.R;
 import me.aksalj.usiuboard.activity.DetailActivity;
 import me.aksalj.usiuboard.activity.MainActivity;
 import me.aksalj.usiuboard.activity.adapter.ItemsListAdapter;
+import me.aksalj.usiuboard.data.BoardFeed;
 import me.aksalj.usiuboard.data.BoardItem;
 import me.aksalj.usiuboard.data.Manager;
 import me.aksalj.usiuboard.data.iface.ICallback;
@@ -39,11 +40,11 @@ import me.aksalj.view.ObservableListView;
  * Website: http://www.aksalj.me
  * <p/>
  * Project : USIU Board
- * File : me.aksalj.usiuboard.activity.fragment.HomeFragment
+ * File : me.aksalj.usiuboard.activity.fragment.BoardFragment
  * Date : Feb, 04 2015 3:14 PM
  * Description :
  */
-public class HomeFragment extends BaseFragment implements IScrollCallback,
+public class BoardFragment extends BaseFragment implements IScrollCallback,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
 
@@ -66,16 +67,21 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
     int mParallaxRate = 3;
     int mPrimaryColor;
 
+    private static BoardFragment sInstance;
 
-    public static HomeFragment newInstance(Context cxt) {
-        HomeFragment instance = new HomeFragment();
-        instance.mCxt = cxt;
-        return instance;
+    public static BoardFragment newInstance(Context cxt) {
+        sInstance = new BoardFragment();
+        sInstance.mCxt = cxt;
+        return sInstance;
+    }
+
+    public static BoardFragment getInstance() {
+        return sInstance;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, null);
+        View root = inflater.inflate(R.layout.fragment_board, null);
 
         ButterKnife.inject(this, root);
 
@@ -99,6 +105,7 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
             Manager.getInstance().fetchFeeds(new ICallback() {
                 @Override
                 public void onSuccess() {
+                    ((MainActivity)mActivity).setupSideBar();
                     mItemsAdapter.refreshData(mItemsRefreshCallback);
                 }
 
@@ -106,9 +113,7 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
                 public void onProgress(float percent) { }
 
                 @Override
-                public void onError(String message) {
-
-                }
+                public void onError(String message) {}
             });
 
         }
@@ -116,18 +121,21 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
 
 
     private void setupItemsAdapter(Bundle savedInstanceState) {
-        int feed = (savedInstanceState == null) ? Manager.DEFAULT_FEED : savedInstanceState.getInt("feed", Manager.DEFAULT_FEED);
+        int feed = (savedInstanceState == null) ? Manager.DEFAULT_FEED_ID : savedInstanceState.getInt("feed", Manager.DEFAULT_FEED_ID);
         mItemsAdapter = new ItemsListAdapter(mActivity, feed);
         mItemsRefreshCallback = new ICallback() {
             @Override
             public void onSuccess() {
                 mSwipeLayout.setRefreshing(false);
+                // Update action bar
+                if(mActionBar != null) {
+                    mActionBar.setTitle(getTitle());
+                    mActionBar.setSubtitle(getSubTitle());
+                }
             }
 
             @Override
-            public void onProgress(float percent) {
-
-            }
+            public void onProgress(float percent) { }
 
             @Override
             public void onError(String message) {
@@ -181,6 +189,13 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
         }
     }
 
+    public void changeContent(int feedId) {
+        if(mItemsAdapter != null) {
+            mSwipeLayout.setRefreshing(true);
+            mItemsAdapter.refreshData(feedId, mItemsRefreshCallback);
+        }
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -189,11 +204,28 @@ public class HomeFragment extends BaseFragment implements IScrollCallback,
 
     @Override
     public String getTitle() {
+        if(mItemsAdapter != null) {
+            int id = mItemsAdapter.getFeedId();
+            if(id != Manager.DEFAULT_FEED_ID) {
+                BoardFeed feed = Manager.getInstance().getFeedById(id);
+                if (feed != null) {
+                    return feed.title;
+                }
+            }
+        }
+
         return mCxt.getString(R.string.app_name);
     }
 
     @Override
     public String getSubTitle() {
+        if(mItemsAdapter != null) {
+            int id = mItemsAdapter.getFeedId();
+            BoardFeed feed = Manager.getInstance().getFeedById(id);
+            if(feed != null) {
+                return feed.description;
+            }
+        }
         return null;
     }
 

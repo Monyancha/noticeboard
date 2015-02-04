@@ -14,9 +14,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.aksalj.usiuboard.R;
@@ -134,8 +131,8 @@ public class ItemsListAdapter extends BaseAdapter {
 
             Picasso.with(mCxt)
                     .load(item.imageUrl)
-                    .placeholder(R.drawable.ic_launcher)
-                            //.error(R.drawable.ic_launcher)
+                    //.placeholder(R.drawable.ic_launcher)
+                    //.error(R.drawable.ic_launcher)
                     .into(holder.image, new Callback() {
                         @Override
                         public void onSuccess() {

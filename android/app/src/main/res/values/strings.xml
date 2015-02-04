@@ -10,6 +10,8 @@
     <string name="no_content">No content :(</string>
 
 
+    <string name="latest_posts">Latest Posts</string>
+    <string name="latest_board_posts">Latest Notice Board Posts</string>
 
     <string name="lorem">Sample</string>
     <string name="lorem_title">Mombasa Trip Cancelled</string>

@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 
+import me.aksalj.usiuboard.R;
 import me.aksalj.usiuboard.data.iface.ICallback;
 import me.aksalj.usiuboard.data.iface.IResultCallback;
 import me.aksalj.usiuboard.data.worker.FeedItemsFetcher;
@@ -27,7 +28,8 @@ import me.aksalj.usiuboard.data.worker.FeedsFetcher;
 public class Manager {
     private static Manager sInstance;
 
-    public static final int DEFAULT_FEED = -1;
+    public static final int DEFAULT_FEED_ID = -1;
+    private static BoardFeed DEFAULT_FEED;
 
     private Context mCxt;
 
@@ -45,6 +47,9 @@ public class Manager {
 
     public static boolean init(Context cxt) {
         sInstance = new Manager(cxt);
+        DEFAULT_FEED = new BoardFeed(DEFAULT_FEED_ID,
+                cxt.getString(R.string.latest_posts),
+                cxt.getString(R.string.latest_board_posts), null);
         return true;
     }
 
@@ -67,6 +72,10 @@ public class Manager {
      * @return
      */
     public BoardFeed getFeedById(int feedId) {
+//        if(feedId == DEFAULT_FEED_ID) {
+//            return DEFAULT_FEED;
+//        }
+
         for (BoardFeed feed:mFeeds) {
             if(feed.id == feedId) return feed;
         }
@@ -128,7 +137,7 @@ public class Manager {
      */
     public void fetchItems(final int feedId, final ICallback callback) {
 
-        if(feedId == DEFAULT_FEED) {
+        if(feedId == DEFAULT_FEED_ID) {
             fetchItems(callback);
         } else {
 
@@ -163,6 +172,9 @@ public class Manager {
             final boolean isLastFeed = (i >= (mFeeds.size() - 1));
             final BoardFeed feed = mFeeds.get(i);
 
+            if(feed.id == DEFAULT_FEED_ID) // Default feed has no URL
+                continue;
+
             new FeedItemsFetcher(feed.url, new IResultCallback<ArrayList<BoardItem>>() {
                 @Override
                 public void onResult(ArrayList<BoardItem> result) {
@@ -174,6 +186,10 @@ public class Manager {
                         ArrayList<BoardItem> defaultItems = new ArrayList<BoardItem>();
                         Set<Integer> keys = mFeedsItems.keySet();
                         for (Integer key:keys) {
+
+                            if(key == DEFAULT_FEED_ID) // Already added
+                                continue;
+
                             ArrayList<BoardItem> items = mFeedsItems.get(key);
                             if(items.size() > 0) {
                                 defaultItems.add(items.get(0));
@@ -193,7 +209,7 @@ public class Manager {
                             }
                         });
 
-                        mFeedsItems.put(DEFAULT_FEED, defaultItems);
+                        mFeedsItems.put(DEFAULT_FEED_ID, defaultItems);
 
                         callback.onSuccess();
 
@@ -216,6 +232,7 @@ public class Manager {
         new FeedsFetcher(new IResultCallback<ArrayList<BoardFeed>>() {
             @Override
             public void onResult(ArrayList<BoardFeed> result) {
+                result.add(0, DEFAULT_FEED);
                 mFeeds = result;
                 callback.onSuccess();
             }

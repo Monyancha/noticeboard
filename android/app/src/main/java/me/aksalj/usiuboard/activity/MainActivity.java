@@ -19,7 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.aksalj.usiuboard.R;
 import me.aksalj.usiuboard.activity.fragment.BaseFragment;
-import me.aksalj.usiuboard.activity.fragment.HomeFragment;
+import me.aksalj.usiuboard.activity.fragment.BoardFragment;
+import me.aksalj.usiuboard.activity.fragment.SideFragment;
 import me.aksalj.utils.DeviceHelper;
 
 
@@ -50,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
         setupActionBar();
         setupDrawer();
 
-        setupContent(HomeFragment.newInstance(this));
+        setupContent(BoardFragment.newInstance(this));
     }
 
 
@@ -130,6 +131,13 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public void setupSideBar() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_sidebar, SideFragment.newInstance(this))
+                .commit();
+    }
+
     private void toggleToolbar(final boolean show) {
         float from = show ? 0.0f : 1.0f;
         float to = show ? 1.0f: 0.0f;
@@ -153,7 +161,10 @@ public class MainActivity extends ActionBarActivity {
         });
 
         mToolbar.startAnimation(anim);
+    }
 
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
     }
 
 }
