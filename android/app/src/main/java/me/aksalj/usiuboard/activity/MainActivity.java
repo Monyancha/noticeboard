@@ -1,9 +1,11 @@
-package me.aksalj.usiuboard;
+package me.aksalj.usiuboard.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import me.aksalj.usiuboard.R;
 
 
 public class MainActivity extends ActionBarActivity {
