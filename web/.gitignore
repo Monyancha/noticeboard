@@ -6,3 +6,4 @@
 !/application/logs/index.html
 assets/bower_components/
 vendor/
+deploy/
