@@ -56,7 +56,7 @@ public class FeedItemsFetcher extends AsyncTask<Void, Void, ArrayList<BoardItem>
 
             RSSReader reader = new RSSReader();
             RSSFeed feed = reader.load(feedUrl);
-            String source = feed.getTitle();
+            String source = feed.getTitle(); // TODO: Read source from item.author or feed.author
             List<RSSItem> items = feed.getItems();
 
             ArrayList<BoardItem> boardItems = new ArrayList<>();

@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="#50ffffff"
+                android:background="#50000000"
                 android:orientation="vertical"
                 android:padding="5dp">
 
@@ -48,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_title"
                     android:ellipsize="end"
+                    android:textColor="#ffffff"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_source"
                     android:ellipsize="end"
+                    android:textColor="#ffffff"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -65,6 +67,7 @@
                     android:text="Monday, 15 January 2015 3:30 PM"
                     android:singleLine="true"
                     android:ellipsize="end"
+                    android:textColor="#ffffff"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
             </LinearLayout>
