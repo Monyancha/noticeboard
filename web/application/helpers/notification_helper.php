@@ -118,7 +118,7 @@ function pushNotification($registrationIds, $payload, $settings)
     $gcm = new Endroid\Gcm\Gcm($settings['GCM']['API_KEY']);
     $res = $gcm->send($payload, $registrationIds);
 
-    if(defined('ENVIRONMENT') && ENVIRONMENT == "development") { // Debug only;
+    if(defined('ENVIRONMENT') && (ENVIRONMENT == "development" || ENVIRONMENT == "testing")) { // Debug only;
         clearContentCache();
     }
 
