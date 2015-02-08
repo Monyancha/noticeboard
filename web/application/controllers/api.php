@@ -19,13 +19,13 @@ class Api extends CI_Controller {
     var $EMPTY_RESPONSE = array();
 
     var $DEFAULT_NOTIFICATIONS_SETTINGS = array(
-        "sms" => true,
+        "sms" => false,
         "push" => true
     );
 
     var $DEFAULT_PUSH_NOTIFICATIONS_SETTINGS = array(
         "GCM" => array( // Google Cloud Messaging
-            "API_KEY" => null
+            "API_KEY" => "AIzaSyBtRrTpXNpQtiYEJfdSU41R9ZT2WF_1Ajw"
         ),
         "APNS" => array( // Apple Push Notification Service
             "TOKEN" => null
@@ -89,9 +89,12 @@ class Api extends CI_Controller {
 
             if($feed) {
                 if($message = getNewContent($registeredFeed->id, $feed)) { // Notify students
-                    $title = $registeredFeed->title;
-                    $message = $message->getContent();
-                    sendNotifications($devices, $settings, $title, $message);
+                    $payload = array(
+                        "id" => $message->getId(),
+                        "title" =>$message->getTitle(), //$registeredFeed->title,
+                        "content" => trim(strip_tags($message->getContent()))
+                    );
+                    sendNotifications($devices, $settings, $payload);
                 }
             }
         }

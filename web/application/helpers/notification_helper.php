@@ -46,11 +46,10 @@ function sendResetNotifications($devices) {
  *
  * @param $devices
  * @param $settings
- * @param $title
- * @param $message
+ * @param $payload
  * @return bool
  */
-function sendNotifications($devices, $settings, $title, $message)
+function sendNotifications($devices, $settings, $payload)
 {
 
     $phones = array();
@@ -63,11 +62,11 @@ function sendNotifications($devices, $settings, $title, $message)
     $result = false;
 
     if ($settings['type']['push'] == true) {
-        $result &= pushNotification($uuids, $title, $message, $settings['push']);
+        $result &= pushNotification($uuids, $payload, $settings['push']);
     }
 
     if ($settings['type']['sms'] == true) {
-        $result &= sendSMS($phones, $title . ": " . $message, $settings['sms']);
+        $result &= sendSMS($phones, $payload['title'] . ": " . $payload['content'], $settings['sms']);
     }
 
     return $result;
@@ -90,7 +89,7 @@ function sendSMS($receivers, $content, $settings)
 
 
     // Prep sms body
-    $content = _limitCharacters(strip_tags($content), SMS_MAX_CHARACTERS);
+    $content = _limitCharacters($content, SMS_MAX_CHARACTERS);
 
     // Send SMS
     $res = false;
@@ -104,21 +103,24 @@ function sendSMS($receivers, $content, $settings)
 /**
  * Send app notification. Hardcoded to use GCM!
  * @param $registrationIds
- * @param $title
- * @param $content
+ * @param $payload
  * @param $settings
  * @return bool
  */
-function pushNotification($registrationIds, $title, $content, $settings)
+function pushNotification($registrationIds, $payload, $settings)
 {
     $CI =& get_instance();
 
-    $message = array(
-        "title" => $title,
-        "content" => _limitCharacters(strip_tags($content), PUSH_MAX_CHARACTERS)
-    );
+    // id, title, content
+    $payload['content'] = _limitCharacters($payload['content'], PUSH_MAX_CHARACTERS / 3);
 
     // Push Notification Message (Assume GCM for now)
     $gcm = new Endroid\Gcm\Gcm($settings['GCM']['API_KEY']);
-    return $gcm->send($message, $registrationIds);
+    $res = $gcm->send($payload, $registrationIds);
+
+    if(defined('ENVIRONMENT') && ENVIRONMENT == "development") { // Debug only;
+        clearContentCache();
+    }
+
+    return $res;
 }

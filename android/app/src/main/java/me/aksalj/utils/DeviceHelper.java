@@ -1,8 +1,11 @@
 package me.aksalj.utils;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 
 /**
  * Copyright (c) 2015 Salama AB
@@ -34,5 +37,21 @@ public class DeviceHelper {
 
     public static boolean isPortrait(Context cxt) {
         return cxt.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+    }
+
+    public static String getPhoneNumber(Context cxt) {
+        TelephonyManager manager = (TelephonyManager)cxt.getSystemService(Context.TELEPHONY_SERVICE);
+        return manager.getLine1Number();
+    }
+
+    public static int getAppVersion(Context context) {
+        try {
+            PackageInfo packageInfo = context.getPackageManager()
+                    .getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            // should never happen
+            throw new RuntimeException("Could not get package name: " + e);
+        }
     }
 }

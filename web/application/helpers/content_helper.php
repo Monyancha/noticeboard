@@ -49,3 +49,11 @@ function getNewContent($id, $feed) {
     return null;
 
 }
+
+/**
+ * Clear notification cache. This may cause old notifications to be resent!!
+ */
+function clearContentCache() {
+    $CI=&get_instance();
+    $CI->cache->clean();
+}

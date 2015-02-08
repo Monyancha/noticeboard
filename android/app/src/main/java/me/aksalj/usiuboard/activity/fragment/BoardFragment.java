@@ -102,20 +102,8 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
 
         if (savedInstanceState == null) { // TODO: Refresh only if first load and not activity recreated
             mSwipeLayout.setRefreshing(true);
-            Manager.getInstance().fetchFeeds(new ICallback() {
-                @Override
-                public void onSuccess() {
-                    ((MainActivity)mActivity).setupSideBar();
-                    mItemsAdapter.refreshData(mItemsRefreshCallback);
-                }
-
-                @Override
-                public void onProgress(float percent) { }
-
-                @Override
-                public void onError(String message) {}
-            });
-
+            ((MainActivity)mActivity).setupSideBar();
+            mItemsAdapter.refreshData(mItemsRefreshCallback);
         }
     }
 

@@ -3,6 +3,7 @@ package me.aksalj.usiuboard.data.api;
 import java.util.ArrayList;
 
 import me.aksalj.usiuboard.data.BoardFeed;
+import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
@@ -21,17 +22,17 @@ import retrofit.http.POST;
  */
 public interface BoardWebService {
 
-    public static final String ENDPOINT = "http://usiu.aksalj.me";
-    //public static final String ENDPOINT = "http://board.usiu.local.192.168.0.3.xip.io";
+    //public static final String ENDPOINT = "http://usiu.aksalj.me";
+    public static final String ENDPOINT = "http://board.usiu.local.192.168.0.3.xip.io";
 
     @GET("/api/feeds")
     public ArrayList<BoardFeed> getFeeds();
 
     @FormUrlEncoded
     @POST("/api/register")
-    public void register(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
+    public Object register(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
 
     @FormUrlEncoded
     @POST("/api/unregister")
-    public void unregister(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
+    public Object unregister(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
 }

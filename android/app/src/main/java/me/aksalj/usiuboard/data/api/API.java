@@ -22,6 +22,7 @@ public abstract class API {
         if(sService == null) {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(BoardWebService.ENDPOINT)
+                    .setLogLevel(RestAdapter.LogLevel.BASIC) // Dev only!!!
                     .build();
 
             sService = restAdapter.create(BoardWebService.class);
