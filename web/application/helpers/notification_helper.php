@@ -61,11 +61,11 @@ function sendNotifications($devices, $settings, $payload)
 
     $result = false;
 
-    if ($settings['type']['push'] == true) {
+    if ($settings['type']->push == true) {
         $result &= pushNotification($uuids, $payload, $settings['push']);
     }
 
-    if ($settings['type']['sms'] == true) {
+    if ($settings['type']->sms == true) {
         $result &= sendSMS($phones, $payload['title'] . ": " . $payload['content'], $settings['sms']);
     }
 
@@ -85,7 +85,8 @@ function sendSMS($receivers, $content, $settings)
     $CI =& get_instance();
 
     // Load SMS Provider library
-    $CI->load->library('Twilio', $settings['twilio']);
+    $twilio = $settings->twilio;
+    $CI->load->library('twilio', array("sid"=>$twilio->sid, "token"=>$twilio->token, "sender"=>$twilio->sender));
 
 
     // Prep sms body
@@ -94,7 +95,7 @@ function sendSMS($receivers, $content, $settings)
     // Send SMS
     $res = false;
     foreach($receivers as $receiver) {
-        $res &= $CI->Twilio->sendSMS($receiver, $content);
+        $res &= $CI->twilio->sendSMS($receiver, $content);
     }
 
     return $res;
@@ -115,7 +116,7 @@ function pushNotification($registrationIds, $payload, $settings)
     $payload['content'] = _limitCharacters($payload['content'], PUSH_MAX_CHARACTERS / 3);
 
     // Push Notification Message (Assume GCM for now)
-    $gcm = new Endroid\Gcm\Gcm($settings['GCM']['API_KEY']);
+    $gcm = new Endroid\Gcm\Gcm($settings->GCM->API_KEY);
     $res = $gcm->send($payload, $registrationIds);
 
     if(defined('ENVIRONMENT') && (ENVIRONMENT == "development" || ENVIRONMENT == "testing")) { // Debug only;

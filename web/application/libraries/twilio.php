@@ -58,7 +58,8 @@ class Twilio
             return isset($sent);
 
         } catch (Services_Twilio_RestException $e) {
-            // Log error
+            // Log error?
+            echo $e->getMessage();
         }
 
         return false;

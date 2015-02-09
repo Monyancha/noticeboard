@@ -18,14 +18,14 @@ class Api extends CI_Controller {
 
     var $EMPTY_RESPONSE = array();
 
-    var $DEFAULT_NOTIFICATIONS_SETTINGS = array(
+    var $DEFAULT_NOTIFICATION_TYPES_SETTINGS = array(
         "sms" => false,
-        "push" => true
+        "push" => false
     );
 
     var $DEFAULT_PUSH_NOTIFICATIONS_SETTINGS = array(
         "GCM" => array( // Google Cloud Messaging
-            "API_KEY" => "AIzaSyBtRrTpXNpQtiYEJfdSU41R9ZT2WF_1Ajw"
+            "API_KEY" => null
         ),
         "APNS" => array( // Apple Push Notification Service
             "TOKEN" => null
@@ -33,7 +33,7 @@ class Api extends CI_Controller {
     );
 
     var $DEFAULT_SMS_SETTINGS = array(
-        "twilio" => array(
+        "twilio" => array( // Twilio
             "sid" => null,
             "token" => null,
             "sender" => null
@@ -70,9 +70,9 @@ class Api extends CI_Controller {
 
         $notificationSettings = $this->SettingsModel->getSettings('notification');
         $smsSettings = $this->SettingsModel->getSettings('sms');
-        $pushSettings = $this->SettingsModel->getSettings('push_notification');
+        $pushSettings = $this->SettingsModel->getSettings('push');
 
-        if(!$notificationSettings){ $notificationSettings = $this->DEFAULT_NOTIFICATIONS_SETTINGS; }
+        if(!$notificationSettings){ $notificationSettings = $this->$DEFAULT_NOTIFICATION_TYPES_SETTINGS; }
         if(!$smsSettings) { $smsSettings = $this->DEFAULT_SMS_SETTINGS; }
         if(!$pushSettings) { $pushSettings = $this->DEFAULT_PUSH_NOTIFICATIONS_SETTINGS; }
 
