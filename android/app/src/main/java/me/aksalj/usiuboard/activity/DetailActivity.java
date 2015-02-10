@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -112,6 +113,7 @@ public class DetailActivity extends ActionBarActivity {
         if(content == null || content.isEmpty()) content = getString(R.string.no_content);
 
         mContent.setText(Html.fromHtml(content));
+        mContent.setMovementMethod(LinkMovementMethod.getInstance()); // Follow anchor tags
 
 
     }

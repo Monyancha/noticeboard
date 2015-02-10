@@ -2,6 +2,9 @@ package me.aksalj.usiuboard.data;
 
 import android.text.format.DateUtils;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.mcsoxford.rss.MediaThumbnail;
 import org.mcsoxford.rss.RSSItem;
 
@@ -55,7 +58,30 @@ public class BoardItem {
         if(thumbnails != null && thumbnails.size() > 0) {
             imageUrl = thumbnails.get(0).getUrl().toString();
         }
+
+        if(imageUrl == null) { // Try to get image from content ( first img tag )
+            String html = content.isEmpty() ? summary : content;
+            Document doc = Jsoup.parse(html);
+            Elements eles = doc.select("img");
+            if(eles.size() > 0) {
+                imageUrl = eles.get(0).attr("src");
+            }
+        }
+
+        // Remove image tags from summary/content
+        summary = stripTag("img", summary);
+        content = stripTag("img", content);
+
         webUrl = entry.getLink().toString();
         source = author;
+    }
+
+    private String stripTag(String tag, String html) {
+        if(html != null && !html.isEmpty()) {
+            Document doc = Jsoup.parse(html);
+            doc.select(tag).remove();
+            html = doc.html();
+        }
+        return html;
     }
 }
