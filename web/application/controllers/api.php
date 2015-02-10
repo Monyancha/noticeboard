@@ -64,6 +64,8 @@ class Api extends CI_Controller {
      */
     public function sync() {
 
+        // TODO: Restrict origin
+
         $this->load->helper( array('content', 'syndication', 'notification') );
 
         $devices = $this->DeviceModel->getDevices();
