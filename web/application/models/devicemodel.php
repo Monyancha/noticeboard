@@ -36,10 +36,14 @@ class DeviceModel extends CI_Model {
      * @return mixed
      */
     public function addDevice($uuid, $phone) {
-        // Check if device already exists
-        $query = $this->db->get_where(self::TABLE, array('uuid' => $uuid));
-        if(count($query->result()) > 0) {
-            // TODO: update phone number only?
+        // Check if uuid or phone already exists
+        $queryUuid = $this->db->get_where(self::TABLE, array('uuid' => $uuid));
+        $queryPhone = $this->db->get_where(self::TABLE, array('phone' => $phone));
+        if(count($queryUuid->result()) > 0) {
+            // TODO: update phone only?
+            return 1;
+        } else if(count($queryPhone->result()) > 0) {
+            // TODO: update uuid only?
             return 1;
         } else {
             $data = array(
