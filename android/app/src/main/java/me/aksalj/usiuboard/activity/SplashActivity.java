@@ -2,9 +2,11 @@ package me.aksalj.usiuboard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import me.aksalj.usiuboard.R;
 import me.aksalj.usiuboard.data.Manager;
@@ -25,7 +27,35 @@ import me.aksalj.usiuboard.data.iface.IResultCallback;
  */
 public class SplashActivity extends ActionBarActivity {
 
-    String mRegId;
+    private String mRegId;
+    private int mRegAttempts = 5;
+
+    IResultCallback<String> mGcmRegistrationCallback = new IResultCallback<String>() {
+
+        @Override
+        public void onResult(String regId) {
+            mRegId = regId;
+            startSplashWork();
+        }
+
+        @Override
+        public void onError(String message) {
+            if (GoogleCloudMessaging.ERROR_SERVICE_NOT_AVAILABLE.contentEquals(message)) {
+                if(mRegAttempts <= 0) {
+                    Toast.makeText(SplashActivity.this, R.string.check_network, Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    mRegAttempts--;
+                    GCMHelper.registerInBackground(SplashActivity.this, mGcmRegistrationCallback);
+                }
+            } else {
+                Log.e("Splash", message);
+                Toast.makeText(SplashActivity.this, R.string.server_error, Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }
+
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +65,6 @@ public class SplashActivity extends ActionBarActivity {
 
         // TODO: Show TOS?
 
-
         // Check device for Play Services APK.
         if (GCMHelper.checkPlayServices(this)) {
 
@@ -43,19 +72,7 @@ public class SplashActivity extends ActionBarActivity {
             mRegId = GCMHelper.getRegistrationId(this);
 
             if (mRegId.isEmpty()) {
-                GCMHelper.registerInBackground(this, new IResultCallback<String>() {
-                    @Override
-                    public void onResult(String regId) {
-                        mRegId = regId;
-                        startSplashWork();
-                    }
-
-                    @Override
-                    public void onError(String message) {
-                        Toast.makeText(SplashActivity.this, message, Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                });
+                GCMHelper.registerInBackground(this, mGcmRegistrationCallback);
             } else {
                 startSplashWork();
             }
@@ -63,7 +80,7 @@ public class SplashActivity extends ActionBarActivity {
 
         } else {
             // prompt user to get valid Play Services APK.
-            Toast.makeText(SplashActivity.this, "Get valid Play Services APK!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(SplashActivity.this, R.string.check_play_services, Toast.LENGTH_LONG).show();
             finish();
         }
     }
@@ -91,13 +108,10 @@ public class SplashActivity extends ActionBarActivity {
 
             @Override
             public void onError(String message) {
-                Toast.makeText(SplashActivity.this, message, Toast.LENGTH_LONG).show();
+                Toast.makeText(SplashActivity.this, R.string.check_network, Toast.LENGTH_LONG).show();
                 finish();
             }
         });
-
-
-
     }
 
 }

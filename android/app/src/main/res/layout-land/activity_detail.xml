@@ -46,7 +46,6 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_title"
                     android:ellipsize="end"
                     android:textColor="#ffffff"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -55,7 +54,6 @@
                     android:id="@+id/source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_source"
                     android:ellipsize="end"
                     android:textColor="#ffffff"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -64,7 +62,6 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Monday, 15 January 2015 3:30 PM"
                     android:singleLine="true"
                     android:ellipsize="end"
                     android:textSize="@dimen/card_text"
@@ -82,7 +79,6 @@
             android:layout_height="match_parent"
             android:background="#fff"
             android:padding="10dp"
-            android:text="@string/lorem_ipsum"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
