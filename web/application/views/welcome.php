@@ -13,7 +13,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -89,7 +89,14 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<h1 class="brand-heading">Notice Board</h1>
-					<p class="intro-text">A simple, efficient notice board for USIU.<br>Created for APT 2080.</p>
+					<p class="intro-text">
+                        A simple, efficient notice board for USIU.
+                        <br/>
+                        <kbd style="font-size: .5em;">
+                                APT 2080-A: Introduction to Software Engineering<br/>
+                                Spring 2015
+                        </kbd>
+                    </p>
 					<a href="#about" class="btn btn-circle page-scroll">
 						<i class="fa fa-angle-double-down animated"></i>
 					</a>
@@ -107,8 +114,16 @@
 
 			<p>Not many people really take time to read the various notice boards on campus. Often, they contain timely and urgent information that many miss because they didn’t pass near a notice board, could not read the small black font on the bright white paper or simply because the information was buried under a tonne of other &quot;non-important&quot; information.</p>
 			<p>We would like to change that by supplementing and eventually replacing the physical notice board with a mobile app. Because we carry our phones everywhere and rarely turn them off, a mobile app that presents the notice board’s information in a very efficient way would prevent students from missing those important alerts, messages or sign up sheets on the notice board.</p>
-
 		</div>
+
+
+        <div id="app_shot" class="col-lg-12">
+            <h2>Screen Shots</h2>
+            <img class="img-responsive" src="/assets/img/shot_1.png">
+            <img class="img-responsive" src="/assets/img/shot_2.png">
+            <img class="img-responsive" src="/assets/img/shot_3.png">
+        </div>
+
 	</div>
 </section>
 
@@ -118,8 +133,28 @@
 		<div class="container">
 			<div class="col-lg-8 col-lg-offset-2">
 				<h2>Download App</h2>
-				<p>You can download the pre-release version of <code>USIU Notice Board</code> android app for free here.</p>
-				<a href="https://www.dropbox.com/s/4vlzq9cpv65u2fw/USIUBoard-prerelease.apk?dl=0" class="btn btn-default btn-lg">Download</a>
+				<p>You can get your copy of <kbd>USIU Notice Board</kbd> app today.</p>
+
+                <ul class="list-inline buttons-list">
+
+                    <li>
+                        <a href="https://www.dropbox.com/s/4vlzq9cpv65u2fw/USIUBoard-prerelease.apk?dl=0" target="_blank"
+                           class="btn btn-default btn-lg">
+                            <i class="fa fa-download fa-fw"></i> <span>Download</span></a>
+                    </li>
+
+                    <li>
+                        <a href="https://bitbucket.com/usiu/noticeboard" target="_blank"
+                           class="btn btn-default btn-lg">
+                            <i class="fa fa-bitbucket fa-fw"></i> <span>Source Code</span></a>
+                    </li>
+
+                </ul>
+
+                <p class="text-muted" style="font-size: .95em;">
+                    <small><strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3 or above</strong> and allow installation from <em>unknown sources</em>.</small>
+                </p>
+
 			</div>
 		</div>
 	</div>
@@ -133,7 +168,7 @@
 			<p>Feel free to email us to provide some feedback on our project, give us suggestions, or to just say hello!</p>
 			<p><a href="mailto:aksalj@aksalj.me">feedback@aksalj.me</a>
 			</p>
-			<ul class="list-inline banner-social-buttons">
+			<ul class="list-inline buttons-list">
 				<li>
 					<a href="https://twitter.com/aksalj" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
 				</li>

@@ -159,6 +159,12 @@ a:focus {
     font-size: 18px;
 }
 
+#app_shot img {
+    max-width: 300px;
+    height: auto;
+    display: inline;
+}
+
 @media(min-width:767px) {
     .intro {
         height: 100%;
@@ -249,7 +255,7 @@ a:focus {
 }
 
 .content-section {
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .download-section {
@@ -266,7 +272,7 @@ a:focus {
 
 @media(min-width:767px) {
     .content-section {
-        padding-top: 250px;
+        padding-top: 150px;
     }
 
     .download-section {
@@ -297,24 +303,24 @@ a:focus {
     background-color: #219ab3;
 }
 
-ul.banner-social-buttons {
+ul.buttons-list {
     margin-top: 0;
 }
 
 @media(max-width:1199px) {
-    ul.banner-social-buttons {
+    ul.buttons-list {
         margin-top: 15px;
     }
 }
 
 @media(max-width:767px) {
-    ul.banner-social-buttons li {
+    ul.buttons-list li {
         display: block;
         margin-bottom: 20px;
         padding: 0;
     }
 
-    ul.banner-social-buttons li:last-child {
+    ul.buttons-list li:last-child {
         margin-bottom: 0;
     }
 }
