@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
@@ -57,8 +59,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
 
-    //@InjectView(R.id.empty_view)
-    //LinearLayout mEmptyView;
+    TextView mEmptyView;
 
     ItemsListAdapter mItemsAdapter;
     ICallback mItemsRefreshCallback;
@@ -153,6 +154,9 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
             }
         });
 
+        mEmptyView = new TextView(mActivity);
+        mEmptyView.setText(R.string.no_items);
+
         if (DeviceHelper.isLandscape(mActivity)) {
 
             mItemsAdapter.setAnimations(android.R.anim.fade_in, android.R.anim.fade_in);
@@ -162,7 +166,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
             grid.setOnItemClickListener(this);
             grid.setOnItemLongClickListener(this);
             grid.setAdapter(mItemsAdapter);
-            //grid.setEmptyView(mEmptyView);
+            grid.setEmptyView(mEmptyView);
 
         } else if (DeviceHelper.isPortrait(mActivity)) {
             ObservableListView list = (ObservableListView) mActivity.findViewById(R.id.list);
@@ -170,7 +174,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
             list.setOnItemClickListener(this);
             list.setOnItemLongClickListener(this);
             list.setAdapter(mItemsAdapter);
-            //list.setEmptyView(mEmptyView);
+            list.setEmptyView(mEmptyView);
         } else {
             // WTF??
             Log.e("WTF", "Invalid device orientation!");
