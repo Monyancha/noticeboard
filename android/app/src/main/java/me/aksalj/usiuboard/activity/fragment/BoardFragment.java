@@ -223,8 +223,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        return true;
+        return false;
     }
 
     @Override

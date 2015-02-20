@@ -17,4 +17,10 @@
     <string name="check_play_services">Check your Google Play Services</string>
     <string name="server_error">Could not contact the server</string>
 
+    <string name="notifications">Notifications</string>
+    <string name="notifs_questions_">Do you want to receive notifications when new content is posted?</string>
+    <string name="notifs_statement_">Receive notifications for new content</string>
+    <string name="gcm_notifs">Push Notifications</string>
+    <string name="phone_notifs">SMS Notifications</string>
+
 </resources>

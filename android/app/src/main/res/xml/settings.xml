@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/notifications"
+        android:key="cat_notifs">
+
+        <CheckBoxPreference
+            android:key="notifs"
+            android:title="@string/notifications"
+            android:summary="@string/notifs_statement_"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="gcm_notifs"
+            android:title="@string/gcm_notifs"
+            android:defaultValue="true"
+            android:dependency="notifs"/>
+
+        <CheckBoxPreference
+            android:key="phone_notifs"
+            android:title="@string/phone_notifs"
+            android:defaultValue="true"
+            android:dependency="notifs"/>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="Data"
+        android:key="cat_data">
+
+
+        <CheckBoxPreference
+            android:key="img_dld"
+            android:title="Wifi Only"
+            android:summary="Download images on wifi only"
+            android:defaultValue="false"/>
+
+        <Preference
+            android:title="Clear Image Cache"
+            android:summary="30 MB cached"
+            android:dependency="img_dld"/>
+
+        <CheckBoxPreference
+            android:key="debug_data"
+            android:title="Bug report"
+            android:summary="Anonymously send debug data to help impove app"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
