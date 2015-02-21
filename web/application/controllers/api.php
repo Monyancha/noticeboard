@@ -60,6 +60,14 @@ class Api extends CI_Controller {
     }
 
     /**
+     * Send xml feed
+     * @param $id
+     */
+    public function feed($id) {
+
+    }
+
+    /**
      * Sync all feeds and send notifications. Called every minute by a job scheduler like cron.
      */
     public function sync() {

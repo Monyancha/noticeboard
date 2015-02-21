@@ -6,7 +6,8 @@
     "font-awesome": "~4.3.0",
     "jquery.easing": "~1.3.1",
     "angularjs": "1.3.10",
-    "angular-route": "1.3.10"
+    "angular-route": "1.3.10",
+    "flatly-sb-admin": "0.0.1"
   },
   "resolutions": {
     "jquery": ">= 1.9.1"

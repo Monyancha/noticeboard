@@ -26,8 +26,6 @@
     <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="/assets/bower_components/morris.js/morris.css">
-    <link rel="stylesheet" href="/assets/bower_components/flatly-sb-admin/css/plugins/timeline/timeline.css">
     <link rel="stylesheet" href="/assets/bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css">
 
     <link rel="stylesheet" href="/assets/bower_components/flatly-sb-admin/css/sb-admin.css">
@@ -59,7 +57,7 @@
     <div data-spy="affix" data-offset-top="0" data-offset-bottom="200">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu" sb-sidebar-menus menus-url="/assets/js/dashboard/json/menus.json">
+                <ul class="nav" id="side-menu">
                     <li class="sidebar-search">
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control" placeholder="Search...">
@@ -145,11 +143,6 @@
 <script src="/assets/bower_components/angularjs/angular.min.js"></script>
 <script src="/assets/bower_components/angular-route/angular-route.min.js"></script>
 
-<!-- Plugin Scripts - SbAdmin -->
-<script src="/assets/js/dashboard/admin-module.js"></script>
-<script src="/assets/bower_components/flatly-sb-admin/js/sb-flot-module.js"></script>
-
-<!-- Example Scripts -->
 <script src="/assets/js/dashboard/dashboard.js"></script>
 
 </body>
