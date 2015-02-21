@@ -14,8 +14,24 @@
 
 class Dashboard extends CI_Controller {
 
+    var $User = null;
+
     function __construct(){
         parent::__construct();
+
+        $this->load->library('session');
+
+        $this->User = $this->session->userdata('user');
+        if($this->User == null) {
+            $this->session->set_userdata('login_callback', '/dashboard');
+            redirect('/auth/login');
+        }
+    }
+
+    public function index() {
+        echo "<pre>";
+        print_r($this->User);
+        echo "</pre>";
     }
 
 }

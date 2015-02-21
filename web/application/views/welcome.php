@@ -25,12 +25,14 @@
 
     <title>USIU Notice Board</title>
 
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
     <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/grayscale.css" rel="stylesheet">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,6 +66,9 @@
                 </li>
                 <li>
                     <a class="page-scroll" href="#download">Download</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/dashboard">Dashboard</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
@@ -198,7 +203,7 @@
 <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/assets/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
-<script src="/assets/js/grayscale.js"></script>
+<script src="/assets/js/welcome.js"></script>
 
 </body>
 

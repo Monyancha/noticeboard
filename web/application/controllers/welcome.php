@@ -5,34 +5,13 @@ class Welcome extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-
-	}
-
+    }
 
 	/**
 	 * Landing page
 	 */
-	public function index()
-	{
+	public function index() {
 		$this->load->view('welcome');
-	}
-
-	/**
-	 * Log into the system
-	 */
-	public function login() {
-
-	}
-
-	/**
-	 * Log out of the system
-	 */
-	public function logout() {
-
-	}
-
-	public function register() {
-
 	}
 }
 
