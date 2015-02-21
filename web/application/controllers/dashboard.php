@@ -29,9 +29,10 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        echo "<pre>";
-        print_r($this->User);
-        echo "</pre>";
+        $context = array(
+            "user" => $this->User
+        );
+        $this->load->view("dashboard/dashboard", $context);
     }
 
 }
