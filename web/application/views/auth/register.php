@@ -80,7 +80,9 @@
 <div class="intro">
     <div class="intro-body">
         <div class="container">
-            <h1>Please contact the <kbd>notice board</kbd> administrator.</h1>
+            <div class="alert alert-danger col-sm-8 col-sm-offset-2">
+                Staff registration is disabled. Please contact the notice board administrator.
+            </div>
         </div>
 
     </div>
