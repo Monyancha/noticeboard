@@ -15,22 +15,47 @@
 var angular = window.angular;
 
 (function () {
-    var app = angular.module('sbAdminApp', ['ngRoute']);
+    var app = angular.module('DashboardApp', ['ngRoute']);
     app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: '/assets/js/dashboard/partial/dashboard.html',
-                controller: 'SbDashboardCtrl'
+                templateUrl: '/dashboard/partial/dashboard',
+                controller: 'DashboardCtrl'
             }).
             when('/feeds', {
-                templateUrl: '/assets/js/dashboard/partial/feeds.html',
-                controller: 'SbFeedsCtrl'
+                templateUrl: '/dashboard/partial/feeds',
+                controller: 'FeedsCtrl'
+            }).
+            when('/content', {
+                templateUrl: '/dashboard/partial/content',
+                controller: 'ContentCtrl'
+            }).
+            when('/settings', {
+                templateUrl: '/dashboard/partial/settings',
+                controller: 'SettingsCtrl'
+            }).
+            when('/providers', {
+                templateUrl: '/dashboard/partial/providers',
+                controller: 'ProvidersCtrl'
             });
     }]).
-        controller('SbDashboardCtrl', function ($scope) {
+        controller('DashboardCtrl', function ($scope) {
             $scope.$parent.pageHeader = 'Dashboard';
         }).
-        controller('SbFeedsCtrl', function ($scope) {
-            $scope.$parent.pageHeader = 'Feeds';
+        controller('FeedsCtrl', function ($scope) {
+            $scope.$parent.pageHeader = 'Noticeboard RSS Feeds';
+        }).
+        controller('ContentCtrl', function ($scope) {
+            $scope.$parent.pageHeader = 'Noticeboard Content';
+        }).
+        controller('SettingsCtrl', function ($scope) {
+            $scope.$parent.pageHeader = 'Notification Settings';
+        }).
+        controller('ProvidersCtrl', function ($scope) {
+            $scope.$parent.pageHeader = 'Notification Providers';
         });
+
+
+    $('#side-menu').metisMenu();
+
 })();

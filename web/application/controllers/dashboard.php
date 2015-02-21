@@ -32,7 +32,12 @@ class Dashboard extends CI_Controller {
         $context = array(
             "user" => $this->User
         );
-        $this->load->view("dashboard/dashboard", $context);
+        $this->load->view("dashboard/index", $context);
+    }
+
+    public function partial($name) {
+        $view = "dashboard/partials/".$name;
+        $this->load->view($view);
     }
 
 }
