@@ -58,7 +58,7 @@ class Dashboard extends CI_Controller {
                     if ($id) $status = 200;
                     break;
                 case 'update':
-                    $res = $this->FeedModel->updateFeed($data['id'], $data['title'], $data['url'], $data['description']);
+                    $res = $this->FeedModel->updateFeed($data['id'], $data['title'], $data['description'], $data['url']);
                     if ($res) $status = 200;
                     break;
                 case 'remove':
