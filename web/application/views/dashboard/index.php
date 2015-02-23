@@ -27,7 +27,10 @@
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css">
+    <link href="/assets/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet">
+    <link href="/assets/bower_components/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="/assets/css/sb-admin.css">
 
@@ -123,11 +126,11 @@
 <script src="/assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Plugin Scripts - DataTables -->
 <script src="/assets/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="/assets/bower_components/datatables-bootstrap3/BS3/assets/js/datatables.js"></script>
+<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
-<!-- Plugin Scripts - AngularJS -->
+<script src="/assets/bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
+
 <script src="/assets/bower_components/angularjs/angular.min.js"></script>
 <script src="/assets/bower_components/angular-route/angular-route.min.js"></script>
 

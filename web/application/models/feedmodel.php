@@ -89,4 +89,20 @@ class FeedModel extends CI_Model {
         return $this->db->delete(self::TABLE, array('id' => $id));
     }
 
+    /**
+     * Count registered feeds
+     * @return mixed
+     */
+    public function countFeeds() {
+        return $this->db->count_all_results(self::TABLE);
+    }
+
+    /**
+     * Count feeds items
+     * @return mixed
+     */
+    public function countFeedsItems() {
+        return 7876;
+    }
+
 }

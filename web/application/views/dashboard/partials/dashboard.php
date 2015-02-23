@@ -25,7 +25,7 @@
                         <i class="fa fa-mobile fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">726</div>
+                        <div class="huge"><? echo  $this->DeviceModel->countDevices(); ?></div>
                         <div>Devices Registered!</div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         <i class="fa fa-rss fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">12</div>
+                        <div class="huge"><? echo  $this->FeedModel->countFeeds(); ?></div>
                         <div>Feeds Served!</div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <i class="fa fa-rss fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">172</div>
+                        <div class="huge"><? echo  $this->FeedModel->countFeedsItems(); ?></div>
                         <div>Items Posted!</div>
                     </div>
                 </div>

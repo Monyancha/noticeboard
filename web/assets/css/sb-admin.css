@@ -1,10 +1,11 @@
 /* Global Styles */
-
+@import url("//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic");
 
 body {
     margin-top: 60px;
     background-color: #012951;
     /*overflow:hidden;*/
+    font-family: Roboto,Helvetica,Arial,sans-serif;
 }
 
 /* Wrappers */

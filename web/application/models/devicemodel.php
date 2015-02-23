@@ -64,4 +64,12 @@ class DeviceModel extends CI_Model {
         return $this->db->delete(self::TABLE, array('uuid' => $uuid));
     }
 
+    /**
+     * Count registered devices
+     * @return mixed
+     */
+    public function countDevices() {
+        return $this->db->count_all_results(self::TABLE);
+    }
+
 }
