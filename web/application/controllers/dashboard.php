@@ -45,7 +45,9 @@ class Dashboard extends CI_Controller {
     }
 
 
-
+    /**
+     * @param $action
+     */
     public function feed($action) {
         $status = 500;
         $data = $this->input->post(); // TODO: Validate data
@@ -71,6 +73,25 @@ class Dashboard extends CI_Controller {
         }
 
         $this->output->set_status_header($status);
+    }
+
+    public function notifications($param) {
+        $status = 500;
+        $data = $this->input->post(); // TODO: Validate data
+
+        // TODO: Save notifications params
+
+        switch($param) { // type | push | sms
+            case "type":
+                break;
+            case "push":
+                break;
+            case "sms":
+                break;
+        }
+
+        $this->output->set_status_header($status);
+
     }
 
 

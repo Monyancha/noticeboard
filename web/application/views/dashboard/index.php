@@ -23,16 +23,16 @@
     <title>Dashboard</title>
 
     <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
-    <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
+    <link href="/assets/bower_components/bootswatch/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link href="/assets/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet">
-    <link href="/assets/bower_components/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet">
-    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/bower_components/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
-
-    <link rel="stylesheet" href="/assets/css/sb-admin.css">
+    <link rel="stylesheet" href="/assets/css/sb-admin.css" type="text/css">
 
 </head>
 
@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/dashboard" style="color: #000000">
+            <a class="navbar-brand" href="#/">
                 <i class="fa fa-info-circle"></i> <span class="light">USIU</span> Notice Board
             </a>
         </div>
@@ -86,16 +86,7 @@
                 </li>
 
                 <li>
-                    <a href=""><i class="fa fa-volume-down fa-fw"></i> Notifications<span
-                            class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#/settings"><i class="fa fa-sliders fa-fw"></i> Settings</a>
-                        </li>
-                        <li>
-                            <a href="#/providers"><i class="fa fa-globe fa-fw"></i> Providers</a>
-                        </li>
-                    </ul>
+                    <a href="#/notifications"><i class="fa fa-sliders fa-fw"></i> Notifications</a>
                 </li>
 
             </ul>
@@ -106,7 +97,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{ pageHeader }}</h1>
+                <h3 class="page-header">{{ pageHeader }}</h3>
             </div>
         </div>
 

@@ -14,6 +14,13 @@
 ?>
 <style>
     @import "/assets/css/timeline.css";
+
+    /* Paper theme */
+    .panel-primary>.panel-heading, .panel-success>.panel-heading,
+    .panel-warning>.panel-heading, .panel-danger>.panel-heading {
+        color: #fff;
+    }
+
 </style>
 <div class="row">
 
@@ -94,7 +101,7 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-rss fa-5x"></i>
+                        <i class="fa fa-tree fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><? echo  $this->FeedModel->countFeedsItems(); ?></div>

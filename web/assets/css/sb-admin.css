@@ -1,11 +1,8 @@
-/* Global Styles */
-@import url("//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic");
 
 body {
     margin-top: 60px;
     background-color: #012951;
     /*overflow:hidden;*/
-    font-family: Roboto,Helvetica,Arial,sans-serif;
 }
 
 /* Wrappers */
@@ -48,7 +45,7 @@ body {
 }
 
 .navbar-top-links {
-    margin-top: 0;
+    margin-top: 5px;
 }
 
 .navbar-top-links li {
@@ -62,6 +59,9 @@ body {
 .navbar-top-links li a {
     padding: 15px;
     min-height: 5px;
+}
+.navbar-top-links li a:hover {
+    background: transparent;
 }
 
 /* Sidebar Menu Styles */
@@ -97,124 +97,4 @@ body {
 
 .nav-third-level li a {
     padding-left: 52px;
-}
-
-/* Buttons */
-
-/* ------------------------------- */
-
-.btn-outline {
-    color: inherit;
-    background-color: transparent;
-    transition: all .5s;
-}
-
-.btn-primary.btn-outline {
-    color: #428bca;
-}
-
-.btn-success.btn-outline {
-    color: #5cb85c;
-}
-
-.btn-info.btn-outline {
-    color: #5bc0de;
-}
-
-.btn-warning.btn-outline {
-    color: #f0ad4e;
-}
-
-.btn-danger.btn-outline {
-    color: #d9534f;
-}
-
-.btn-primary.btn-outline:hover,
-.btn-success.btn-outline:hover,
-.btn-info.btn-outline:hover,
-.btn-warning.btn-outline:hover,
-.btn-danger.btn-outline:hover {
-    color: #fff;
-}
-
-.panel .slidedown .glyphicon {
-    margin-right: 5px;
-}
-
-/* DataTables Overrides */
-
-table.table thead .sorting,
-table.table thead .sorting_asc,
-table.table thead .sorting_desc,
-table.table thead .sorting_asc_disabled,
-table.table thead .sorting_desc_disabled {
-    background-image: none;
-}
-
-table.dataTable thead .sorting,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc,
-table.dataTable thead .sorting_asc_disabled,
-table.dataTable thead .sorting_desc_disabled {
-    background: transparent;
-}
-
-table.dataTable thead .sorting_asc:after {
-    content: "\f0de";
-    float: right;
-    font-family: fontawesome;
-}
-
-table.dataTable thead .sorting_desc:after {
-    content: "\f0dd";
-    float: right;
-    font-family: fontawesome;
-}
-
-table.dataTable thead .sorting:after {
-    content: "\f0dc";
-    float: right;
-    font-family: fontawesome;
-    color: rgba(50,50,50,.5);
-}
-
-/* Circle Buttons */
-
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    padding: 6px 0;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.428571429;
-}
-
-.btn-circle.btn-lg {
-    width: 50px;
-    height: 50px;
-    padding: 10px 16px;
-    border-radius: 25px;
-    font-size: 18px;
-    line-height: 1.33;
-}
-
-.btn-circle.btn-xl {
-    width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    border-radius: 35px;
-    font-size: 24px;
-    line-height: 1.33;
-}
-
-.show-grid [class^="col-"] {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid #ddd;
-    background-color: #eee !important;
-}
-
-.show-grid {
-    margin: 15px 0;
 }

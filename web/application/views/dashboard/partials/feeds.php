@@ -16,7 +16,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <table id="feedsTable" class="display">
+            <table id="feedsTable" class="table table-responsive display">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -114,7 +114,7 @@
         $('#feedsTable').DataTable({
             "dom": '<"toolbar">frtip'
         });
-        var toolbarHtml = '<a id="addFeed" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus fa-fw"></i>New Feed</a>' +
+        var toolbarHtml = '<a id="addFeed" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-fw"></i>New Feed</a>' +
             '<br/>&nbsp;&nbsp;';
         $("div.toolbar").html(toolbarHtml);
 

@@ -30,13 +30,9 @@ var angular = window.angular;
                 templateUrl: '/dashboard/partial/content',
                 controller: 'ContentCtrl'
             }).
-            when('/settings', {
-                templateUrl: '/dashboard/partial/settings',
-                controller: 'SettingsCtrl'
-            }).
-            when('/providers', {
-                templateUrl: '/dashboard/partial/providers',
-                controller: 'ProvidersCtrl'
+            when('/notifications', {
+                templateUrl: '/dashboard/partial/notifications',
+                controller: "NotificationsCtrl"
             });
     }]).
         controller('DashboardCtrl', function ($scope) {
@@ -48,11 +44,8 @@ var angular = window.angular;
         controller('ContentCtrl', function ($scope) {
             $scope.$parent.pageHeader = 'Noticeboard Content';
         }).
-        controller('SettingsCtrl', function ($scope) {
-            $scope.$parent.pageHeader = 'Notification Settings';
-        }).
-        controller('ProvidersCtrl', function ($scope) {
-            $scope.$parent.pageHeader = 'Notification Providers';
+        controller('NotificationsCtrl', function ($scope) {
+            $scope.$parent.pageHeader = 'Notifications';
         });
 
 

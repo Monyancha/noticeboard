@@ -28,7 +28,7 @@ class Api extends CI_Controller {
             "API_KEY" => null
         ),
         "APNS" => array( // Apple Push Notification Service
-            "TOKEN" => null
+            "token" => null
         )
     );
 
