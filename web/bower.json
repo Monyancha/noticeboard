@@ -11,7 +11,8 @@
     "metisMenu": "*",
     "datatables": ">=1.9",
     "bootstrap3-dialog": "1.34.2",
-    "bootstrap-contextmenu": "0.3.2"
+    "bootstrap-contextmenu": "0.3.2",
+    "skrollr":"*"
   },
   "resolutions": {
     "jquery": ">= 1.9.1",

@@ -78,7 +78,7 @@
     </div>
 </nav>
 
-<header class="intro">
+<header class="intro" data-0="background-position:0px 0px" data-100000="background-position:0px -50000px;">
     <div class="intro-body">
         <div class="container">
             <div class="row">
@@ -203,6 +203,7 @@
 <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/assets/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
+<script src="/assets/bower_components/skrollr/dist/skrollr.min.js"></script>
 <script src="/assets/js/welcome.js"></script>
 
 </body>

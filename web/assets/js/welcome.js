@@ -14,6 +14,12 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+
+    // TODO: Intro Parallax?
+    skrollr.init({
+        forceHeight: false
+    });
+
 });
 
 $('.navbar-collapse ul li a').click(function() {
