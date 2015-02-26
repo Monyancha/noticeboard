@@ -12,9 +12,10 @@
  *  
  */
 
-$notificationSettings = $this->SettingsModel->getSettings('notification');
-$smsSettings = $this->SettingsModel->getSettings('sms');
-$pushSettings = $this->SettingsModel->getSettings('push');
+
+$notificationSettings = getNotificationsSettings();
+$smsSettings = getSMSSettings();
+$pushSettings = getPushSettings();
 
 // Service Providers
 $gcmSettings = $pushSettings->GCM;
@@ -53,7 +54,7 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
             </div>
 
             <div class="panel-body">
-                <form id="settingsForm">
+                <form id="typeForm">
 
                     <div class="radio">
                         <label>
@@ -75,9 +76,14 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
                     </div>
 
                     <div id="actions" class="">
-                        <a class="btn btn-primary" href=""><i class="fa fa-save fa-fw"></i> Save</a>&nbsp;
-
-                        <a class="btn btn-warning" href=""><i class="fa fa-refresh fa-fw"></i> Restore Defaults</a>
+                        <a class="btn btn-primary" href="" id="btnSaveType">
+                            <i class="fa fa-save fa-fw"></i>
+                            <span class="text">Save</span>
+                        </a>
+                        &nbsp;
+                        <a class="btn btn-warning" href="" id="btnRestoreType">
+                            <i class="fa fa-refresh fa-fw"></i> <span class="text">Restore Defaults</span>
+                        </a>
                     </div>
 
                 </form>
@@ -131,9 +137,14 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
                 </div>
 
                 <div id="actions" class="">
-                    <a class="btn btn-primary" href=""><i class="fa fa-save fa-fw"></i> Save</a>&nbsp;
-
-                    <a class="btn btn-warning" href=""><i class="fa fa-refresh fa-fw"></i> Restore Defaults</a>
+                    <a class="btn btn-primary" href="" id="btnSavePush">
+                        <i class="fa fa-save fa-fw"></i>
+                        <span class="text">Save</span>
+                    </a>
+                    &nbsp;
+                    <a class="btn btn-warning" href="" id="btnRestorePush">
+                        <i class="fa fa-refresh fa-fw"></i> <span class="text">Restore Defaults</span>
+                    </a>
                 </div>
 
             </div>
@@ -187,9 +198,14 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
                 </div>
 
                 <div id="actions" class="">
-                    <a class="btn btn-primary" href=""><i class="fa fa-save fa-fw"></i> Save</a>&nbsp;
-
-                    <a class="btn btn-warning" href=""><i class="fa fa-refresh fa-fw"></i> Restore Defaults</a>
+                    <a class="btn btn-primary" href="" id="btnSaveSMS">
+                        <i class="fa fa-save fa-fw"></i>
+                        <span class="text">Save</span>
+                    </a>
+                    &nbsp;
+                    <a class="btn btn-warning" href="" id="btnRestoreSMS">
+                        <i class="fa fa-refresh fa-fw"></i> <span class="text">Restore Defaults</span>
+                    </a>
                 </div>
 
             </div>
@@ -205,5 +221,81 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
     $('ul.nav-tabs li a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
-    })
+    });
+
+
+    /**
+     *
+     * @param data
+     * @returns {*}
+     */
+    var cleanUpProvidersArray = function (data) {
+        for(var key in data) { // Prep form data to be received as Array( [PROVIDER] => Array( [KEY] => VALUE ))
+            var temp = data[key];
+            var provider = {};
+            for(var idx in temp) {
+                var obj = temp[idx];
+                provider[obj.name] = obj.value;
+            }
+            data[key] = provider;
+        }
+
+        return data;
+    };
+
+    var saveNotificationsSettings = function (kind, button, data, debugOut) {
+        var btnLabel = button.children('span.text');
+
+        button.addClass('disabled');
+        btnLabel.text("Saving...");
+
+        $.ajax({
+            type: "POST",
+            url: "/dashboard/notifications/" + kind,
+            data: data,
+            success: function (res, textStatus, jqXHR) {
+                if(debugOut) console.log(res);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                var err = "<div>";
+                err += "<p class='text-muted'>Something went wrong...</p>";
+                err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
+                err += "</div>";
+                BootstrapDialog.show({
+                    title: "Oops!",
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: err
+                });
+            },
+            complete: function () {
+                button.removeClass('disabled');
+                btnLabel.text('Save');
+            }
+        });
+    };
+
+
+    $("#btnSaveType").click(function () {
+        saveNotificationsSettings("type", $(this), $("#typeForm").serializeArray());
+        return false;
+    });
+
+    $("#btnSavePush").click(function () {
+        var data = {
+            GCM: $("#gcmForm").serializeArray(),
+            APNS: $("apnsForm").serializeArray()
+        };
+        saveNotificationsSettings("push", $(this), cleanUpProvidersArray(data));
+        return false;
+    });
+
+    $("#btnSaveSMS").click(function () {
+        var data = {
+            twilio: $("#twilioForm").serializeArray()
+        };
+        saveNotificationsSettings("sms", $(this), cleanUpProvidersArray(data));
+        return false;
+    });
+
+
 </script>

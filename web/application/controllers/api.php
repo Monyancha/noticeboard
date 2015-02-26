@@ -18,28 +18,6 @@ class Api extends CI_Controller {
 
     var $EMPTY_RESPONSE = array();
 
-    var $DEFAULT_NOTIFICATION_TYPES_SETTINGS = array(
-        "sms" => false,
-        "push" => false
-    );
-
-    var $DEFAULT_PUSH_NOTIFICATIONS_SETTINGS = array(
-        "GCM" => array( // Google Cloud Messaging
-            "API_KEY" => null
-        ),
-        "APNS" => array( // Apple Push Notification Service
-            "token" => null
-        )
-    );
-
-    var $DEFAULT_SMS_SETTINGS = array(
-        "twilio" => array( // Twilio
-            "sid" => null,
-            "token" => null,
-            "sender" => null
-        )
-    );
-
     function __construct() {
         parent::__construct();
 
@@ -48,6 +26,8 @@ class Api extends CI_Controller {
         $this->load->model('DeviceModel');
         $this->load->model('FeedModel');
         $this->load->model('SettingsModel');
+
+        $this->load->helper('settings');
     }
 
     /**
@@ -78,13 +58,9 @@ class Api extends CI_Controller {
 
         $devices = $this->DeviceModel->getDevices();
 
-        $notificationSettings = $this->SettingsModel->getSettings('notification');
-        $smsSettings = $this->SettingsModel->getSettings('sms');
-        $pushSettings = $this->SettingsModel->getSettings('push');
-
-        if(!$notificationSettings){ $notificationSettings = $this->$DEFAULT_NOTIFICATION_TYPES_SETTINGS; }
-        if(!$smsSettings) { $smsSettings = $this->DEFAULT_SMS_SETTINGS; }
-        if(!$pushSettings) { $pushSettings = $this->DEFAULT_PUSH_NOTIFICATIONS_SETTINGS; }
+        $notificationSettings = getNotificationsSettings();
+        $smsSettings = getSMSSettings();
+        $pushSettings = getPushSettings();
 
         $settings = array(
             "type" => $notificationSettings,

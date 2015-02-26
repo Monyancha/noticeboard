@@ -30,7 +30,8 @@
     <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
-    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
+<!--    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">-->
+    <link href="/assets/plugin/dataTables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="/assets/css/sb-admin.css" type="text/css">
 
@@ -118,7 +119,8 @@
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script src="/assets/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<!--<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>-->
+<script src="/assets/plugin/dataTables/dataTables.bootstrap.js"></script>
 
 <script src="/assets/bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
 

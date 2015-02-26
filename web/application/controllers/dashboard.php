@@ -30,6 +30,8 @@ class Dashboard extends CI_Controller {
         $this->load->model('DeviceModel');
         $this->load->model('FeedModel');
         $this->load->model('SettingsModel');
+
+        $this->load->helper('settings');
     }
 
     public function index() {
@@ -78,16 +80,29 @@ class Dashboard extends CI_Controller {
     public function notifications($param) {
         $status = 500;
         $data = $this->input->post(); // TODO: Validate data
+        if($data && count($data) > 0) {
 
-        // TODO: Save notifications params
+            // TODO: Save notifications params
 
-        switch($param) { // type | push | sms
-            case "type":
-                break;
-            case "push":
-                break;
-            case "sms":
-                break;
+            switch ($param) { // type | push | sms
+                case "type":
+                    $type = $data['notificationsSettings'];
+                    $notifSettings = array(
+                        "sms" => $type === 'both' || $type === 'sms',
+                        "push" => $type === 'both' || $type === 'push');
+                    if($this->SettingsModel->updateSettings('notification', $notifSettings)){
+                        $status = 200;
+                    }
+                    break;
+                case "push":
+                    $data['APNS'] = array('token' => null); // FIXME: Delete me
+                    // fall through
+                case "sms":
+                    if($this->SettingsModel->updateSettings($param, $data)){
+                        $status = 200;
+                    }
+                    break;
+            }
         }
 
         $this->output->set_status_header($status);

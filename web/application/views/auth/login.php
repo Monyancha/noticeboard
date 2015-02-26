@@ -125,7 +125,7 @@
 
                             <div style="margin-top:10px;" class="form-group">
                                 <div class="col-sm-12 controls">
-                                    <input type="submit" class="btn btn-success">
+                                    <input type="submit" class="btn btn-success" value="Submit">
                                     <input type="reset" class="btn btn-danger">
                                 </div>
                             </div>
