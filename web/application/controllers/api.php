@@ -23,9 +23,13 @@ class Api extends CI_Controller {
 
         $this->load->driver('cache', array('adapter' => 'file'));
 
+        $this->load->helper( array('content', 'syndication', 'notification') );
+
         $this->load->model('DeviceModel');
         $this->load->model('FeedModel');
         $this->load->model('SettingsModel');
+        $this->load->model('ItemModel');
+        $this->load->model('LogModel');
 
         $this->load->helper('settings');
     }
@@ -41,10 +45,32 @@ class Api extends CI_Controller {
 
     /**
      * Send xml feed
-     * @param $id
+     * @param $slug
      */
-    public function feed($id) {
+    public function feed($slug) {
 
+        if(isset($slug)) {
+            $feed = $this->FeedModel->getFeedBySlug($slug);
+
+            if($feed) {
+                $items = $this->ItemModel->getFeedItems($feed->id);
+
+                $this->output
+                    ->set_content_type('application/rss+xml')
+                    ->set_output(makeRSSXML($feed, $items));
+            }  else {
+
+                $this->output
+                    ->set_content_type('application/rss+xml')
+                    ->set_status_header(404, 'Feed Not Found');
+            }
+
+        } else {
+
+            $this->output
+                ->set_content_type('application/rss+xml')
+                ->set_status_header(400, 'Bad Request');
+        }
     }
 
     /**
@@ -53,8 +79,6 @@ class Api extends CI_Controller {
     public function sync() {
 
         // TODO: Restrict origin
-
-        $this->load->helper( array('content', 'syndication', 'notification') );
 
         $devices = $this->DeviceModel->getDevices();
 

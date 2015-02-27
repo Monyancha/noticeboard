@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 02, 2015 at 05:44 PM
+-- Generation Time: Feb 27, 2015 at 08:04 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.1
 
@@ -23,11 +23,11 @@ USE `usiuboard`;
 --
 
 DROP TABLE IF EXISTS `devices`;
-CREATE TABLE IF NOT EXISTS `devices` (
-`id` int(11) NOT NULL,
+CREATE TABLE `devices` (
+  `id` int(11) NOT NULL,
   `uuid` varchar(512) NOT NULL,
   `phone` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -36,12 +36,33 @@ CREATE TABLE IF NOT EXISTS `devices` (
 --
 
 DROP TABLE IF EXISTS `feeds`;
-CREATE TABLE IF NOT EXISTS `feeds` (
-`id` int(11) NOT NULL,
+CREATE TABLE `feeds` (
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
-  `url` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `url` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `slug` varchar(128) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL,
+  `feed` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `link` text NOT NULL,
+  `image` text NOT NULL,
+  `content` text NOT NULL,
+  `author` varchar(256) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -50,11 +71,11 @@ CREATE TABLE IF NOT EXISTS `feeds` (
 --
 
 DROP TABLE IF EXISTS `settings`;
-CREATE TABLE IF NOT EXISTS `settings` (
-`id` int(11) NOT NULL,
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
   `name` varchar(16) NOT NULL,
   `data` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -63,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `pwd` text NOT NULL
@@ -78,25 +99,31 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Indexes for table `devices`
 --
 ALTER TABLE `devices`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `uuid` (`uuid`);
+ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `feeds`
 --
 ALTER TABLE `feeds`
- ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
+ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
+ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -106,17 +133,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `feeds`
 --
 ALTER TABLE `feeds`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --

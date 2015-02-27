@@ -29,19 +29,39 @@ class FeedModel extends CI_Model {
         return $query->result();
     }
 
-
     /**
-     * Get a given feed from database
-     * @param $id
-     * @return array
+     * Get single feed by key
+     * @param $key
+     * @param $value
+     * @return array | null
      */
-    public function getFeed($id) {
-        $query = $this->db->get_where(self::TABLE, array('id' => $id));
+    private function _getSingleFeed($key, $value) {
+        $arr = array();
+        $arr[$key] = $value;
+        $query = $this->db->get_where(self::TABLE, $arr);
         $result = $query->result();
         if(count($result) === 1) {
             return $result[0];
         }
         return null;
+    }
+
+
+    /**
+     * Get a given feed from database
+     * @param $id
+     * @return array | null
+     */
+    public function getFeed($id) {
+        return $this->_getSingleFeed('id', $id);
+    }
+
+    /**
+     * @param $slug
+     * @return null
+     */
+    public function getFeedBySlug($slug) {
+        return $this->_getSingleFeed('slug', $slug);
     }
 
     /**
@@ -53,6 +73,7 @@ class FeedModel extends CI_Model {
      */
     public function addFeed($title, $description, $url) {
         $data = array(
+            'slug' => url_title($title, 'dash', TRUE),
             'title' => $title ,
             'description' => $description ,
             'url' => $url // TODO: Validate URL

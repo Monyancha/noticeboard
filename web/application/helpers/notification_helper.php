@@ -63,10 +63,16 @@ function sendNotifications($devices, $settings, $payload)
 
     if ($settings['type']->push == true) {
         $result &= pushNotification($uuids, $payload, $settings['push']);
+        //if($result) {
+            // TODO: Update number of notifs sent
+        //}
     }
 
     if ($settings['type']->sms == true) {
         $result &= sendSMS($phones, $payload['title'] . ": " . $payload['content'], $settings['sms']);
+        //if($result) {
+            // TODO: Update number of notifs sent
+        //}
     }
 
     return $result;
