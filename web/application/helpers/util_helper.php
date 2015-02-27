@@ -20,3 +20,11 @@
 function arrayToStdObject($array) {
     return json_decode(json_encode($array), FALSE);
 }
+
+/**
+ * @param $value
+ * @return bool
+ */
+function isNullOrEmpty($value) {
+    return !isset($value) || empty($value);
+}

@@ -68,15 +68,17 @@ class FeedModel extends CI_Model {
      * Add new feed to database
      * @param $title
      * @param $description
-     * @param $url
+     * @param $slug
+     * @param $url string DEPRECATED
      * @return int Feed id
      */
-    public function addFeed($title, $description, $url) {
+    public function addFeed($title, $description, $slug, $url) {
+        $slug = isNullOrEmpty($slug) ? url_title($title, 'dash', TRUE) : $slug;
         $data = array(
-            'slug' => url_title($title, 'dash', TRUE),
+            'slug' => $slug,
             'title' => $title ,
             'description' => $description ,
-            'url' => $url // TODO: Validate URL
+            'url' => isNullOrEmpty($url) ? site_url('/feed/'.$slug) : $url
         );
         $this->db->insert(self::TABLE, $data);
         return $this->db->insert_id();
@@ -87,14 +89,17 @@ class FeedModel extends CI_Model {
      * @param $id
      * @param $title
      * @param $description
+     * @param $slug
      * @param $url
      * @return bool True if feed updated, false otherwise
      */
-    public function updateFeed($id, $title, $description, $url) {
+    public function updateFeed($id, $title, $description, $slug, $url) {
+        $slug = isNullOrEmpty($slug) ? url_title($title, 'dash', TRUE) : $slug;
         $data = array(
             'title' => $title ,
+            'slug' => $slug,
             'description' => $description ,
-            'url' => $url
+            'url' => isNullOrEmpty($url) ? site_url('/feed/'.$slug) : $url
         );
 
         $this->db->where('id', $id);

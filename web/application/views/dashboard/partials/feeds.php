@@ -21,7 +21,8 @@
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>URL</th>
+                    <th>Slug</th>
+                    <th>External URL <code>Deprecated</code></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,7 @@
                     echo "<tr data-feed='{$feed->id}' class='feedRow' data-toggle='context' data-target='#context-menu' title='Right-click for actions'>";
                     echo "<td>" . $feed->title . "</td>";
                     echo "<td>" . $feed->description . "</td>";
+                    echo "<td>" . $feed->slug . "</td>";
                     echo "<td><code>" . $feed->url . "</code></td>";
                     echo "</tr>";
                 }
