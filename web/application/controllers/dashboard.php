@@ -59,11 +59,11 @@ class Dashboard extends CI_Controller {
             // add, update, remove
             switch ($action) {
                 case 'add':
-                    $id = $this->FeedModel->addFeed($data['title'], $data['description'], $data['slug'], $data['url']);
+                    $id = $this->FeedModel->addFeed($data['title'], $data['description'], $data['slug']);
                     if ($id) $status = 200;
                     break;
                 case 'update':
-                    $res = $this->FeedModel->updateFeed($data['id'], $data['title'], $data['description'], $data['slug'], $data['url']);
+                    $res = $this->FeedModel->updateFeed($data['id'], $data['title'], $data['description'], $data['slug']);
                     if ($res) $status = 200;
                     break;
                 case 'remove':

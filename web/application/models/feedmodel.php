@@ -69,16 +69,15 @@ class FeedModel extends CI_Model {
      * @param $title
      * @param $description
      * @param $slug
-     * @param $url string DEPRECATED
      * @return int Feed id
      */
-    public function addFeed($title, $description, $slug, $url) {
+    public function addFeed($title, $description, $slug) {
         $slug = isNullOrEmpty($slug) ? url_title($title, 'dash', TRUE) : $slug;
         $data = array(
             'slug' => $slug,
             'title' => $title ,
             'description' => $description ,
-            'url' => isNullOrEmpty($url) ? site_url('/feed/'.$slug) : $url
+            'url' => site_url('/feed/'.$slug)
         );
         $this->db->insert(self::TABLE, $data);
         return $this->db->insert_id();
@@ -90,16 +89,15 @@ class FeedModel extends CI_Model {
      * @param $title
      * @param $description
      * @param $slug
-     * @param $url
      * @return bool True if feed updated, false otherwise
      */
-    public function updateFeed($id, $title, $description, $slug, $url) {
+    public function updateFeed($id, $title, $description, $slug) {
         $slug = isNullOrEmpty($slug) ? url_title($title, 'dash', TRUE) : $slug;
         $data = array(
             'title' => $title ,
             'slug' => $slug,
             'description' => $description ,
-            'url' => isNullOrEmpty($url) ? site_url('/feed/'.$slug) : $url
+            'url' => site_url('/feed/'.$slug)
         );
 
         $this->db->where('id', $id);

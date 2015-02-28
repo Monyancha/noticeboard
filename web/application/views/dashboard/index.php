@@ -98,7 +98,10 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">{{ pageHeader }}</h3>
+                <h3 class="page-header">
+                    {{ pageHeader }}
+                    <span class="pull-right small" id="pageActions"></span>
+                </h3>
             </div>
         </div>
 

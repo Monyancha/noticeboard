@@ -7,47 +7,53 @@
         cursor: pointer;
     }
 
+    #feedsTable_wrapper div.row:first-of-type,
+    #feedsTable_wrapper div.row:last-of-type {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
 </style>
 
 <div id="feedsContent" class="col-md-12">
 
-    <div class="btn-toolbar" role="toolbar" aria-label="...">
-        <div class="btn-group btn-group-sm" role="group" aria-label="...">
-            <button id="addFeed" type="button" class="btn btn-primary"><i class="fa fa-plus fa-fw"></i> New Feed</button>
-        </div>
-    </div>
-
-    <br/>
-
     <div class="panel panel-default">
         <div class="panel-body">
-            <table id="feedsTable" class="table table-responsive display">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Slug</th>
-                    <th>External URL <code>Deprecated</code></th>
-                </tr>
-                </thead>
-                <tbody>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum euismod enim, in dapibus arcu
+                ornare nec. Aliquam erat volutpat. Quisque id nunc vitae augue tempor sodales a non metus. Nullam euismod
+                nibh ligula. Nullam placerat ac tortor sed tempor. Phasellus aliquam vehicula erat, vel pharetra eros
+                vehicula sit amet. Maecenas orci erat, bibendum sed fringilla in, aliquam eu metus. Aliquam a magna est.
+                Vivamus ac ante suscipit, laoreet elit et, sollicitudin elit. Pellentesque sed augue eget eros accumsan gravida.</p>
 
-                <?
-                $feeds = $this->FeedModel->getFeeds();
-                foreach ($feeds as $feed) {
-                    echo "<tr data-feed='{$feed->id}' class='feedRow' data-toggle='context' data-target='#context-menu' title='Right-click for actions'>";
-                    echo "<td>" . $feed->title . "</td>";
-                    echo "<td>" . $feed->description . "</td>";
-                    echo "<td>" . $feed->slug . "</td>";
-                    echo "<td><code>" . $feed->url . "</code></td>";
-                    echo "</tr>";
-                }
+<!--            <button id="addFeed" type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-fw"></i> New Feed</button>-->
 
-                ?>
-
-                </tbody>
-            </table>
         </div>
+
+        <table id="feedsTable" class="table table-responsive display">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Slug</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?
+            $feeds = $this->FeedModel->getFeeds();
+            foreach ($feeds as $feed) {
+                echo "<tr data-feed='{$feed->id}' class='feedRow' data-toggle='context' data-target='#context-menu' title='Right-click for actions'>";
+                echo "<td>" . $feed->title . "</td>";
+                echo "<td>" . $feed->description . "</td>";
+                echo "<td>" . $feed->slug . "</td>";
+                echo "</tr>";
+            }
+
+            ?>
+
+            </tbody>
+        </table>
+
     </div>
 
     <div id="context-menu">
@@ -57,8 +63,8 @@
         </ul>
     </div>
 
-
 </div>
+
 <script src="/assets/bower_components/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
 <script>
 
@@ -117,13 +123,20 @@
         });
     };
 
+    function onAddFeedClick() {
+        addOrEditFeed("New Feed", "/dashboard/feed/add");
+        return false;
+    }
+
     $(function () {
+
+        var actionsHtml = '<button type="button" onclick="onAddFeedClick()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="left" title="Add new feed"><i class="fa fa-plus fa-fw"></i></button>';
+        $("#pageActions").html(actionsHtml);
+        $("#pageActions button").tooltip();
+
+
         $('#feedsTable').DataTable({});
 
-        $("#addFeed").click(function () {
-            addOrEditFeed("New Feed", "/dashboard/feed/add");
-            return false;
-        });
 
         $('.feedRow').contextmenu({
             onItem: function (context, e) {

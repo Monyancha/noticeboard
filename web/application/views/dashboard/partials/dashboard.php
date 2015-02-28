@@ -186,5 +186,6 @@ $latestItems = getLatestItems(15);
 </div>
 
 <script>
+    $("#pageActions").html('');
     $(".timeline-badge").tooltip();
 </script>

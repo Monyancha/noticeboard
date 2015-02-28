@@ -218,6 +218,8 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
 </div>
 
 <script>
+    $("#pageActions").html('');
+
     $('ul.nav-tabs li a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
