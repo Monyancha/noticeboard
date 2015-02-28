@@ -168,7 +168,6 @@ $latestItems = getLatestItems(15);
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#">Send Notifications</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#">Edit</a></li>
                                                 <li><a href="#">Delete</a></li>
                                             </ul>
                                         </div>
