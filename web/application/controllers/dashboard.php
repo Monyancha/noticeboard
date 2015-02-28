@@ -32,7 +32,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('ItemModel');
         $this->load->model('SettingsModel');
 
-        $this->load->helper('settings');
+        $this->load->helper( array('settings', 'content', 'notification') );
     }
 
     public function index() {

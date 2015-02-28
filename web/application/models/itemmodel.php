@@ -53,6 +53,16 @@ class ItemModel extends CI_Model {
     }
 
     /**
+     * @param int $limit
+     * @return mixed
+     */
+    function getItems($limit = 10) {
+        $this->db->from(self::TABLE)->limit($limit)->order_by("date", "desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    /**
      * Add item
      * @param $feed
      * @param $title
@@ -106,10 +116,40 @@ class ItemModel extends CI_Model {
 
     /**
      * @param $id
+     * @param bool $sent
+     * @return mixed
+     */
+    public function updateNotificationStatus($id, $sent = false) {
+        $data = array(
+            'notified' => $sent
+        );
+
+        $this->db->where('id', $id);
+        return $this->db->update(self::TABLE, $data);
+    }
+
+    /**
+     * @param $id
      * @return mixed
      */
     public function removeItem($id) {
         return $this->db->delete(self::TABLE, array('id' => $id));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function countNotified() {
+        $this->db->where('notified', TRUE);
+        $this->db->from(self::TABLE);
+        return $this->db->count_all_results();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function countItems() {
+        return $this->db->count_all_results(self::TABLE);
     }
 
 }
