@@ -9,7 +9,6 @@ foreach($feeds as $feed) {
         array_push($items, $item);
     }
 }
-
 ?>
 
 
@@ -33,6 +32,15 @@ foreach($feeds as $feed) {
     }
 
 </style>
+
+<? // Actions  ?>
+<span style="display: none;" class="hiddenActions">
+    <span id="newContentHiddenAction" ng-click="addNewContent()"></span>
+    <span id="editContentHiddenAction" ng-click="editContent()">
+        <input type="hidden" ng-model="currentContent">
+    </span>
+</span>
+
 <div id="itemsContent" class="row">
 
     <div class="col-md-12">
@@ -90,6 +98,7 @@ foreach($feeds as $feed) {
 
 <script src="/assets/bower_components/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
 <script>
+
     $(function () {
 
         var actionsHtml = '<button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="left" title="Post new content"><i class="fa fa-plus fa-fw"></i></button> &nbsp;';
@@ -97,6 +106,11 @@ foreach($feeds as $feed) {
         actionsHtml += '<button type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Send notifications of selected content"><i class="fa fa-paper-plane fa-fw"></i></button> &nbsp;';
         $("#pageActions").html(actionsHtml);
         $("#pageActions button").tooltip();
+
+        $("#pageActions button.btn-primary").click(function(){
+            $("#newContentHiddenAction").click();
+            return false;
+        });
 
         $('#contentTable').DataTable({
             "order": [[ 1, "desc" ]],
@@ -120,11 +134,51 @@ foreach($feeds as $feed) {
             $(".itemCheckBox").prop('checked',checked);
         });
 
-        $("#itemRow").contextmenu({
+        $(".itemRow").contextmenu({
             onItem: function (context, e) {
                 e.preventDefault();
                 var itemId = $(context).attr('data-item');
                 var action = $(e.target).attr('data-action');
+                switch (action) {
+                    case 'remove':
+                        BootstrapDialog.confirm({
+                            message: 'Do you want to delete this post?',
+                            type: BootstrapDialog.TYPE_WARNING,
+                            btnCancelLabel: 'No',
+                            btnOKLabel: 'Yes',
+                            callback: function (yes) {
+                                if (yes) {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/dashboard/content/remove",
+                                        data: {id: itemId},
+                                        success: function (res, textStatus, jqXHR) {
+                                            location.reload();
+                                        },
+                                        error: function (jqXHR, textStatus, errorThrown) {
+                                            var err = "<div>";
+                                            err += "<p class='text-muted'>Something went wrong...</p>";
+                                            err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
+                                            err += "</div>";
+                                            BootstrapDialog.show({
+                                                title: "Oops!",
+                                                type: BootstrapDialog.TYPE_DANGER,
+                                                message: err
+                                            });
+                                        }
+                                    });
+
+                                }
+                            }
+                        });
+
+                        break;
+                    case 'edit':
+                        $("#editContentHiddenAction input").val(itemId);
+                        $("#editContentHiddenAction").click();
+                        break;
+                }
             }
         });
 

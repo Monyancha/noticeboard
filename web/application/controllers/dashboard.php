@@ -44,7 +44,7 @@ class Dashboard extends CI_Controller {
 
     public function partial($name) {
         $view = "dashboard/partials/".$name;
-        $this->load->view($view);
+        $this->load->view($view, array("user" => $this->User));
     }
 
 
@@ -76,6 +76,10 @@ class Dashboard extends CI_Controller {
         }
 
         $this->output->set_status_header($status);
+    }
+
+    public function content($action) {
+
     }
 
     public function notifications($param) {

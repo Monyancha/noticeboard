@@ -30,6 +30,14 @@ var angular = window.angular;
                 templateUrl: '/dashboard/partial/content',
                 controller: 'ContentCtrl'
             }).
+            when('/edit', {
+                templateUrl: '/dashboard/partial/content_edit',
+                controller: 'ContentEditCtrl'
+            }).
+            when('/edit/:contentId', {
+                templateUrl: '/dashboard/partial/urlRouter',
+                controller: 'ContentEditCtrl'
+            }).
             when('/notifications', {
                 templateUrl: '/dashboard/partial/notifications',
                 controller: "NotificationsCtrl"
@@ -39,11 +47,35 @@ var angular = window.angular;
             $scope.$parent.pageHeader = 'Dashboard';
         }).
         controller('FeedsCtrl', function ($scope) {
-            $scope.$parent.pageHeader = 'Noticeboard RSS Feeds';
+            $scope.$parent.pageHeader = 'Noticeboard Feeds';
         }).
-        controller('ContentCtrl', function ($scope) {
+        controller('ContentCtrl', function ($location, $scope) {
             $scope.$parent.pageHeader = 'Noticeboard Content';
+
+            $scope.addNewContent = function () {
+                $location.path('/edit');
+            };
+
+            $scope.editContent = function () {
+                var itemId = $("#editContentHiddenAction input").val();
+                $location.path('/edit/' + itemId);
+            };
+
         }).
+
+        controller('ContentEditCtrl', function($scope, $location, $routeParams) {
+            var itemId = $routeParams.contentId;
+            $scope.$parent.pageHeader = itemId ? 'Edit Post' : 'New Post';
+            if(itemId) {
+                $scope.templateUrl = "/dashboard/partial/content_edit?content=" + itemId;
+            }
+
+            $scope.backToContent = function () {
+                $location.path('/content');
+            };
+
+        }).
+
         controller('NotificationsCtrl', function ($scope) {
             $scope.$parent.pageHeader = 'Notifications';
         });

@@ -88,7 +88,7 @@ $latestItems = getLatestItems(15);
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="#/feeds">
                 <div class="panel-footer">
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -112,7 +112,7 @@ $latestItems = getLatestItems(15);
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="#/content">
                 <div class="panel-footer">
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -130,7 +130,6 @@ $latestItems = getLatestItems(15);
             <div class="panel-heading">
                 <i class="fa fa-clock-o fa-fw"></i> Latest Noticeboard Posts
             </div>
-            <!-- /.panel-heading -->
             <div class="panel-body">
 
                 <? if(count($latestItems) == 0) {?>
@@ -149,16 +148,17 @@ $latestItems = getLatestItems(15);
 
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title"><?=limitCharacters($item->title,30);?></h4>
+                                        <h5 class="timeline-title"><?=limitCharacters($item->title,40);?></h5>
 
                                         <p>
                                             <small class="text-muted">
-                                                <i class="fa fa-clock-o"></i> <?=timespan($item->date);?> ago in <code><?=$item->feed;?></code>
+                                                <i class="fa fa-clock-o"></i>
+                                                <?=strtolower(timespan($item->date));?> ago in <code><?=$item->feed;?></code>
                                             </small>
                                         </p>
                                     </div>
                                     <div class="timeline-body">
-                                        <p><?=limitCharacters($item->description, 200);?></p>
+                                        <p class="small"><?=limitCharacters($item->description, 200);?></p>
                                         <hr>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"

@@ -63,6 +63,19 @@ class ItemModel extends CI_Model {
     }
 
     /**
+     * @param $id
+     * @return null
+     */
+    function getItem($id) {
+        $query = $this->db->get_where(self::TABLE, array("id" => $id));
+        $result = $query->result();
+        if(count($result) === 1) {
+            return $result[0];
+        }
+        return null;
+    }
+
+    /**
      * Add item
      * @param $feed
      * @param $title
