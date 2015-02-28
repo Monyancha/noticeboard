@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 28, 2015 at 02:24 PM
+-- Generation Time: Feb 28, 2015 at 06:54 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.1
 
@@ -13,6 +13,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `usiuboard`
 --
+CREATE DATABASE IF NOT EXISTS `usiuboard` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `usiuboard`;
 
 -- --------------------------------------------------------
 
@@ -21,7 +23,7 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `devices`;
-CREATE TABLE `devices` (
+CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(11) NOT NULL,
   `uuid` varchar(512) NOT NULL,
   `phone` varchar(32) NOT NULL
@@ -41,7 +43,7 @@ INSERT INTO `devices` (`id`, `uuid`, `phone`) VALUES
 --
 
 DROP TABLE IF EXISTS `feeds`;
-CREATE TABLE `feeds` (
+CREATE TABLE IF NOT EXISTS `feeds` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
@@ -69,7 +71,7 @@ INSERT INTO `feeds` (`id`, `title`, `description`, `url`, `date`, `slug`) VALUES
 --
 
 DROP TABLE IF EXISTS `items`;
-CREATE TABLE `items` (
+CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL,
   `feed` int(11) NOT NULL,
   `title` text NOT NULL,
@@ -97,7 +99,7 @@ INSERT INTO `items` (`id`, `feed`, `title`, `description`, `link`, `image`, `con
 --
 
 DROP TABLE IF EXISTS `settings`;
-CREATE TABLE `settings` (
+CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL,
   `name` varchar(16) NOT NULL,
   `data` text NOT NULL
@@ -119,7 +121,7 @@ INSERT INTO `settings` (`id`, `name`, `data`) VALUES
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
