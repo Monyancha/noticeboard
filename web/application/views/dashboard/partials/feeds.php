@@ -7,12 +7,17 @@
         cursor: pointer;
     }
 
-    .toolbar {
-        float: left;
-    }
 </style>
 
 <div id="feedsContent" class="col-md-12">
+
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+            <button id="addFeed" type="button" class="btn btn-primary"><i class="fa fa-plus fa-fw"></i> New Feed</button>
+        </div>
+    </div>
+
+    <br/>
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -113,12 +118,7 @@
     };
 
     $(function () {
-        $('#feedsTable').DataTable({
-            "dom": '<"toolbar">frtip'
-        });
-        var toolbarHtml = '<a id="addFeed" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-fw"></i>New Feed</a>' +
-            '<br/>&nbsp;&nbsp;';
-        $("div.toolbar").html(toolbarHtml);
+        $('#feedsTable').DataTable({});
 
         $("#addFeed").click(function () {
             addOrEditFeed("New Feed", "/dashboard/feed/add");

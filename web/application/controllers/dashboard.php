@@ -29,6 +29,7 @@ class Dashboard extends CI_Controller {
 
         $this->load->model('DeviceModel');
         $this->load->model('FeedModel');
+        $this->load->model('ItemModel');
         $this->load->model('SettingsModel');
 
         $this->load->helper('settings');

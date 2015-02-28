@@ -28,3 +28,16 @@ function arrayToStdObject($array) {
 function isNullOrEmpty($value) {
     return !isset($value) || empty($value);
 }
+
+/**
+ * @param $text
+ * @param int $limit
+ * @param string $append
+ * @return string
+ */
+function limitCharacters($text, $limit = 144, $append = '...') {
+    if (strlen($text) > $limit) {
+        $text = substr($text, 0, strrpos(substr($text, 0, $limit), ' ')) . $append;
+    }
+    return $text;
+}
