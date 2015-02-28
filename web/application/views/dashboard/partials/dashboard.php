@@ -128,7 +128,7 @@ $latestItems = getLatestItems(15);
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-clock-o fa-fw"></i> Timeline
+                <i class="fa fa-clock-o fa-fw"></i> Latest Noticeboard Posts
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
