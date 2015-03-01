@@ -148,7 +148,6 @@ if ($item) {
     $("#pageActions button").tooltip();
 
     $("#pageActions button.btn-success").click(function () {
-        BootstrapDialog.alert("Saving...");
         $("#backToContentHiddenAction").click();
         return false;
     });

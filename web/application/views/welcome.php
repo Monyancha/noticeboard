@@ -88,10 +88,11 @@
                     <p class="intro-text">
                         A simple, efficient notice board for USIU.
                         <br/>
+                        <?/*
                         <kbd style="font-size: .5em;">
                             APT 2080-A: Introduction to Software Engineering<br/>
                             Spring 2015
-                        </kbd>
+                        </kbd> */?>
                     </p>
                     <a href="#about" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>

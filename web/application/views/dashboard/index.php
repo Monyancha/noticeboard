@@ -33,12 +33,14 @@
 <!--    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">-->
     <link href="/assets/plugin/dataTables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
+    <link href="/assets/bower_components/ngtoast/dist/ngToast.min.css" type="text/css" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/sb-admin.css" type="text/css">
 
 </head>
 
 <body>
-
+<toast></toast>
 <div id="wrapper">
 
     <nav id="page-header" class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -129,6 +131,9 @@
 
 <script src="/assets/bower_components/angularjs/angular.min.js"></script>
 <script src="/assets/bower_components/angular-route/angular-route.min.js"></script>
+<script src="/assets/bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="/assets/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="/assets/bower_components/ngtoast/dist/ngToast.min.js"></script>
 
 <script src="/assets/js/dashboard/dashboard.js"></script>
 

@@ -15,7 +15,36 @@
 var angular = window.angular;
 
 (function () {
-    var app = angular.module('DashboardApp', ['ngRoute']);
+    var app = angular.module('DashboardApp', ['ngRoute', 'ngToast']);
+
+    app.factory('Toast', function(ngToast) {
+
+        var loadToast = null;
+
+        return {
+            show: function(message, className) {
+                ngToast.create({
+                    content: message,
+                    className: className
+                });
+            },
+
+            startLoading: function () {
+                ngToast.dismiss();
+                loadToast =  ngToast.create({
+                    content: "Loading...",
+                    className: "warning",
+                    dismissOnTimeout: false
+                });
+            },
+
+            stopLoading: function () {
+                ngToast.dismiss(loadToast);
+            }
+
+        }
+    });
+
     app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {
@@ -49,21 +78,27 @@ var angular = window.angular;
         controller('FeedsCtrl', function ($scope) {
             $scope.$parent.pageHeader = 'Noticeboard Feeds';
         }).
-        controller('ContentCtrl', function ($location, $scope) {
+        controller('ContentCtrl', function ($location, $scope, Toast) {
             $scope.$parent.pageHeader = 'Noticeboard Content';
 
+            Toast.stopLoading();
+
             $scope.addNewContent = function () {
+                Toast.startLoading();
                 $location.path('/edit');
             };
 
             $scope.editContent = function () {
+                Toast.startLoading();
                 var itemId = $("#editContentHiddenAction input").val();
                 $location.path('/edit/' + itemId);
             };
 
         }).
 
-        controller('ContentEditCtrl', function($scope, $location, $routeParams) {
+        controller('ContentEditCtrl', function($scope, $location, $routeParams, Toast) {
+            Toast.stopLoading();
+
             var itemId = $routeParams.contentId;
             $scope.$parent.pageHeader = itemId ? 'Edit Post' : 'New Post';
             if(itemId) {
@@ -71,9 +106,9 @@ var angular = window.angular;
             }
 
             $scope.backToContent = function () {
+                Toast.startLoading();
                 $location.path('/content');
             };
-
         }).
 
         controller('NotificationsCtrl', function ($scope) {
