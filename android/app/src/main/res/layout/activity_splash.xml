@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary">
+    android:background="@color/primary_dark">
 
 
     <ImageView
@@ -13,14 +13,13 @@
         android:src="@drawable/usiu_logo_while"
         android:scaleType="centerInside"
         android:layout_gravity="center"
-        android:background="@color/accent"
         android:padding="15dp"
         android:layout_marginBottom="80dp"/>
 
 
     <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_marginBottom="50dp"

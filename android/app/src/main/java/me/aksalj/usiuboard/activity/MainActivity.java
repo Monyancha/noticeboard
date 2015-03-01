@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -60,6 +61,9 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
+
+        bar.setTitle(R.string.app_long_name);
+        //bar.setSubtitle(R.string.empty);
     }
 
     private void setupDrawer(){
@@ -126,14 +130,6 @@ public class MainActivity extends ActionBarActivity {
                 .commit();
 
         mCurrentFragment = fragment;
-
-        String title = mCurrentFragment.getTitle();
-        String subtitle = mCurrentFragment.getSubTitle();
-        if(title == null || title.isEmpty()) title = getString(R.string.app_name);
-        if(subtitle == null || subtitle.isEmpty()) subtitle = getString(R.string.empty);
-        mToolbar.setTitle(title);
-        mToolbar.setSubtitle(subtitle);
-
     }
 
     public void setupSideBar() {

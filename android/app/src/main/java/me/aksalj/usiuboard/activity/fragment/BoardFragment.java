@@ -94,7 +94,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
         super.onActivityCreated(savedInstanceState);
 
         mActionBar = ((MainActivity) mActivity).getSupportActionBar();
-        mPrimaryColor = mActivity.getResources().getColor(R.color.primary);
+        mPrimaryColor = mActivity.getResources().getColor(R.color.primary_dark);
 
         setupItemsAdapter(savedInstanceState);
 
@@ -116,7 +116,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
             @Override
             public void onSuccess() {
                 mSwipeLayout.setRefreshing(false);
-                // Update action bar
+                // Update action bar/ info
                 if(mActionBar != null) {
                     mActionBar.setTitle(getTitle());
                     mActionBar.setSubtitle(getSubTitle());
@@ -206,7 +206,7 @@ public class BoardFragment extends BaseFragment implements IScrollCallback,
             }
         }
 
-        return mCxt.getString(R.string.app_name);
+        return mCxt.getString(R.string.app_long_name);
     }
 
     @Override

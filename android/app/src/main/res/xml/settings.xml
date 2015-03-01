@@ -7,7 +7,7 @@
 
         <CheckBoxPreference
             android:key="notifs"
-            android:title="@string/notifications"
+            android:title="@string/notifications_receive"
             android:summary="@string/notifs_statement_"
             android:defaultValue="true" />
 
