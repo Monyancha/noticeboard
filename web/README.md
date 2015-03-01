@@ -13,13 +13,15 @@ This simple web service will regularly check the feeds and send notifications to
 - Home ( `/` ): Landing page. `DONE`
 - Register ( `/register` ): Register staff email and password.
 - Login ( `/login` and `/logout` ): Use email and password to authenticate staff. `DONE`
-- Dashboard ( `/dashboard` ):
+- Dashboard ( `/dashboard` ): Small `AngularJS` content management web app.
 	- Add, update and remove feeds.
 	- Set, update notifications type (push notification or SMS or both)
 	- Set, update push notifications and SMS provider settings.
+	- Add, update and remove feed content.
 
 ####HTTP API `DONE`
 - `GET` from `/api/feeds`: Get registered feeds URLs. 
+- `GET` from `/api/feed/`: feedId: Get RSS of `feedId`.
 - `POST` to `/api/sync`: Sync all feeds and send notifications. Called every minute by a job scheduler like `CRON`.
 - `POST` to `/api/register`: Register student device and phone number.
 - `POST` to `/api/unregister`: To remove a student’s phone and device.
