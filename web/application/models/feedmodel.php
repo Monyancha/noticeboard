@@ -77,7 +77,7 @@ class FeedModel extends CI_Model {
             'slug' => $slug,
             'title' => $title ,
             'description' => $description ,
-            'url' => site_url('/feed/'.$slug)
+            'url' => site_url('/api/feed/'.$slug)
         );
         $this->db->insert(self::TABLE, $data);
         return $this->db->insert_id();
@@ -97,7 +97,7 @@ class FeedModel extends CI_Model {
             'title' => $title ,
             'slug' => $slug,
             'description' => $description ,
-            'url' => site_url('/feed/'.$slug)
+            'url' => site_url('/api/feed/'.$slug)
         );
 
         $this->db->where('id', $id);
