@@ -19,13 +19,13 @@ $latestItems = getLatestItems(15);
     @import "/assets/css/timeline.css";
 
     /* Paper theme */
-    .panel-primary>.panel-heading, .panel-success>.panel-heading,
-    .panel-warning>.panel-heading, .panel-danger>.panel-heading {
+    .panel-primary > .panel-heading, .panel-success > .panel-heading,
+    .panel-warning > .panel-heading, .panel-danger > .panel-heading {
         color: #fff;
     }
 
 </style>
-<div class="row">
+<div class="row" style="min-height: 512px">
 
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-primary">
@@ -35,7 +35,7 @@ $latestItems = getLatestItems(15);
                         <i class="fa fa-mobile fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><? echo  $this->DeviceModel->countDevices(); ?></div>
+                        <div class="huge"><? echo $this->DeviceModel->countDevices(); ?></div>
                         <div>Devices Registered!</div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ $latestItems = getLatestItems(15);
                         <i class="fa fa-volume-up fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><? echo  $this->ItemModel->countNotified(); ?></div>
+                        <div class="huge"><? echo $this->ItemModel->countNotified(); ?></div>
                         <div>Notifications Sent!</div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ $latestItems = getLatestItems(15);
                         <i class="fa fa-rss fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><? echo  $this->FeedModel->countFeeds(); ?></div>
+                        <div class="huge"><? echo $this->FeedModel->countFeeds(); ?></div>
                         <div>Feeds Served!</div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ $latestItems = getLatestItems(15);
                         <i class="fa fa-tree fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><? echo  $this->ItemModel->countItems(); ?></div>
+                        <div class="huge"><? echo $this->ItemModel->countItems(); ?></div>
                         <div>Items Posted!</div>
                     </div>
                 </div>
@@ -132,45 +132,46 @@ $latestItems = getLatestItems(15);
             </div>
             <div class="panel-body">
 
-                <? if(count($latestItems) == 0) {?>
+                <? if (count($latestItems) == 0) { ?>
                     <h3 class="text-muted text-center">Nothing posted yes!</h3>
                 <? } else { ?>
                     <ul class="timeline">
-                        <? for($count = 0; $count < count($latestItems); $count++) { ?>
+                        <? for ($count = 0; $count < count($latestItems); $count++) { ?>
                             <? $item = $latestItems[$count]; ?>
-                            <li class='<?= ($count%2==0)? "":"timeline-inverted" ?>'>
+                            <li class='<?= ($count % 2 == 0) ? "" : "timeline-inverted" ?>'>
 
-                                <div class="timeline-badge <?= $item->notified ? "success" : "warning";?>"
+                                <div class="timeline-badge <?= $item->notified ? "success" : "warning"; ?>"
                                      data-toggle="tooltip" data-placement="top"
-                                     title="<?= $item->notified ? "Notifications sent!" : "Notifications not sent!";?>">
+                                     title="<?= $item->notified ? "Notifications sent!" : "Notifications not sent!"; ?>">
                                     <i class="fa fa-<?= $item->notified ? "check" : "close"; ?>"></i>
                                 </div>
 
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h5 class="timeline-title"><?=limitCharacters($item->title,40);?></h5>
+                                        <h5 class="timeline-title"><?= limitCharacters($item->title, 40); ?></h5>
 
                                         <p>
                                             <small class="text-muted">
                                                 <i class="fa fa-clock-o"></i>
-                                                <?=strtolower(timespan($item->date));?> ago in <code><?=$item->feed;?></code>
+                                                <?= strtolower(timespan($item->date)); ?> ago in
+                                                <code><?= $item->feed; ?></code>
                                             </small>
                                         </p>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="small"><?=limitCharacters($item->description, 200);?></p>
-                                        <hr>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                                    data-toggle="dropdown">
-                                                <i class="fa fa-bolt"></i> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Send Notifications</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
+                                        <p class="small"><?= limitCharacters($item->description, 200); ?></p>
+                                        <? if (!$item->notified) { ?>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
+                                                        data-toggle="dropdown">
+                                                    <i class="fa fa-bolt"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Send Notifications</a></li>
+                                                </ul>
+                                            </div>
+                                        <? } ?>
                                     </div>
                                 </div>
                             </li>

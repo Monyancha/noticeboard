@@ -54,15 +54,16 @@ foreach($feeds as $feed) {
 
             </div>
 
-            <table id="contentTable" class="table table-responsive display">
+            <table id="contentTable" class="table table-responsive display" width="100%">
                 <thead>
                 <tr>
                     <th><input type="checkbox" id="chkAllItems" data-toggle="tooltip" data-placement="top" title="Check All"></th>
                     <th>Date</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Feed</th>
-                    <th>Author</th>
+                    <th width="25%">Title</th>
+                    <th width="30%">Description</th>
+                    <th width="15%">Feed</th>
+                    <th width="15%">Author</th>
+                    <th>Notifications</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,12 @@ foreach($feeds as $feed) {
                     echo "<td>" . limitCharacters($item->description) . "</td>";
                     echo "<td>" . $item->feed . "</td>";
                     echo "<td>" . $item->author . "</td>";
+
+                    if($item->notified) {
+                        echo "<td><kbd>Sent</kbd></td>";
+                    } else {
+                        echo "<td><code>Not Sent</code></td>";
+                    }
                     echo "</tr>";
                 }
                 ?>
