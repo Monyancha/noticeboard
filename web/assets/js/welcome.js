@@ -16,9 +16,9 @@ $(function() {
     });
 
     // TODO: Intro Parallax?
-    skrollr.init({
-        forceHeight: false
-    });
+    //skrollr.init({
+    //    forceHeight: false
+    //});
 
 });
 

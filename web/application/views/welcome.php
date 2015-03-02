@@ -20,8 +20,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="A simple, efficient notice board for USIU.">
+    <meta name="author" content="Salama AB">
 
     <title>USIU Notice Board</title>
 
@@ -204,7 +204,7 @@
 <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/assets/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
-<script src="/assets/bower_components/skrollr/dist/skrollr.min.js"></script>
+<!--<script src="/assets/bower_components/skrollr/dist/skrollr.min.js"></script>-->
 <script src="/assets/js/welcome.js"></script>
 
 </body>

@@ -134,7 +134,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: #012951 url(../img/background-city.png) no-repeat fixed bottom center;
+    background: #012951 url(../img/background-city.png) no-repeat fixed top center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -155,9 +155,11 @@ a:focus {
 }
 
 #app_shot img {
-    max-width: 300px;
+    max-width: 200px;
     height: auto;
     display: inline;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 @media(min-width:767px) {
