@@ -55,7 +55,6 @@ class Dashboard extends CI_Controller {
         $status = 500;
         $data = $this->input->post(); // TODO: Validate data
         if($data && count($data) > 0) {
-
             // add, update, remove
             switch ($action) {
                 case 'add':
@@ -74,14 +73,12 @@ class Dashboard extends CI_Controller {
         } else {
             $status = 400;
         }
-
         $this->output->set_status_header($status);
     }
 
-    public function content($action) {
-
-    }
-
+    /**
+     * @param $param
+     */
     public function notifications($param) {
         $status = 500;
         $data = $this->input->post(); // TODO: Validate data
@@ -109,9 +106,73 @@ class Dashboard extends CI_Controller {
                     break;
             }
         }
-
         $this->output->set_status_header($status);
+    }
 
+    /**
+     * @param $action
+     */
+    public function content($action) {
+        $status = 500;
+        $data = $this->input->post(); // TODO: Validate data
+        if($data && count($data) > 0) {
+            switch ($action) { // notify | remove | add | update
+                case "notify": // Send notifications
+
+                    $devices = $this->DeviceModel->getDevices();
+
+                    $notificationSettings = getNotificationsSettings();
+                    $smsSettings = getSMSSettings();
+                    $pushSettings = getPushSettings();
+
+                    $settings = array(
+                        "type" => $notificationSettings,
+                        "sms" => $smsSettings,
+                        "push" => $pushSettings
+                    );
+
+                    $res = true;
+                    foreach($data['ids'] as $id) {
+                        $item = $this->ItemModel->getItem($id);
+                        $payload = array(
+                            "id" => $id,
+                            "title" =>$item->title,
+                            "content" => trim(strip_tags($item->description))
+                        );
+                        $res &= sendNotifications($devices, $settings, $payload);
+                        if($res) {
+                            $this->ItemModel->updateNotificationStatus($id, true);
+                        }
+                    }
+                    if ($res) $status = 200;
+
+                    break;
+                case "remove":
+                    $res = true;
+                    foreach($data['ids'] as $id) {
+                        $res &= $this->ItemModel->removeItem($id);
+                    }
+                    if ($res) $status = 200;
+                    break;
+                case "add":
+                    // TODO: image upload !?
+                    $id = $this->ItemModel->addItem(
+                        $data['feed'], $data['title'], $data['description'], $data['content'],
+                        $data['image'], $data['author'], $data['link']
+                    );
+                    if ($id) $status = 200;
+                    break;
+                case "update":
+                    // TODO: image upload !?
+                    $res = $this->ItemModel->updateItem(
+                        $data['id'], $data['feed'], $data['title'], $data['description'],
+                        $data['content'], $data['image'], $data['author'], $data['link']
+                    );
+                    if ($res) $status = 200;
+                    break;
+            }
+        }
+        $this->output->set_status_header($status);
     }
 
 

@@ -72,8 +72,11 @@ var angular = window.angular;
                 controller: "NotificationsCtrl"
             });
     }]).
-        controller('DashboardCtrl', function ($scope) {
+        controller('DashboardCtrl', function ($scope, Toast) {
             $scope.$parent.pageHeader = 'Dashboard';
+
+            $scope.$parent.startLoading = function () { Toast.startLoading(); };
+            $scope.$parent.stopLoading = function () { Toast.stopLoading(); };
         }).
         controller('FeedsCtrl', function ($scope) {
             $scope.$parent.pageHeader = 'Noticeboard Feeds';
@@ -93,7 +96,6 @@ var angular = window.angular;
                 var itemId = $("#editContentHiddenAction input").val();
                 $location.path('/edit/' + itemId);
             };
-
         }).
 
         controller('ContentEditCtrl', function($scope, $location, $routeParams, Toast) {

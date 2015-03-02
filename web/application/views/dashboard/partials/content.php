@@ -70,7 +70,7 @@ foreach($feeds as $feed) {
                 <?
                 foreach ($items as $item) {
                     echo "<tr data-item='{$item->id}' class='itemRow' data-toggle='context' data-target='#context-menu' title='Right-click for more actions'>";
-                    echo "<td><input type='checkbox' class='itemCheckBox'></td>";
+                    echo "<td><input type='checkbox' class='itemCheckBox' value='{$item->id}'></td>";
                     echo "<td>" . $item->date . "</td>";
                     echo "<td>" . limitCharacters($item->title) . "</td>";
                     echo "<td>" . limitCharacters($item->description) . "</td>";
@@ -99,16 +99,95 @@ foreach($feeds as $feed) {
 <script src="/assets/bower_components/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
 <script>
 
+
+    /**
+     *
+     * @returns {Array}
+     */
+    var getSelectedContent = function () {
+        var result = [];
+        $(".itemCheckBox").each(function (){
+            if($(this).is(":checked")){
+                result.push($(this).val());
+            }
+        });
+        return result;
+    };
+
+    /**
+     *
+     * @param data
+     */
+    var postContentAction = function (url, data) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function (res, textStatus, jqXHR) {
+                location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                var err = "<div>";
+                err += "<p class='text-muted'>Something went wrong...</p>";
+                err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
+                err += "</div>";
+                BootstrapDialog.show({
+                    title: "Oops!",
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: err
+                });
+            }
+        });
+    };
+
     $(function () {
 
-        var actionsHtml = '<button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="left" title="Post new content"><i class="fa fa-plus fa-fw"></i></button> &nbsp;';
-        actionsHtml += '<button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete selected content"><i class="fa fa-trash fa-fw"></i></button> &nbsp;';
-        actionsHtml += '<button type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Send notifications of selected content"><i class="fa fa-paper-plane fa-fw"></i></button> &nbsp;';
+        var actionsHtml = '<button id="btnAddContent" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="left" title="Post new content"><i class="fa fa-plus fa-fw"></i></button> &nbsp;';
+        actionsHtml += '<button id="btnDeleteContent" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete selected content"><i class="fa fa-trash fa-fw"></i></button> &nbsp;';
+        actionsHtml += '<button id="btnNotifyContent" type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Send notifications of selected content"><i class="fa fa-paper-plane fa-fw"></i></button> &nbsp;';
         $("#pageActions").html(actionsHtml);
         $("#pageActions button").tooltip();
 
-        $("#pageActions button.btn-primary").click(function(){
+        $("#btnAddContent").click(function(){
             $("#newContentHiddenAction").click();
+            return false;
+        });
+
+        $("#btnDeleteContent").click(function(){
+            var ids = getSelectedContent();
+            if(ids.length > 0) {
+                BootstrapDialog.confirm({
+                    message: 'Do you want to delete the selected post(s)?',
+                    type: BootstrapDialog.TYPE_WARNING,
+                    btnCancelLabel: 'No',
+                    btnOKLabel: 'Yes',
+                    callback: function (yes) {
+                        if (yes) {
+                            $("#startLoadingAction").click();
+                            postContentAction("/dashboard/content/remove", {ids: ids});
+                        }
+                    }
+                });
+            }
+            return false;
+        });
+
+        $("#btnNotifyContent").click(function(){
+            var ids = getSelectedContent();
+            if(ids.length > 0) {
+                BootstrapDialog.confirm({
+                    message: 'Do you want to sent notifications of the selected post(s)?',
+                    type: BootstrapDialog.TYPE_WARNING,
+                    btnCancelLabel: 'No',
+                    btnOKLabel: 'Yes',
+                    callback: function (yes) {
+                        if (yes) {
+                            $("#startLoadingAction").click();
+                            postContentAction("/dashboard/content/notify", {ids: ids});
+                        }
+                    }
+                });
+            }
             return false;
         });
 
@@ -148,27 +227,7 @@ foreach($feeds as $feed) {
                             btnOKLabel: 'Yes',
                             callback: function (yes) {
                                 if (yes) {
-
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "/dashboard/content/remove",
-                                        data: {id: itemId},
-                                        success: function (res, textStatus, jqXHR) {
-                                            location.reload();
-                                        },
-                                        error: function (jqXHR, textStatus, errorThrown) {
-                                            var err = "<div>";
-                                            err += "<p class='text-muted'>Something went wrong...</p>";
-                                            err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
-                                            err += "</div>";
-                                            BootstrapDialog.show({
-                                                title: "Oops!",
-                                                type: BootstrapDialog.TYPE_DANGER,
-                                                message: err
-                                            });
-                                        }
-                                    });
-
+                                    postContentAction("/dashboard/content/remove", {ids: [itemId]});
                                 }
                             }
                         });

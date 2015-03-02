@@ -18,12 +18,18 @@ $itemFeed = null;
 $title = null;
 $desc = null;
 $content = null;
+$author = $user->name;
+$image = null;
+$link = null;
 
 if ($item) {
     $itemFeed = $item->feed;
     $title = $item->title;
     $desc = $item->description;
     $content = $item->content;
+    $author = $item->author;
+    $image = $item->image;
+    $link = $item->link;
 }
 
 ?>
@@ -53,88 +59,90 @@ if ($item) {
     <div class="panel panel-default">
         <div class="panel-body">
             <form id="itemForm">
-        <? if ($itemId) { ?>
-            <input type="hidden" name="id" value="<?= $itemId; ?>">
-        <? } ?>
+                <? if ($itemId) { ?>
+                    <input type="hidden" name="id" value="<?= $itemId; ?>">
+                <? } ?>
 
+                <div role="tabpanel" id="itemTabs">
 
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#meta" aria-controls="meta" role="tab" data-toggle="tab">Publishing</a>
+                        </li>
 
-        <div role="tabpanel" id="itemTabs">
+                        <li role="presentation">
+                            <a href="#cont" aria-controls="cont" role="tab" data-toggle="tab">Content</a>
+                        </li>
 
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#meta" aria-controls="meta" role="tab" data-toggle="tab">Publishing</a>
-                </li>
+                        <li role="presentation">
+                            <a href="#img" aria-controls="img" role="tab" data-toggle="tab">Image and link</a>
+                        </li>
 
-                <li role="presentation">
-                    <a href="#cont" aria-controls="cont" role="tab" data-toggle="tab">Content</a>
-                </li>
+                    </ul>
 
-                <li role="presentation">
-                    <a href="#img" aria-controls="img" role="tab" data-toggle="tab">Image and link</a>
-                </li>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="meta">
 
-            </ul>
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" name="title" placeholder="Enter title"
+                                       value="<?= $title; ?>" required>
+                            </div>
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="meta">
+                            <div class="form-group">
+                                <label for="feed">Feed</label>
+                                <select name="feed" class="form-control">
+                                    <? foreach ($feeds as $feed) { ?>
+                                        <option
+                                            value="<?= $feed->id; ?>" <?= $itemFeed === $feed->id ? "selected" : ""; ?>>
+                                            <?= $feed->title; ?>
+                                        </option>
+                                    <? } ?>
+                                </select>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Enter title"
-                               value="<?= $title; ?>" required>
-                    </div>
+                            <div class="form-group">
+                                <label for="author">Author</label>
+                                <input type="text" class="form-control" name="author" placeholder="Enter author"
+                                       value="<?= $author; ?>" required>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="feed">Feed</label>
-                        <select name="feed" class="form-control">
-                            <? foreach ($feeds as $feed) { ?>
-                                <option value="<?= $feed->id; ?>" <?= $itemFeed === $feed->id ? "selected" : ""; ?>>
-                                    <?= $feed->title; ?>
-                                </option>
-                            <? } ?>
-                        </select>
-                    </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" placeholder="Enter description"
+                                          required><?= $desc; ?></textarea>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" class="form-control" name="author" placeholder="Enter author"
-                               value="<?= $user->name; ?>" required>
-                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" name="description" placeholder="Enter description" required><?= $desc; ?></textarea>
+                        <div role="tabpanel" class="tab-pane fade" id="img">
+                            <div class="form-group">
+                                <label for="image">Post Image</label>
+                                <input type="url" class="form-control" name="image" placeholder="http://www.site.com/image.png"
+                                       value="<?= $image; ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="url">External link</label>
+                                <input type="url" class="form-control" name="link" placeholder="http://www.site.com/post.html"
+                                       value="<?= $link; ?>">
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="cont">
+                            <textarea id="postContent" name="content" class="form-control"
+                                      placeholder="Enter content" required><?= $content; ?></textarea>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade" id="img">
-                    <div class="form-group">
-                        <label for="image">Post Image</label>
-                        <input type="file" class="form-control" name="image" placeholder="Select image"
-                           value="<?= $desc; ?>" required>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="url">External link</label>
-                        <input type="url" class="form-control" name="url" placeholder="http://...">
-                    </div>
-
-                </div>
-
-                <div role="tabpanel" class="tab-pane fade" id="cont">
-                    <textarea id="postContent" name="content" class="form-control" placeholder="Enter content" required><?= $content; ?></textarea>
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </form>
+            </form>
         </div>
     </div>
 
@@ -142,17 +150,50 @@ if ($item) {
 <script src="/assets/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js"></script>
 <script>
 
-    var actionsHtml = '<button type="button" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="Save"><i class="fa fa-save fa-fw"></i></button> &nbsp;';
-    actionsHtml += '<button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Discard"><i class="fa fa-close fa-fw"></i></button> &nbsp;';
+    var actionsHtml = '<button id="btnSaveContent" type="button" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="Save"><i class="fa fa-save fa-fw"></i></button> &nbsp;';
+    actionsHtml += '<button id="btnDiscardContent" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Discard"><i class="fa fa-close fa-fw"></i></button> &nbsp;';
     $("#pageActions").html(actionsHtml);
     $("#pageActions button").tooltip();
 
-    $("#pageActions button.btn-success").click(function () {
-        $("#backToContentHiddenAction").click();
+    $("#btnSaveContent").click(function () {
+        $("#startLoadingAction").click();
+
+        var data = $("#itemForm").serializeArray();
+        var editMode = false;
+        var url = "/dashboard/content/";
+        for(var idx in data) {
+            if(data[idx].name == "id") {
+                editMode = true;
+                break;
+            }
+        }
+        if(editMode) { url += "update"; }
+        else { url += "add"; }
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function (res, textStatus, jqXHR) {
+                $("#backToContentHiddenAction").click();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                var err = "<div>";
+                err += "<p class='text-muted'>Something went wrong...</p>";
+                err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
+                err += "</div>";
+                BootstrapDialog.show({
+                    title: "Oops!",
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: err
+                });
+            }
+        });
+
         return false;
     });
 
-    $("#pageActions button.btn-danger").click(function () {
+    $("#btnDiscardContent").click(function () {
         $("#backToContentHiddenAction").click();
         return false;
     });

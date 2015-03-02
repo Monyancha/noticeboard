@@ -40,7 +40,11 @@
 </head>
 
 <body>
+
 <toast></toast>
+<span class="hidden" id="startLoadingAction" ng-click="startLoading()"></span>
+<span class="hidden" id="stopLoadingAction" ng-click="stopLoading()"></span>
+
 <div id="wrapper">
 
     <nav id="page-header" class="navbar navbar-default navbar-fixed-top" role="navigation">
