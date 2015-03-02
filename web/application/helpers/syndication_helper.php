@@ -105,7 +105,7 @@ function makeRSSXML($feed, $items)
         $xml .= "\t\t\t".'<title>'.$item->title.'</title>'."\n";
         $xml .= "\t\t\t".'<link>'.$item->link.'</link>'."\n";
         $xml .= "\t\t\t".'<media:thumbnail url="'.$item->image.'"/>'."\n";
-        $xml .= "\t\t\t".'<description>'.$item->title.'</description>'."\n";
+        $xml .= "\t\t\t".'<description>'.$item->description.'</description>'."\n";
         $xml .= "\t\t\t".'<content:encoded><![CDATA['.$item->content.']]></content:encoded>'."\n";
         $xml .= "\t\t\t".'<author>'.$item->author.'</author>'."\n";
         $xml .= "\t\t\t".'<pubDate>'.date("D, d M Y H:i:s T", strtotime($item->date)).'</pubDate>'."\n";
