@@ -117,6 +117,7 @@ public class ItemsListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
+        final BoardItem item = (BoardItem) getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(mCxt).inflate(R.layout.item_card, null);
@@ -126,21 +127,20 @@ public class ItemsListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final BoardItem item = (BoardItem) getItem(position);
         if (item != null) { // FIXME: Scroll when list just about to finish update is causing null exception
 
             Picasso.with(mCxt)
                     .load(item.imageUrl)
-                    //.placeholder(R.drawable.ic_launcher)
-                    //.error(R.drawable.ic_launcher)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
                     .into(holder.image, new Callback() {
                         @Override
                         public void onSuccess() {
                             holder.image.setVisibility(View.VISIBLE);
-
                             if (item.read) {
                                 ImageViewHelper.setBlackAndWhite(holder.image);
                             }
+
                         }
 
                         @Override

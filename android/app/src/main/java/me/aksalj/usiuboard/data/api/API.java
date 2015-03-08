@@ -21,7 +21,8 @@ public abstract class API {
 
     public static BoardWebService getService() {
         if(sService == null) {
-            String endpoint = BoardWebService.ENDPOINT; //BuildConfig.DEBUG ? BoardWebService.ENDPOINT_DEBUG : BoardWebService.ENDPOINT;
+            //String endpoint = BuildConfig.DEBUG ? BoardWebService.ENDPOINT_DEBUG : BoardWebService.ENDPOINT;
+            String endpoint = BoardWebService.ENDPOINT;
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(endpoint)
                     .setLogLevel(RestAdapter.LogLevel.BASIC) // Dev only!!!

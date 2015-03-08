@@ -100,8 +100,9 @@ public class DetailActivity extends ActionBarActivity {
     private void setContent() {
 
         Picasso.with(this)
-                //.placeholder(R.drawable.newsy_placeholder)
                 .load(mItem.imageUrl)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
                 .into(mImage);
 
         mTitle.setText(mItem.title);
@@ -120,7 +121,9 @@ public class DetailActivity extends ActionBarActivity {
 
     @OnClick(R.id.image)
     public void viewImage() {
-        ImageActivity.launch(this, mImage, mItem);
+        if(mItem.imageUrl != null) {
+            ImageActivity.launch(this, mImage, mItem);
+        }
     }
 
 

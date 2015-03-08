@@ -68,6 +68,10 @@ public class BoardItem {
             }
         }
 
+        if(imageUrl != null && imageUrl.isEmpty()) {
+            imageUrl = null;
+        }
+
         // Remove image tags from summary/content
         summary = stripTag("img", summary);
         content = stripTag("img", content);
