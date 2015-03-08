@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">USIU Board</string>
+    <string name="app_launcher_name">Notice Board</string>
     <string name="app_long_name">USIU Notice Board</string>
     <string name="action_settings">Settings</string>
 
@@ -24,5 +25,9 @@
     <string name="notifs_statement_">Receive notifications for new content</string>
     <string name="gcm_notifs">Push Notifications</string>
     <string name="phone_notifs">SMS Notifications</string>
+
+    <string name="eula_title">End-User License Agreement</string>
+    <string name="agree">I Agree</string>
+    <string name="no_agree">I Disagree</string>
 
 </resources>

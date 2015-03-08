@@ -22,6 +22,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     public static String APP_PREF = "app_prefs";
     public static String PREF_FIRST_LAUNCH = "fl";
+    public static String PREF_EULA_AGREED = "eula";
     public static String PREF_GCM_NOTIFICATIONS = "gcm_notifs";
     public static String PREF_PHONE_NOTIFICATIONS = "phone_notifs";
 
@@ -33,11 +34,35 @@ public class SettingsActivity extends PreferenceActivity {
      */
     public static boolean isFirstLaunch(Context cxt) {
         SharedPreferences pref = cxt.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
-        boolean fl = pref.getBoolean(PREF_FIRST_LAUNCH, true);
-        if(fl) {
-            pref.edit().putBoolean(PREF_FIRST_LAUNCH, false).apply();
-        }
-        return fl;
+        return pref.getBoolean(PREF_FIRST_LAUNCH, true);
+    }
+
+    /**
+     *
+     * @param cxt
+     */
+    public static void hasFirstLaunched(Context cxt) {
+        SharedPreferences pref = cxt.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+        pref.edit().putBoolean(PREF_FIRST_LAUNCH, false).apply();
+    }
+
+    /**
+     *
+     * @param cxt
+     * @return
+     */
+    public static boolean hasAgreedToEULA(Context cxt) {
+        SharedPreferences pref = cxt.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+        return pref.getBoolean(PREF_EULA_AGREED, false);
+    }
+
+    /**
+     *
+     * @param cxt
+     */
+    public static void agreeToEULA(Context cxt) {
+        SharedPreferences pref = cxt.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+        pref.edit().putBoolean(PREF_EULA_AGREED, true).apply();
     }
 
     /**

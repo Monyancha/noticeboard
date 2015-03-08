@@ -1,10 +1,15 @@
 package me.aksalj.usiuboard.activity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,7 +39,6 @@ public class SplashActivity extends ActionBarActivity {
 
     private String mRegId;
     private int mRegAttempts = 5;
-
 
     @InjectView(R.id.image)
     ImageView mImage;
@@ -102,29 +106,42 @@ public class SplashActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         ButterKnife.inject(this);
 
         if(SettingsActivity.isFirstLaunch(this)) {
-            // TODO: Show TOS?
 
-
-            // TODO: Ask for permission to notify
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    DialogHelper.questionDialog(SplashActivity.this,
-                            getString(R.string.notifications),
-                            getString(R.string.notifs_questions_),
-                            new Runnable() {
-                                @Override
-                                public void run() {
-                                    SettingsActivity.allowNotifications(SplashActivity.this, true, true);
-                                    mInitGCMRegistrations.run();
-                                }
-                            }, mInitSplashWork);
+                    // TODO: Show TOS?
+                    if(!SettingsActivity.hasAgreedToEULA(SplashActivity.this)) {
+                        DialogHelper.showEULADialog(SplashActivity.this, new Runnable() {
+                            @Override
+                            public void run() {
+
+                                SettingsActivity.hasFirstLaunched(SplashActivity.this);
+
+                                // TODO: Ask for permission to notify
+                                DialogHelper.questionDialog(SplashActivity.this,
+                                        getString(R.string.notifications),
+                                        getString(R.string.notifs_questions_),
+                                        new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                SettingsActivity.allowNotifications(SplashActivity.this, true, true);
+                                                mInitGCMRegistrations.run();
+                                            }
+                                        }, mInitSplashWork);
+                            }
+                        }, new Runnable() {
+                            @Override
+                            public void run() {
+                                finish();
+                            }
+                        });
+                    }
                 }
-            }, 3000);
+            }, 3500);
 
         } else if(SettingsActivity.notificationsAllowed(this)) {
             // FIXME: Must register gcm only, phone only or both!!
