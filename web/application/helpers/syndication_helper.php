@@ -98,7 +98,7 @@ function makeRSSXML($feed, $items)
     $xml .= "\t\t".'<title>'.$feed->title.'</title>'."\n";
     $xml .= "\t\t".'<link>'.site_url('/feed/'.$feed->slug).'</link>'."\n";
     $xml .= "\t\t".'<description>'.$feed->description.'</description>'."\n";
-    $xml .= "\t\t".'<lastBuildDate>'.date("D, d M Y H:i:s T", strtotime($feed->date)).'</lastBuildDate>'."\n\n";
+    $xml .= "\t\t".'<lastBuildDate>'.date(DATE_RFC822, strtotime($feed->date)).'</lastBuildDate>'."\n\n";
 
     foreach($items as $item) {
         $xml .= "\t\t".'<item>'."\n";
@@ -108,7 +108,7 @@ function makeRSSXML($feed, $items)
         $xml .= "\t\t\t".'<description>'.$item->description.'</description>'."\n";
         $xml .= "\t\t\t".'<content:encoded><![CDATA['.$item->content.']]></content:encoded>'."\n";
         $xml .= "\t\t\t".'<author>'.$item->author.'</author>'."\n";
-        $xml .= "\t\t\t".'<pubDate>'.date("D, d M Y H:i:s T", strtotime($item->date)).'</pubDate>'."\n";
+        $xml .= "\t\t\t".'<pubDate>'.date(DATE_RFC822, strtotime($item->date)).'</pubDate>'."\n";
         $xml .= "\t\t".'</item>'."\n";
     }
 
