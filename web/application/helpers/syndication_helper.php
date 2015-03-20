@@ -102,6 +102,7 @@ function makeRSSXML($feed, $items)
 
     foreach($items as $item) {
         $xml .= "\t\t".'<item>'."\n";
+        $xml .= "\t\t\t".'<guid>'.$item->id.'</guid>'."\n";
         $xml .= "\t\t\t".'<title>'.$item->title.'</title>'."\n";
         $xml .= "\t\t\t".'<link>'.$item->link.'</link>'."\n";
         $xml .= "\t\t\t".'<media:thumbnail url="'.$item->image.'"/>'."\n";
