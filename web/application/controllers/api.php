@@ -10,16 +10,25 @@
  *  File : api.php
  *  Date : 2/2/15 3:39 PM
  *  Description : USIU Board HTTP API
- *  
+ *
+ *  TODO: Auth!!!!!!!
  */
 
 class Api extends CI_Controller {
 
+    var $AUTHORIZED_CLIENTS = array (
+        "Lonesome Scarecrow" => "ON7rO7OEtIr5hvRYgw4", // iOS Client
+        "Stormy Scissors" => "tVqZ1bqQpOrcAhCudxU", // Android Client
+        "Postman" => "kdyLR3P7bgJAe882Y6UP" // Postman test client
+    );
 
     var $EMPTY_RESPONSE = array();
 
     function __construct() {
         parent::__construct();
+
+        // Authentication
+        $this->_auth();
 
         $this->load->driver('cache', array('adapter' => 'file'));
 
@@ -32,6 +41,22 @@ class Api extends CI_Controller {
         $this->load->model('LogModel');
 
         $this->load->helper('settings');
+    }
+
+    function _auth(){
+        $this->load->library('user_agent');
+        $agent = $this->agent->agent_string();
+
+        //TODO: user agent
+        if (array_key_exists($agent, $this->AUTHORIZED_CLIENTS)) {
+            // TODO: Check signature
+            return;
+        }
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(401, 'Unauthorized');
+        exit;
     }
 
     /**
