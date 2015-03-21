@@ -11,7 +11,6 @@
  *  Date : 2/2/15 3:39 PM
  *  Description : USIU Board HTTP API
  *
- *  TODO: Auth!!!!!!!
  */
 
 class Api extends CI_Controller {

@@ -25,9 +25,12 @@
 
     <title>USIU Notice Board</title>
 
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
     <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/plugin/coin-slider/coin-slider-styles.css" rel="stylesheet">
 
     <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
@@ -71,6 +74,9 @@
                     <a class="page-scroll" href="/dashboard">Dashboard</a>
                 </li>
                 <li>
+                    <a class="page-scroll" href="#team">Team</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="#contact">Contact</a>
                 </li>
             </ul>
@@ -88,11 +94,11 @@
                     <p class="intro-text">
                         A simple, efficient notice board for USIU.
                         <br/>
-                        <?/*
+                        <? /*
                         <kbd style="font-size: .5em;">
                             APT 2080-A: Introduction to Software Engineering<br/>
                             Spring 2015
-                        </kbd> */?>
+                        </kbd> */ ?>
                     </p>
                     <a href="#about" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>
@@ -114,20 +120,66 @@
                 other &quot;non-important&quot; information.</p>
 
             <p>We would like to change that by supplementing and eventually replacing the physical notice board with a
-                mobile app. Because we carry our phones everywhere and rarely turn them off, a mobile app that presents
+                <code>mobile app</code>. Because we carry our phones everywhere and rarely turn them off, a mobile app
+                that presents
                 the notice board’s information in a very efficient way would prevent students from missing those
                 important alerts, messages or sign up sheets on the notice board.</p>
         </div>
+    </div>
 
 
-        <div id="app_shot" class="col-lg-12">
-            <h2>Screen Shots</h2>
-            <img class="img-responsive" src="/assets/img/shot_1.png">
-            <img class="img-responsive" src="/assets/img/shot_2.png">
-            <img class="img-responsive" src="/assets/img/shot_3.png">
+    <div id="app_shot" class="row col-lg-12 hidden-md hidden-sm hidden-xs hidden-print center-block">
+        <h2>and it looks like this...</h2>
+
+        <div class="col-lg-4">
+            <div id="andro_slider" class="_slider center-block">
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_2.png">
+                </a>
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                </a>
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_3.png">
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+            <div id="ios_slider" class="_slider center-block">
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="win_slider" class="_slider center-block">
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_3.png">
+                </a>
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                </a>
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/shot_2.png">
+                </a>
+
+            </div>
         </div>
 
     </div>
+
 </section>
 
 <section id="download" class="content-section text-center">
@@ -156,8 +208,10 @@
                 </ul>
 
                 <p class="text-muted" style="font-size: .95em;">
-                    <small><strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3 or
+                    <small>
+                        <strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3 or
                             above</strong> and allow installation from <em>unknown sources</em>.
+                        <strong>iOS 8+</strong> still in development.
                     </small>
                 </p>
 
@@ -166,7 +220,80 @@
     </div>
 </section>
 
-<section id="contact" class="container content-section text-center">
+<section id="team" class="container content-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Awesome Team</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="http://cliparts.co/cliparts/6cp/op7/6cpop79oi.png" class="img-responsive img-circle"
+                         alt="">
+                    <h4>Cyrus Koroma</h4>
+
+                    <p class="text-muted">Lead Designer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="https://avatars0.githubusercontent.com/u/2534772?v=3&s=460"
+                         class="img-responsive img-circle" alt="">
+                    <h4>Salama A. Balekage</h4>
+
+                    <p class="text-muted">Lead Developer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="http://cliparts.co/cliparts/6cp/op7/6cpop79oi.png" class="img-responsive img-circle"
+                         alt="">
+                    <h4>Joshua Muhindo</h4>
+
+                    <p class="text-muted">Lead Marketer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam
+                    veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="container content-section contact-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>Contact</h2>
@@ -178,15 +305,19 @@
             </p>
             <ul class="list-inline buttons-list">
                 <li>
-                    <a href="https://twitter.com/aksalj" class="btn btn-default btn-lg"><i
+                    <a href="https://facebook.com/aksalj" class="btn btn-default btn-md"><i
+                            class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/aksalj" class="btn btn-default btn-md"><i
                             class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                 </li>
                 <li>
-                    <a href="https://github.com/aksalj" class="btn btn-default btn-lg"><i
+                    <a href="https://github.com/aksalj" class="btn btn-default btn-md"><i
                             class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                 </li>
                 <li>
-                    <a href="https://plus.google.com/+SalamaAB" class="btn btn-default btn-lg"><i
+                    <a href="https://plus.google.com/+SalamaAB" class="btn btn-default btn-md"><i
                             class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                 </li>
             </ul>
@@ -205,6 +336,7 @@
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/assets/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
 <!--<script src="/assets/bower_components/skrollr/dist/skrollr.min.js"></script>-->
+<script src="/assets/plugin/coin-slider/coin-slider.js"></script>
 <script src="/assets/js/welcome.js"></script>
 
 </body>

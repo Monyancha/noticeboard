@@ -55,8 +55,13 @@ function sendNotifications($devices, $settings, $payload)
     $phones = array();
     $uuids = array();
     foreach ($devices as $device) {
-        array_push($phones, $device->phone);
-        array_push($uuids, $device->uuid);
+        if(!empty($device->phone) && $device->phone !== "null") {
+            array_push($phones, $device->phone);
+        }
+
+        if(!empty($device->uuid) && $device->uuid !== "null") {
+            array_push($uuids, $device->uuid);
+        }
     }
 
     $result = false;

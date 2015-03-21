@@ -20,6 +20,20 @@ $(function() {
     //    forceHeight: false
     //});
 
+    $("#andro_slider, #ios_slider, #win_slider").coinslider({
+        width: 263,
+        height: 515,
+        delay: 1000, // delay between images in ms
+        sDelay: 30, // delay beetwen squares in ms
+        opacity: 0.7, // opacity of title and navigation
+        titleSpeed: 500, // speed of title appereance in ms
+        effect: '', // random, swirl, rain, straight
+        links : false, // show images as links
+        showNavigationButtons: false
+    });
+
+
+
 });
 
 $('.navbar-collapse ul li a').click(function() {

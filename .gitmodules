@@ -1,0 +1,3 @@
+[submodule "web/assets/plugin/coin-slider"]
+	path = web/assets/plugin/coin-slider
+	url = git@github.com:kopipejst/coin-slider.git
