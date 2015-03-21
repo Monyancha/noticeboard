@@ -1,6 +1,5 @@
 package me.aksalj.usiuboard.data.api;
 
-import me.aksalj.usiuboard.BuildConfig;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
@@ -28,6 +27,7 @@ public abstract class API {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(endpoint)
                     .setLogLevel(RestAdapter.LogLevel.BASIC) // Dev only!!!
+                    .setConverter(new GsonInputStreamConverter())
                     .setRequestInterceptor(new RequestInterceptor() {
                         @Override
                         public void intercept(RequestInterceptor.RequestFacade request) {
@@ -41,4 +41,7 @@ public abstract class API {
         }
         return sService;
     }
+
+
+
 }

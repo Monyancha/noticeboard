@@ -1,5 +1,6 @@
 package me.aksalj.usiuboard.data.api;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import me.aksalj.usiuboard.data.BoardFeed;
@@ -8,6 +9,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Path;
 
 /**
  * Copyright (c) 2015 Salama AB
@@ -27,6 +29,9 @@ public interface BoardWebService {
 
     @GET("/api/feeds")
     public ArrayList<BoardFeed> getFeeds();
+
+    @GET("/api/feed/{slug}")
+    public InputStream getRSS(@Path("slug") String feedSlug);
 
     @FormUrlEncoded
     @POST("/api/register")

@@ -2,17 +2,28 @@ package me.aksalj.usiuboard.data.worker;
 
 import android.os.AsyncTask;
 
+import org.mcsoxford.rss.RSSConfig;
 import org.mcsoxford.rss.RSSFeed;
 import org.mcsoxford.rss.RSSItem;
+import org.mcsoxford.rss.RSSParser;
 import org.mcsoxford.rss.RSSReader;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import me.aksalj.usiuboard.data.BoardFeed;
 import me.aksalj.usiuboard.data.BoardItem;
+import me.aksalj.usiuboard.data.api.API;
 import me.aksalj.usiuboard.data.iface.IResultCallback;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Copyright (c) 2015 Salama AB
@@ -27,13 +38,14 @@ import me.aksalj.usiuboard.data.iface.IResultCallback;
  */
 public class FeedItemsFetcher extends AsyncTask<Void, Void, ArrayList<BoardItem>> {
 
-    private String feedUrl;
+    private BoardFeed feed;
     private IResultCallback<ArrayList<BoardItem>> cb;
 
+    private boolean waitingRSS = true;
     private String error = null;
 
-    public FeedItemsFetcher(String feedUrl, IResultCallback<ArrayList<BoardItem>> callback) {
-        this.feedUrl = feedUrl;
+    public FeedItemsFetcher(BoardFeed feed, IResultCallback<ArrayList<BoardItem>> callback) {
+        this.feed = feed;
         cb = callback;
     }
 
@@ -54,8 +66,10 @@ public class FeedItemsFetcher extends AsyncTask<Void, Void, ArrayList<BoardItem>
 
         try {
 
-            RSSReader reader = new RSSReader();
-            RSSFeed feed = reader.load(feedUrl);
+            RSSParser parser = new RSSParser(new RSSConfig());
+            InputStream xmlStream = API.getService().getRSS(feed.slug);
+
+            RSSFeed feed = parser.parse(xmlStream);
             String source = feed.getTitle(); // TODO: Read source from item.author or feed.author
             List<RSSItem> items = feed.getItems();
 
@@ -82,7 +96,6 @@ public class FeedItemsFetcher extends AsyncTask<Void, Void, ArrayList<BoardItem>
             ex.printStackTrace();
             error = ex.getMessage();
         }
-
 
         return null;
     }

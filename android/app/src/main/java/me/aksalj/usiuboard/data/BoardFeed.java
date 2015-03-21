@@ -16,6 +16,7 @@ public class BoardFeed {
     public String title;
     public String description;
     public String url;
+    public String slug;
 
     public BoardFeed(int id, String title, String description, String url) {
         this.id = id;

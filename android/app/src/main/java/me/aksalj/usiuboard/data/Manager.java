@@ -144,7 +144,7 @@ public class Manager {
             BoardFeed feed = getFeedById(feedId);
             if (feed != null) {
 
-                new FeedItemsFetcher(feed.url, new IResultCallback<ArrayList<BoardItem>>() {
+                new FeedItemsFetcher(feed, new IResultCallback<ArrayList<BoardItem>>() {
                     @Override
                     public void onResult(ArrayList<BoardItem> result) {
                         mFeedsItems.put(feedId, result);
@@ -175,7 +175,7 @@ public class Manager {
             if(feed.id == DEFAULT_FEED_ID) // Default feed has no URL
                 continue;
 
-            new FeedItemsFetcher(feed.url, new IResultCallback<ArrayList<BoardItem>>() {
+            new FeedItemsFetcher(feed, new IResultCallback<ArrayList<BoardItem>>() {
                 @Override
                 public void onResult(ArrayList<BoardItem> result) {
                     mFeedsItems.put(feed.id, result); // Overwrite if already there!
