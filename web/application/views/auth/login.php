@@ -28,8 +28,7 @@
     <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
     <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:700italic,300,700,300italic' rel='stylesheet' type='text/css'>
 
     <link href="/assets/css/main.css" rel="stylesheet">
 

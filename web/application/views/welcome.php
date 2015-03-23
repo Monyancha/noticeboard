@@ -32,8 +32,7 @@
 
     <link href="/assets/plugin/coin-slider/coin-slider-styles.css" rel="stylesheet">
 
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:700italic,300,700,300italic' rel='stylesheet' type='text/css'>
 
     <link href="/assets/css/main.css" rel="stylesheet">
 
@@ -245,8 +244,12 @@
                          data-placement="bottom"
                          data-html="true"
                          data-title="<?= $member['name'].", ".$member['country'];?>"
-                         data-content='<?= html_escape("<div class='team-member-quote'>".
-                             limitCharacters($member['quote'], 500, "...&nbsp;<a href='#'><small>Read More</small>&nbsp;&raquo;</a>") .
+                         data-content='<?= html_escape(
+                             "<blockquote>".$member['saying']."</blockquote>".
+                             "<div class='team-member-quote'>".
+                             "<q>".
+                             limitCharacters($member['quote'], 400, "...&nbsp;<a href='#'><small>Read More</small>&nbsp;&raquo;</a>") .
+                             "</q>".
                              "</div>".
                              "<div class='small well well-sm'>
                                 ".$member['major'].", <b>".$member['speciality']."</b>
@@ -266,10 +269,12 @@
                         </ul>
                     <? } ?>
 
+                    <?
+                    /*
                     <? if ($member['saying']) { ?>
                         <blockquote><?=$member['saying'];?></blockquote>
                     <? } ?>
-
+                    */?>
                 </div>
 
             <? } ?>
