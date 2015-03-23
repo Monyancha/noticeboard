@@ -325,7 +325,7 @@
             USIU and associated texts, images and other materials are the property of <a href="http://www.usiu.ac.ke/" target="_blank">
                 United States International University - Africa.</a>
             <br/>
-            Their use in this project is authorized by the student agreement.
+            Their use in this project is authorized as part of the course work for <b>APT 2080: Intro to Software Engineering</b>.
         </small>
     </div>
 </footer>
