@@ -33,6 +33,29 @@ $(function() {
     });
 
 
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('[data-toggle="popover"]').popover({
+        container: 'body',
+        html: true,
+        placement: function (pop, dom_el) {
+            var width = window.innerWidth;
+
+            if (width <= 767) return 'bottom';
+
+            var left_pos = $(dom_el).offset().left;
+            if (width - left_pos > 400) return 'right';
+
+            return 'left';
+        },
+        content: function () {
+            var clone = $($(this).data('popover-content')).clone(true).removeClass('hide');
+            return clone;
+        }
+    }).click(function(e) {
+        e.preventDefault();
+    });
+
 
 });
 

@@ -220,68 +220,12 @@
     </div>
 </section>
 
-<section id="team" class="container content-section text-center">
+<section id="team" class="content-section text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Our Awesome Team</h2>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img src="http://cliparts.co/cliparts/6cp/op7/6cpop79oi.png" class="img-responsive img-circle"
-                         alt="">
-                    <h4>Cyrus Koroma</h4>
-
-                    <p class="text-muted">Lead Designer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img src="https://avatars0.githubusercontent.com/u/2534772?v=3&s=460"
-                         class="img-responsive img-circle" alt="">
-                    <h4>Salama A. Balekage</h4>
-
-                    <p class="text-muted">Lead Developer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-github"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img src="http://cliparts.co/cliparts/6cp/op7/6cpop79oi.png" class="img-responsive img-circle"
-                         alt="">
-                    <h4>Joshua Muhindo</h4>
-
-                    <p class="text-muted">Lead Marketer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
 
         <div class="row">
@@ -290,6 +234,49 @@
                     veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
             </div>
         </div>
+
+        <div class="row">
+
+            <? foreach ($team as $handle => $member) { ?>
+                <div class="team-member col-sm-3">
+                    <div class="team-pop"
+                         data-container="body"
+                         data-toggle="popover"
+                         data-placement="bottom"
+                         data-html="true"
+                         data-title="<?= $member['name'].", ".$member['country'];?>"
+                         data-content='<?= html_escape("<div class='team-member-quote'>".
+                             limitCharacters($member['quote'], 500, "...&nbsp;<a href='#'><small>Read More</small>&nbsp;&raquo;</a>") .
+                             "</div>".
+                             "<div class='small well well-sm'>
+                                ".$member['major'].", <b>".$member['speciality']."</b>
+                             </div>"
+                         ); ?>'>
+                        <img src="<?=$member['profile'];?>" class="img-responsive img-circle" alt="<?=$member['name'];?>"
+                             data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click for member info">
+                        <h4><?=$member['name'];?></h4>
+                    </div>
+
+                    <p class="text-muted"><?=$member['position'];?></p>
+                    <? if ($member['social']) { ?>
+                        <ul class="list-inline social-buttons">
+                            <? foreach ($member['social'] as $serviceName => $socialProfile) { ?>
+                                <li><a href="<?=$socialProfile;?>"><i class="fa fa-<? echo $serviceName; ?>"></i></a></li>
+                            <? } ?>
+                        </ul>
+                    <? } ?>
+
+                    <? if ($member['saying']) { ?>
+                        <blockquote><?=$member['saying'];?></blockquote>
+                    <? } ?>
+
+                </div>
+
+            <? } ?>
+
+        </div>
+
+
     </div>
 </section>
 
@@ -329,6 +316,12 @@
 <footer>
     <div class="container text-center">
         <p>&copy; Salama AB 2015</p>
+        <small class="text-muted">
+            USIU and associated texts, images and other materials are the property of <a href="http://www.usiu.ac.ke/" target="_blank">
+                United States International University - Africa.</a>
+            <br/>
+            Their use in this project is authorized by the student agreement.
+        </small>
     </div>
 </footer>
 
