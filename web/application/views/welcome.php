@@ -127,7 +127,7 @@
     </div>
 
 
-    <div id="app_shot" class="row col-lg-12 hidden-md hidden-sm hidden-xs hidden-print center-block">
+    <div id="app_shot" class="row col-lg-12 hidden-sm hidden-xs hidden-print center-block">
         <h2>and it looks like this...</h2>
 
         <div class="col-lg-4">
@@ -220,99 +220,92 @@
 </section>
 
 <section id="team" class="content-section text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Our Awesome Team</h2>
+    <div class="team-section">
+        <div class="container">
+            <h2 class="section-heading">Our Awesome Team</h2>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam
+                        veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam
-                    veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-            </div>
-        </div>
+            <div class="row">
 
-        <div class="row">
+                <? foreach ($team as $handle => $member) { ?>
+                    <div class="team-member col-sm-3">
+                        <div class="team-pop"
+                             data-container="body"
+                             data-toggle="popover"
+                             data-placement="bottom"
+                             data-html="true"
+                             data-title="<?= $member['name'].", ".$member['country'];?>"
+                             data-content='<?= html_escape(
+                                 "<blockquote>".$member['saying']."</blockquote>".
+                                 "<div class='team-member-quote'>".
+                                 "<q>".
+                                 limitCharacters($member['quote'], 500, "...&nbsp;<a href='#'><small>Read More</small>&nbsp;&raquo;</a>") .
+                                 "</q>".
+                                 "</div>".
+                                 "<div class='small well well-sm'>
+                                    ".$member['major'].", <b>".$member['speciality']."</b>
+                                 </div>"
+                             ); ?>'>
+                            <img src="<?=$member['profile'];?>" class="img-responsive img-circle" alt="<?=$member['name'];?>"
+                                 data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click for member info">
+                            <h4><?=$member['name'];?></h4>
+                        </div>
 
-            <? foreach ($team as $handle => $member) { ?>
-                <div class="team-member col-sm-3">
-                    <div class="team-pop"
-                         data-container="body"
-                         data-toggle="popover"
-                         data-placement="bottom"
-                         data-html="true"
-                         data-title="<?= $member['name'].", ".$member['country'];?>"
-                         data-content='<?= html_escape(
-                             "<blockquote>".$member['saying']."</blockquote>".
-                             "<div class='team-member-quote'>".
-                             "<q>".
-                             limitCharacters($member['quote'], 400, "...&nbsp;<a href='#'><small>Read More</small>&nbsp;&raquo;</a>") .
-                             "</q>".
-                             "</div>".
-                             "<div class='small well well-sm'>
-                                ".$member['major'].", <b>".$member['speciality']."</b>
-                             </div>"
-                         ); ?>'>
-                        <img src="<?=$member['profile'];?>" class="img-responsive img-circle" alt="<?=$member['name'];?>"
-                             data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click for member info">
-                        <h4><?=$member['name'];?></h4>
+                        <p class="text-muted"><?=$member['position'];?></p>
+                        <? if ($member['social']) { ?>
+                            <ul class="list-inline social-buttons">
+                                <? foreach ($member['social'] as $serviceName => $socialProfile) { ?>
+                                    <li><a href="<?=$socialProfile;?>"><i class="fa fa-<? echo $serviceName; ?>"></i></a></li>
+                                <? } ?>
+                            </ul>
+                        <? } ?>
+
                     </div>
 
-                    <p class="text-muted"><?=$member['position'];?></p>
-                    <? if ($member['social']) { ?>
-                        <ul class="list-inline social-buttons">
-                            <? foreach ($member['social'] as $serviceName => $socialProfile) { ?>
-                                <li><a href="<?=$socialProfile;?>"><i class="fa fa-<? echo $serviceName; ?>"></i></a></li>
-                            <? } ?>
-                        </ul>
-                    <? } ?>
+                <? } ?>
 
-                    <?
-                    /*
-                    <? if ($member['saying']) { ?>
-                        <blockquote><?=$member['saying'];?></blockquote>
-                    <? } ?>
-                    */?>
-                </div>
+            </div>
 
-            <? } ?>
-
-        </div>
-
-
+    </div>
     </div>
 </section>
 
-<section id="contact" class="container content-section contact-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>Contact</h2>
+<section id="contact" class="content-section text-center">
+    <div class="contact-section">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact</h2>
 
-            <p>Feel free to email us to provide some feedback on our project, give us suggestions, or to just say
-                hello!</p>
+                <p>Feel free to email us to provide some feedback on our project, give us suggestions, or to just say
+                    hello!</p>
 
-            <p><a href="mailto:aksalj@aksalj.me">feedback@aksalj.me</a>
-            </p>
-            <ul class="list-inline buttons-list">
-                <li>
-                    <a href="https://facebook.com/aksalj" class="btn btn-default btn-md"><i
-                            class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/aksalj" class="btn btn-default btn-md"><i
-                            class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                </li>
-                <li>
-                    <a href="https://github.com/aksalj" class="btn btn-default btn-md"><i
-                            class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                </li>
-                <li>
-                    <a href="https://plus.google.com/+SalamaAB" class="btn btn-default btn-md"><i
-                            class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                </li>
-            </ul>
+                <p><a href="mailto:aksalj@aksalj.me">feedback@aksalj.me</a>
+                </p>
+                <ul class="list-inline buttons-list">
+                    <li>
+                        <a href="https://facebook.com/aksalj" class="btn btn-default btn-md"><i
+                                class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/aksalj" class="btn btn-default btn-md"><i
+                                class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/aksalj" class="btn btn-default btn-md"><i
+                                class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+SalamaAB" class="btn btn-default btn-md"><i
+                                class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>

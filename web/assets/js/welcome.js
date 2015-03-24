@@ -21,7 +21,7 @@ $(function() {
     //});
 
     $("#andro_slider, #ios_slider, #win_slider").coinslider({
-        width: 263,
+        width: 263, // Not responsive at all!!!
         height: 515,
         delay: 1000, // delay between images in ms
         sDelay: 30, // delay beetwen squares in ms
@@ -53,9 +53,9 @@ $(function() {
             return clone;
         }
     }).click(function(e) {
+        $('[data-toggle="popover"]').not(this).popover('hide'); //all but this
         e.preventDefault();
     });
-
 
 });
 

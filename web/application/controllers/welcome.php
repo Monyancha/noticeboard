@@ -60,14 +60,14 @@ class Welcome extends CI_Controller {
             ),
 
             "mwamba" => array(
-                "name" => "Joshua Mwamba",
-                "country" => "Kenya",
+                "name" => "Joshua M. Kiriungi",
+                "country" => "Liberia",
                 "position" => "Lead Tester",
                 "major" => "BSc. Applied Computer Technology",
-                "speciality" => "Software Engineering",
-                "profile" => "http://cliparts.co/cliparts/6cp/op7/6cpop79oi.png",
-                "quote" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                "saying" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+                "speciality" => "Distributed Systems & Mobile Computing",
+                "profile" => "/assets/img/team/mwamba.jpg",
+                "quote" => "I like finding out possible ways of solving difficult problems that relate to everyday endeavor. Even though much of my personal time and assets are consume, but I always consider it as an investment. My focus is on making the impossible, possible. It is advisable to never underestimate yourself because we all have the potential to do amazing things. So, I want to be that guy to make things work and to be look upon as role model for others.",
+                "saying" => "If you have a dream, don’t just sit there. Gather courage to believe that you can succeed and leave no stone unturned to make it a reality.",
                 "social" => array(
                     "envelope" => "mailto:j.mwashville@gmail.com",
                     "bitbucket" => "https://bitbucket.org/jayvanrey",
