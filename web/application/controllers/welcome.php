@@ -61,7 +61,7 @@ class Welcome extends CI_Controller {
 
             "mwamba" => array(
                 "name" => "Joshua M. Kiriungi",
-                "country" => "Liberia",
+                "country" => "Kenya",
                 "position" => "Lead Tester",
                 "major" => "BSc. Applied Computer Technology",
                 "speciality" => "Distributed Systems & Mobile Computing",
