@@ -139,6 +139,7 @@ class Dashboard extends CI_Controller {
                         $payload = array(
                             "id" => $id,
                             "title" =>$item->title,
+                            "image" => $item->image,
                             "content" => trim(strip_tags($item->description))
                         );
                         $res &= sendNotifications($devices, $settings, $payload);

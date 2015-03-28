@@ -140,7 +140,7 @@ $latestItems = getLatestItems(15);
                             <? $item = $latestItems[$count]; ?>
                             <li class='<?= ($count % 2 == 0) ? "" : "timeline-inverted" ?>'>
 
-                                <div class="timeline-badge <?= $item->notified ? "success" : "warning"; ?>"
+                                <div class="timeline-badge <?= $item->notified ? "success" : "danger"; ?>"
                                      data-toggle="tooltip" data-placement="top"
                                      title="<?= $item->notified ? "Notifications sent!" : "Notifications not sent!"; ?>">
                                     <i class="fa fa-<?= $item->notified ? "check" : "close"; ?>"></i>
@@ -159,7 +159,7 @@ $latestItems = getLatestItems(15);
                                         </p>
                                     </div>
                                     <div class="timeline-body">
-                                        <p class="small"><?= limitCharacters($item->description, 200); ?></p>
+                                        <p class="small"><?= limitCharacters($item->description, 350); ?></p>
                                         <? if (!$item->notified) { ?>
                                             <hr>
                                             <div class="btn-group">
@@ -168,7 +168,11 @@ $latestItems = getLatestItems(15);
                                                     <i class="fa fa-bolt"></i> <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Send Notifications</a></li>
+                                                    <li>
+                                                        <a href="" class="btnSendNotification" data-item-id="<?=$item->id;?>">
+                                                            Send Notifications
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         <? } ?>
@@ -186,6 +190,48 @@ $latestItems = getLatestItems(15);
 </div>
 
 <script>
-    $("#pageActions").html('');
-    $(".timeline-badge").tooltip();
+
+    function sendNotifications(contents, debugOut) {
+
+        $("#startLoadingAction").click();
+
+        $.ajax({
+            type: "POST",
+            url: "/dashboard/content/notify",
+            data: {ids: contents},
+            success: function (res, textStatus, jqXHR) {
+                if(debugOut) { console.log(res); }
+                else {
+                    location.reload();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                var err = "<div>";
+                err += "<p class='text-muted'>Something went wrong...</p>";
+                err += "<p><code>" + textStatus + ": " + errorThrown + "</code></p>";
+                err += "</div>";
+                BootstrapDialog.show({
+                    title: "Oops!",
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: err
+                });
+            },
+            complete: function () {
+                $("#stopLoadingAction").click();
+            }
+        });
+    }
+
+    $(function () {
+
+        $(".timeline-badge").tooltip();
+
+        $(".btnSendNotification").click(function () {
+            var itemId = $(this).attr("data-item-id");
+            $(this).addClass('disabled');
+            sendNotifications([itemId]);
+        });
+
+    });
+
 </script>

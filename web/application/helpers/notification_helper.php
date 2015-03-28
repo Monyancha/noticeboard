@@ -53,21 +53,21 @@ function sendNotifications($devices, $settings, $payload)
 {
 
     $phones = array();
-    $uuids = array();
+    $pushDevices = array();
     foreach ($devices as $device) {
         if(!empty($device->phone) && $device->phone !== "null") {
             array_push($phones, $device->phone);
         }
 
         if(!empty($device->uuid) && $device->uuid !== "null") {
-            array_push($uuids, $device->uuid);
+            array_push($pushDevices, array("uuid" => $device->uuid, "type" => $device->type));
         }
     }
 
-    $result = false;
+    $result = true;
 
     if ($settings['type']->push == true) {
-        $result &= pushNotification($uuids, $payload, $settings['push']);
+        $result &= pushNotification($pushDevices, $payload, $settings['push']);
     }
 
     if ($settings['type']->sms == true) {
@@ -100,14 +100,14 @@ function sendSMS($receivers, $content, $settings)
     // Send SMS
     $res = false;
     foreach($receivers as $receiver) {
-        $res &= $CI->twilio->sendSMS($receiver, $content);
+        $res = $CI->twilio->sendSMS($receiver, $content);
     }
 
     return $res;
 }
 
 /**
- * Send app notification. Hardcoded to use GCM!
+ * Send app notification. Supports GCM and APNS.
  * @param $registrationIds
  * @param $payload
  * @param $settings
@@ -120,12 +120,28 @@ function pushNotification($registrationIds, $payload, $settings)
     // id, title, content
     $payload['content'] = _limitCharacters($payload['content'], PUSH_MAX_CHARACTERS / 3);
 
-    // Push Notification Message (Assume GCM for now)
-    $gcm = new Endroid\Gcm\Gcm($settings->GCM->API_KEY);
-    $res = $gcm->send($payload, $registrationIds);
+    $gcmIds = array();
+    $apnsTokens = array();
+    foreach($registrationIds as $device) {
+        switch($device['type']) {
+            case "gcm":
+                array_push($gcmIds, $device['uuid']);
+                break;
+            case "apns":
+                array_push($apnsTokens, $device['uuid']);
+                break;
+        }
+    }
 
-    if(defined('ENVIRONMENT') && (ENVIRONMENT == "development" || ENVIRONMENT == "testing")) { // Debug only;
-        clearContentCache();
+    $res = true;
+
+    if(count($gcmIds) > 0) { // Send GCMs
+        $gcm = new Endroid\Gcm\Gcm($settings->GCM->API_KEY);
+        $res &= $gcm->send($payload, $gcmIds);
+    }
+
+    if(count($apnsTokens) > 0) { // Send APNS
+        $res &= false;
     }
 
     return $res;

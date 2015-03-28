@@ -48,8 +48,7 @@ class DeviceModel extends CI_Model {
             return 1;
         } else {
 
-            // TODO: Fix hard coding types?
-            $type = ($type !== "gcm" || $type !== "apns") ? null : $type;
+            // TODO: Check if type is supported?
 
             $data = array(
                 'uuid' => $uuid ,

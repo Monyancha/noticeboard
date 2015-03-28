@@ -151,7 +151,7 @@ foreach($feeds as $feed) {
 
         var actionsHtml = '<button id="btnAddContent" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="left" title="Post new content"><i class="fa fa-plus fa-fw"></i></button> &nbsp;';
         actionsHtml += '<button id="btnDeleteContent" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete selected content"><i class="fa fa-trash fa-fw"></i></button> &nbsp;';
-        actionsHtml += '<button id="btnNotifyContent" type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Send notifications of selected content"><i class="fa fa-paper-plane fa-fw"></i></button> &nbsp;';
+        actionsHtml += '<button id="btnNotifyContent" type="button" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Send notifications of selected content"><i class="fa fa-paper-plane fa-fw"></i></button> &nbsp;';
         $("#pageActions").html(actionsHtml);
         $("#pageActions button").tooltip();
 
