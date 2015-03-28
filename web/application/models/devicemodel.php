@@ -33,9 +33,10 @@ class DeviceModel extends CI_Model {
      * Register a device
      * @param $uuid
      * @param $phone
+     * @param $type
      * @return mixed
      */
-    public function addDevice($uuid, $phone) {
+    public function addDevice($uuid, $phone, $type) {
         // Check if uuid or phone already exists
         $queryUuid = $this->db->get_where(self::TABLE, array('uuid' => $uuid));
         $queryPhone = $this->db->get_where(self::TABLE, array('phone' => $phone));
@@ -46,9 +47,14 @@ class DeviceModel extends CI_Model {
             // TODO: update uuid only?
             return 1;
         } else {
+
+            // TODO: Fix hard coding types?
+            $type = ($type !== "gcm" || $type !== "apns") ? null : $type;
+
             $data = array(
                 'uuid' => $uuid ,
-                'phone' => $phone
+                'phone' => $phone,
+                'type' => $type
             );
             $this->db->insert(self::TABLE, $data);
             return $this->db->insert_id();

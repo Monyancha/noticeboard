@@ -144,9 +144,10 @@ class Api extends CI_Controller {
     public function register() {
         $uuid = $this->input->post('uuid');
         $phone = $this->input->post('phone');
+        $type = $this->input->post('type');
 
         if($uuid && $phone) {
-            if ($this->DeviceModel->addDevice($uuid, $phone) >= 1) {
+            if ($this->DeviceModel->addDevice($uuid, $phone, $type) >= 1) {
                 $this->output
                     ->set_content_type('application/json')
                     ->set_output(json_encode($this->EMPTY_RESPONSE));

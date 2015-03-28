@@ -42,6 +42,9 @@ class Dashboard extends CI_Controller {
         $this->load->view("dashboard/index", $context);
     }
 
+    /**
+     * @param $name
+     */
     public function partial($name) {
         $view = "dashboard/partials/".$name;
         $this->load->view($view, array("user" => $this->User));
@@ -79,7 +82,7 @@ class Dashboard extends CI_Controller {
     /**
      * @param $param
      */
-    public function notifications($param) {
+    public function settings($param) {
         $status = 500;
         $data = $this->input->post(); // TODO: Validate data
         if($data && count($data) > 0) {
@@ -97,7 +100,6 @@ class Dashboard extends CI_Controller {
                     }
                     break;
                 case "push":
-                    $data['APNS'] = array('token' => null); // FIXME: Delete me
                     // fall through
                 case "sms":
                     if($this->SettingsModel->updateSettings($param, $data)){

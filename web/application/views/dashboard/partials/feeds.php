@@ -25,7 +25,7 @@
                 vehicula sit amet. Maecenas orci erat, bibendum sed fringilla in, aliquam eu metus. Aliquam a magna est.
                 Vivamus ac ante suscipit, laoreet elit et, sollicitudin elit. Pellentesque sed augue eget eros accumsan gravida.</p>
 
-<!--            <button id="addFeed" type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-fw"></i> New Feed</button>-->
+<!--            <p>Manage the board's feeds from here. A feed is simply a category a particular notice, announcement, etc. can be posted </p>-->
 
         </div>
 

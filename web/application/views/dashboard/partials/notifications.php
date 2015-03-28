@@ -18,8 +18,8 @@ $smsSettings = getSMSSettings();
 $pushSettings = getPushSettings();
 
 // Service Providers
-$gcmSettings = $pushSettings->GCM;
-$apnsSettings = $pushSettings->APNS;
+$GCM_API_KEY = $pushSettings->GCM->API_KEY;
+$APNS_TOKEN = $pushSettings->APNS->token;
 $twilioSettings = $smsSettings->twilio;
 
 // Notifications types
@@ -117,7 +117,7 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
                                 <div class="form-group">
                                     <label for="API_KEY">API Key</label>
                                     <input type="text" class="form-control" name="API_KEY" placeholder="Enter API key"
-                                           value="<?=$gcmSettings->API_KEY; ?>">
+                                           value="<?=$GCM_API_KEY; ?>">
                                 </div>
                             </form>
                         </div>
@@ -127,7 +127,7 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
                                 <div class="form-group">
                                     <label for="token">Token</label>
                                     <input type="text" class="form-control" name="token" placeholder="Enter token"
-                                           value="<?=$apnsSettings->token; ?>" disabled>
+                                           value="<?=$APNS_TOKEN; ?>">
                                 </div>
                             </form>
 
@@ -253,7 +253,7 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
 
         $.ajax({
             type: "POST",
-            url: "/dashboard/notifications/" + kind,
+            url: "/dashboard/settings/" + kind,
             data: data,
             success: function (res, textStatus, jqXHR) {
                 if(debugOut) console.log(res);
@@ -285,7 +285,7 @@ $pushOn = !$smsAndPushOn && $notificationSettings->push;
     $("#btnSavePush").click(function () {
         var data = {
             GCM: $("#gcmForm").serializeArray(),
-            APNS: $("apnsForm").serializeArray()
+            APNS: $("#apnsForm").serializeArray()
         };
         saveNotificationsSettings("push", $(this), cleanUpProvidersArray(data));
         return false;
