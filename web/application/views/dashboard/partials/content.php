@@ -5,7 +5,6 @@ foreach($feeds as $feed) {
     $feedItems = $this->ItemModel->getFeedItems($feed->id);
     foreach($feedItems as $item) {
         $item->feed = $feed->title;
-        $item->date = date("D, d M Y H:i:s T", strtotime($item->date));
         array_push($items, $item);
     }
 }
