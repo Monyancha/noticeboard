@@ -111,7 +111,7 @@ public abstract class GCMHelper {
                     String regId = gcm.register(SENDER_ID);
 
                     // Send the registration ID to backend
-                    API.getService().register(regId, DeviceHelper.getPhoneNumber(context));
+                    API.getService().register(regId, DeviceHelper.getPhoneNumber(context), "gcm"); // TODO: Find clever way to pass "gcm"
 
                     // Persist the regID - no need to register again.
                     saveRegistrationId(context, regId);

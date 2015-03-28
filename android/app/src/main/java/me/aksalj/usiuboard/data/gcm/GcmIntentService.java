@@ -1,10 +1,13 @@
 package me.aksalj.usiuboard.data.gcm;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -33,6 +36,7 @@ public class GcmIntentService extends IntentService {
     public static final String PUSH_KEY_ID = "id";
     public static final String PUSH_KEY_TITLE = "title";
     public static final String PUSH_KEY_CONTENT = "content";
+    public static final String PUSH_KEY_IMAGE = "image";
 
     public GcmIntentService() {
         super("GcmIntentService");
@@ -62,7 +66,7 @@ public class GcmIntentService extends IntentService {
 
                 // Post notification of received message.
                 showNotification(extras.getString(PUSH_KEY_ID), extras.getString(PUSH_KEY_TITLE),
-                        extras.getString(PUSH_KEY_CONTENT));
+                        extras.getString(PUSH_KEY_CONTENT), extras.getString(PUSH_KEY_IMAGE));
             }
         }
 
@@ -70,7 +74,7 @@ public class GcmIntentService extends IntentService {
         GcmBroadcastReceiver.completeWakefulIntent(intent);
     }
 
-    private void showNotification(String id, String title, String message) {
+    private void showNotification(String id, String title, String message, String image) {
         NotificationManager mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -81,12 +85,26 @@ public class GcmIntentService extends IntentService {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        //.setOnlyAlertOnce(true)
+                        .setDefaults(Notification.DEFAULT_ALL)
+                        .setOnlyAlertOnce(true)
                         .setAutoCancel(true)
                         .setContentTitle(title)
-                        .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                         .setContentText(message);
 
+        // TODO: Add Big Picture Notification Style
+        NotificationCompat.Style style = null;
+        //if(image != null) {
+        //    style = new NotificationCompat.BigPictureStyle();
+        //} else {
+            style = new NotificationCompat.BigTextStyle();
+            ((NotificationCompat.BigTextStyle) style).setBigContentTitle(title);
+            ((NotificationCompat.BigTextStyle) style).bigText(message);
+        //}
+
+        mBuilder.setStyle(style);
+
+        mBuilder.addAction (0, "Open", contentIntent);
+        mBuilder.addAction (0, "Dismiss", null);
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(new Random().nextInt(), mBuilder.build());
     }

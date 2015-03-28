@@ -1,5 +1,6 @@
 package me.aksalj.usiuboard.data.api;
 
+import me.aksalj.usiuboard.BuildConfig;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
@@ -22,8 +23,8 @@ public abstract class API {
 
     public static BoardWebService getService() {
         if(sService == null) {
-            //String endpoint = BuildConfig.DEBUG ? BoardWebService.ENDPOINT_DEBUG : BoardWebService.ENDPOINT;
-            String endpoint = BoardWebService.ENDPOINT;
+            String endpoint = BuildConfig.DEBUG ? BoardWebService.ENDPOINT_DEBUG : BoardWebService.ENDPOINT;
+            //String endpoint = BoardWebService.ENDPOINT;
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(endpoint)
                     .setLogLevel(RestAdapter.LogLevel.BASIC) // Dev only!!!

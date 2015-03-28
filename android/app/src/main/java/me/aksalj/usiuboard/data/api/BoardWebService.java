@@ -35,9 +35,9 @@ public interface BoardWebService {
 
     @FormUrlEncoded
     @POST("/api/register")
-    public Object register(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
+    public Object register(@Field("uuid") String gcmId, @Field("phone") String phoneNumber, @Field("type") String type);
 
     @FormUrlEncoded
     @POST("/api/unregister")
-    public Object unregister(@Field("uuid") String gcmId, @Field("phone") String phoneNumber);
+    public Object unregister(@Field("uuid") String gcmId);
 }
