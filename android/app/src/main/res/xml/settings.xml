@@ -33,19 +33,19 @@
 
         <CheckBoxPreference
             android:key="img_dld"
-            android:title="Wifi Only"
+            android:title="Reduced consumption"
             android:summary="Download images on wifi only"
             android:defaultValue="false"/>
 
         <Preference
+            android:key="cache_clear"
             android:title="Clear Image Cache"
-            android:summary="30 MB cached"
-            android:dependency="img_dld"/>
+            android:summary="@string/empty"/>
 
         <CheckBoxPreference
             android:key="debug_data"
             android:title="Bug report"
-            android:summary="Anonymously send debug data to help impove app"
+            android:summary="Anonymously send debug data to help improve app"
             android:defaultValue="true"/>
 
     </PreferenceCategory>

@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
+import java.io.File;
+
 /**
  * Copyright (c) 2015 Salama AB
  * All rights reserved
@@ -53,5 +55,51 @@ public class DeviceHelper {
             // should never happen
             throw new RuntimeException("Could not get package name: " + e);
         }
+    }
+
+    public static long cacheSize(Context context) {
+        File cacheDirectory = context.getCacheDir();
+        long size = 0;
+        File[] files = cacheDirectory.listFiles();
+        for (File f:files) {
+            size = size+f.length();
+        }
+        return size;
+    }
+
+    public static String cacheSizeInBytes(Context context) {
+        return String.format("%d Bytes", DeviceHelper.cacheSize(context));
+    }
+
+    public static String cacheSizeInMB(Context context) {
+        return String.format("%.2f MB", DeviceHelper.cacheSize(context) / 1024.0f / 1024.0f);
+    }
+
+    public static void clearCache(final Context context, final Runnable callback) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                File dir = context.getCacheDir();
+                if (dir != null && dir.isDirectory()) {
+                    deleteDir(dir);
+                }
+
+                callback.run();
+            }
+        }).start();
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
     }
 }
