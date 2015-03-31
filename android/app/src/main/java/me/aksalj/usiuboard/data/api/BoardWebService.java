@@ -25,7 +25,7 @@ import retrofit.http.Path;
 public interface BoardWebService {
 
     public static final String ENDPOINT = "http://usiu.aksalj.me";
-    public static final String ENDPOINT_DEBUG = "http://board.usiu.local.192.168.0.3.xip.io";
+    public static final String ENDPOINT_DEBUG = "http://board.usiu.local";
 
     @GET("/api/feeds")
     public ArrayList<BoardFeed> getFeeds();

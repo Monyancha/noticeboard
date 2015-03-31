@@ -4,6 +4,9 @@
     <string name="app_name">USIU Board</string>
     <string name="app_launcher_name">Notice Board</string>
     <string name="app_long_name">USIU Notice Board</string>
+    <string name="app_description">A simple, efficient notice board for USIU.</string>
+    <string name="app_homepage"><a href="http://usiu.aksalj.me">http://usiu.aksalj.me</a></string>
+
     <string name="action_settings">Settings</string>
 
 
@@ -29,5 +32,10 @@
     <string name="eula_title">End-User License Agreement</string>
     <string name="agree">I Agree</string>
     <string name="no_agree">I Disagree</string>
+
+    <string name="disclaimer">
+        USIU and associated texts, images and other materials are the property of <a href="www.usiu.ac.ke">United States International University - Africa</a>.
+Their use in this project is authorized as part of the course work for APT 2080: Intro to Software Engineering.
+    </string>
 
 </resources>

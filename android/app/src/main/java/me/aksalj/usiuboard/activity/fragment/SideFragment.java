@@ -14,6 +14,7 @@ import butterknife.InjectView;
 import me.aksalj.usiuboard.R;
 import me.aksalj.usiuboard.activity.MainActivity;
 import me.aksalj.usiuboard.activity.adapter.NavigationAdapter;
+import me.aksalj.view.AboutDialogView;
 
 /**
  * Copyright (c) 2015 Salama AB
@@ -73,6 +74,13 @@ public class SideFragment extends BaseFragment implements AdapterView.OnItemClic
                 break;
             case R.id.infoList:
                 // TODO: Open info activities/dialogs
+                switch (position) {
+                    case 0: // Help & Feedback
+                        break;
+                    case 1: // About
+                        new AboutDialogView(mCxt).show();
+                        break;
+                }
                 break;
         }
 
