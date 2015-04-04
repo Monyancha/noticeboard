@@ -57,6 +57,10 @@ public class DeviceHelper {
         }
     }
 
+    public static boolean isChromeOS() {
+        return false; //Build.BRAND.equalsIgnoreCase("chromium") && Build.MANUFACTURER.equalsIgnoreCase("chromium");
+    }
+
     public static long cacheSize(Context context) {
         File cacheDirectory = context.getCacheDir();
         long size = 0;
