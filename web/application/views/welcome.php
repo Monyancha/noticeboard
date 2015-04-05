@@ -194,26 +194,29 @@
 
                 <ul class="list-inline buttons-list">
 
-                    <li>
+                    <li data-toggle="tooltip" data-placement="bottom" title=""
+                        data-original-title="The app requires you to run Android 2.3+ and allow installation from unknown sources.">
                         <a href="https://www.dropbox.com/s/4vlzq9cpv65u2fw/USIUBoard-prerelease.apk?dl=0"
                            target="_blank"
-                           class="btn btn-default btn-lg">
-                            <i class="fa fa-download fa-fw"></i> <span>Download</span></a>
+                           class="btn btn-default btn-md">
+                            <i class="fa fa-android fa-fw"></i> <span>Android</span></a>
                     </li>
 
-                    <li>
-                        <a href="https://bitbucket.com/usiu/noticeboard" target="_blank"
-                           class="btn btn-default btn-lg">
-                            <i class="fa fa-bitbucket fa-fw"></i> <span>Source Code</span></a>
+                    <li data-toggle="tooltip" data-placement="bottom" title=""
+                        data-original-title="Coming soon! The iOS version still in development...">
+                        <a class="btn btn-default btn-md">
+                            <i class="fa fa-apple fa-fw"></i> <span>iPhone</span>
+                        </a>
                     </li>
 
                 </ul>
 
                 <p class="text-muted" style="font-size: .95em;">
                     <small>
-                        <strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3 or
-                            above</strong> and allow installation from <em>unknown sources</em>.
+                        <strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3+</strong> and allow installation from <em>unknown sources</em>.
                         <strong>iOS</strong> version still in development.
+                        <br/>
+                        Source code for the apps and backend is available on invitation from <a href="https://bitbucket.com/usiu/noticeboard" target="_blank">here</a>.
                     </small>
                 </p>
 
