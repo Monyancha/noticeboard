@@ -94,3 +94,20 @@ function getLatestItems($limit = 10) {
     }
     return $result;
 }
+
+/**
+ * @param $query
+ * @return array
+ */
+function searchItems($query) {
+    $CI=&get_instance();
+    $items = $CI->ItemModel->searchItems($query);
+    $result = array();
+    foreach($items as $item) {
+        $feed = $CI->FeedModel->getFeed($item->feed);
+        $item->feed = $feed->title;
+        $item->date = strtotime($item->date);//date("D, d M Y H:i:s T", strtotime($item->date));
+        array_push($result, $item);
+    }
+    return $result;
+}

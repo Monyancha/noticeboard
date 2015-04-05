@@ -67,6 +67,10 @@ var angular = window.angular;
                 templateUrl: '/dashboard/partial/urlRouter',
                 controller: 'ContentEditCtrl'
             }).
+            when('/search', {
+                templateUrl: '/dashboard/partial/urlRouter',
+                controller: 'SearchResultCtrl'
+            }).
             when('/notifications', {
                 templateUrl: '/dashboard/partial/notifications',
                 controller: "NotificationsCtrl"
@@ -99,7 +103,6 @@ var angular = window.angular;
         }).
 
         controller('ContentEditCtrl', function($scope, $location, $routeParams, Toast) {
-            Toast.stopLoading();
 
             var itemId = $routeParams.contentId;
             $scope.$parent.pageHeader = itemId ? 'Edit Post' : 'New Post';
@@ -107,10 +110,55 @@ var angular = window.angular;
                 $scope.templateUrl = "/dashboard/partial/content_edit?content=" + itemId;
             }
 
+            $scope.loadDone = function () {
+                Toast.stopLoading();
+            };
+
             $scope.backToContent = function () {
                 Toast.startLoading();
                 $location.path('/content');
             };
+        }).
+
+
+        controller('SearchResultCtrl', function($scope, $routeParams, $location, Toast) {
+
+            $scope.query = $routeParams.query;
+            $scope.$parent.pageHeader = "Searching...";
+            if($scope.query) {
+                $scope.templateUrl = "/dashboard/partial/search?query=" + $scope.query;
+            }
+
+            $scope.loadDone = function () {
+                $scope.$parent.pageHeader = "Search Results";
+                Toast.stopLoading();
+            };
+
+            $scope.edit = function (id) {
+                Toast.startLoading();
+                $location.path('/edit/' + id);
+            }
+
+        }).
+
+        controller('SearchCtrl', function($scope, $location, Toast) {
+
+            $scope.query = null;
+
+            $scope.checkSubmit = function (event) {
+                if(event.keyCode == 13) {
+                    $scope.submitQuery();
+                }
+            };
+
+            $scope.submitQuery = function () {
+                if($scope.query) {
+                    Toast.startLoading();
+                    $location.path('/search').search({query: $scope.query});
+                    $scope.query = null;
+                }
+            };
+
         }).
 
         controller('NotificationsCtrl', function ($scope) {

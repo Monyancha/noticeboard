@@ -62,6 +62,17 @@ class ItemModel extends CI_Model {
         return $query->result();
     }
 
+    function searchItems($keyword) {
+        $this->db->from(self::TABLE)->order_by("date", "desc");
+        $this->db->like('title', $keyword);
+        $this->db->or_like('description', $keyword);
+        $this->db->or_like('content', $keyword);
+        $this->db->or_like('author', $keyword);
+        $query = $this->db->get();
+        return $query->result();
+
+    }
+
     /**
      * @param $id
      * @return null

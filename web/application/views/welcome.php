@@ -92,12 +92,6 @@
 
                     <p class="intro-text">
                         A simple, efficient notice board for USIU.
-                        <br/>
-                        <? /*
-                        <kbd style="font-size: .5em;">
-                            APT 2080-A: Introduction to Software Engineering<br/>
-                            Spring 2015
-                        </kbd> */ ?>
                     </p>
                     <a href="#about" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>
@@ -111,7 +105,7 @@
 <section id="about" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2>About Project</h2>
+            <h2>What is it?</h2>
 
             <p>Not many people really take time to read the various notice boards on campus. Often, they contain timely
                 and urgent information that many miss because they didn’t pass near a notice board, could not read the
@@ -185,7 +179,7 @@
     <div class="download-section">
         <div class="container">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Download App</h2>
+                <h2>Give it a try</h2>
 
                 <p>You can get your copy of <kbd>USIU Notice Board</kbd> app today.</p>
 
@@ -210,7 +204,7 @@
                     <small>
                         <strong>USIU Notice Board</strong> app requires you to run <strong>Android 2.3 or
                             above</strong> and allow installation from <em>unknown sources</em>.
-                        <strong>iOS 8+</strong> still in development.
+                        <strong>iOS</strong> version still in development.
                     </small>
                 </p>
 
@@ -226,8 +220,7 @@
 
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam
-                        veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                    <p class="large">Meet the highly motivated, skilled and dedicated people behind the app.</p>
                 </div>
             </div>
 
@@ -282,8 +275,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact</h2>
 
-                <p>Feel free to email us to provide some feedback on our project, give us suggestions, or to just say
-                    hello!</p>
+                <p>Feel free to email us and provide some feedback, give suggestions, or just say hello!</p>
 
                 <p><a href="mailto:aksalj@aksalj.me">feedback@aksalj.me</a>
                 </p>

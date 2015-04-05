@@ -23,14 +23,12 @@
     <title>Dashboard</title>
 
     <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
-<!--    <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
     <link href="/assets/bower_components/bootswatch/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/bower_components/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
-<!--    <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">-->
     <link href="/assets/plugin/dataTables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <link href="/assets/bower_components/ngtoast/dist/ngToast.min.css" type="text/css" rel="stylesheet">
@@ -69,11 +67,11 @@
     <nav class="navbar-default navbar-fixed-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
-                <li class="sidebar-search">
+                <li class="sidebar-search" ng-controller="SearchCtrl">
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" ng-model="query" placeholder="Search..." ng-keyup="checkSubmit($event)">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
+                                <button class="btn btn-default" type="button" ng-click="submitQuery()">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -128,12 +126,11 @@
 <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script src="/assets/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<!--<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>-->
 <script src="/assets/plugin/dataTables/dataTables.bootstrap.js"></script>
 
 <script src="/assets/bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
 
-<script src="/assets/bower_components/angularjs/angular.min.js"></script>
+<script src="/assets/bower_components/angularjs/angular.js"></script>
 <script src="/assets/bower_components/angular-route/angular-route.min.js"></script>
 <script src="/assets/bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="/assets/bower_components/angular-sanitize/angular-sanitize.min.js"></script>

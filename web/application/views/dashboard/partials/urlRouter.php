@@ -12,4 +12,4 @@
  *  
  */
 ?>
-<div ng-include src="templateUrl"></div>
+<div ng-include src="templateUrl" onload="loadDone()"></div>

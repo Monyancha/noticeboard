@@ -12,7 +12,7 @@
  *
  */
 
-$latestItems = getLatestItems(15);
+$latestItems = getLatestItems(3);
 
 ?>
 <style>
@@ -223,6 +223,8 @@ $latestItems = getLatestItems(15);
     }
 
     $(function () {
+
+        $("#pageActions").html(null);
 
         $(".timeline-badge").tooltip();
 
