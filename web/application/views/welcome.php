@@ -109,7 +109,7 @@
 
             <p>Not many people really take time to read the various notice boards on campus. Often, they contain timely
                 and urgent information that many miss because they didn’t pass near a notice board, could not read the
-                small black font on the bright white paper or simply because the information was buried under a tonne of
+                small black font on the bright white paper or simply because the information was buried under a ton of
                 other &quot;non-important&quot; information.</p>
 
             <p>We would like to change that by supplementing and eventually replacing the physical notice board with a
