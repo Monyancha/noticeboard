@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>08045DC0-4D40-4ED2-9CAA-687DF9DBF035</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NoticeBoard</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DD8A3A54DD12F58AD94F6FAB03328C40CA7D6CBA</key>
+		<string>/Users/aksalj/Dropbox/Projects/usiuboard.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NoticeBoard.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DD8A3A54DD12F58AD94F6FAB03328C40CA7D6CBA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>/Users/aksalj/Dropbox/Projects/usiuboard.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DD8A3A54DD12F58AD94F6FAB03328C40CA7D6CBA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD8A3A54DD12F58AD94F6FAB03328C40CA7D6CBA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NoticeBoard</string>
+		</dict>
+	</array>
+</dict>
+</plist>

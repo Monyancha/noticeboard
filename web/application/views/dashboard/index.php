@@ -58,7 +58,7 @@
             </a>
         </div>
 
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-right visible-sm visible-md visible-lg">
             <li><i class="fa fa-user fa-fw"></i> <? echo $user->name; ?> </li>
             <li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
         </ul>
@@ -92,6 +92,10 @@
 
                 <li>
                     <a href="#/notifications"><i class="fa fa-sliders fa-fw"></i> Notifications</a>
+                </li>
+
+                <li class="visible-xs">
+                    <a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
 
             </ul>
