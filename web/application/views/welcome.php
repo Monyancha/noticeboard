@@ -125,18 +125,18 @@
         <h2>and it looks like this...</h2>
 
         <div class="col-lg-4">
-            <div id="andro_slider" class="_slider center-block">
+            <div id="nexus_slider" class="_slider center-block">
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_2.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/nexus_1.png">
                 </a>
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/nexus_2.png">
                 </a>
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_3.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/nexus_3.png">
                 </a>
 
             </div>
@@ -144,28 +144,37 @@
         </div>
 
         <div class="col-lg-4">
-            <div id="ios_slider" class="_slider center-block">
+            <div id="iphone_slider" class="_slider center-block">
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/iphone_1.png">
+                </a>
+
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/screenshots/iphone_3.png">
+                </a>
+
+                <a href="#">
+                    <img class="img-responsive" src="/assets/img/screenshots/iphone_2.png">
                 </a>
 
             </div>
         </div>
 
         <div class="col-lg-4">
-            <div id="win_slider" class="_slider center-block">
+            <div id="galaxy_slider" class="_slider center-block">
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_3.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/galaxy_2.png">
                 </a>
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_1.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/galaxy_3.png">
                 </a>
 
                 <a href="#">
-                    <img class="img-responsive" src="/assets/img/shot_2.png">
+                    <img class="img-responsive" src="/assets/img/screenshots/galaxy_1.png">
                 </a>
 
             </div>
