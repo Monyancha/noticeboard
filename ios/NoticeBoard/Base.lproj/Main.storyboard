@@ -24,6 +24,7 @@
                     <view key="view" contentMode="scaleToFill" id="cN5-y8-xd0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.16078431369999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -81,7 +82,7 @@
                                                         <view clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Iw-sk-lWq" userLabel="header">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usiu_library" translatesAutoresizingMaskIntoConstraints="NO" id="qzQ-Me-Epf" userLabel="image">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usiu_library" translatesAutoresizingMaskIntoConstraints="NO" id="qzQ-Me-Epf" userLabel="image">
                                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
@@ -366,7 +367,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Notice Board" id="xKG-8G-gQG"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="EBC-Pi-dwe" id="hb0-GQ-BA0"/>
@@ -647,6 +647,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pzm-UA-2Fa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.79607843140000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0039215686269999999" green="0.16078431369999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

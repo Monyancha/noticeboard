@@ -19,13 +19,25 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        navigationItem.title = nil;
+        setupNavbar();
         
         updateContent();
     }
     
+    func setupNavbar() {
+        navigationItem.title = item.title;
+        
+        var attribs: [NSObject: AnyObject] = [NSForegroundColorAttributeName: UIColor.usiuBlue()];
+        if let font = UIFont(name: "FontAwesome", size: 20) {
+            attribs[NSFontAttributeName] = font;
+        }
+        let backBtn = UIBarButtonItem(title: "\u{f053}", style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
+        backBtn.setTitleTextAttributes(attribs, forState: UIControlState.Normal);
+        self.navigationItem.leftBarButtonItem = backBtn;
+    }
+    
     func updateContent() {
-        contentTitle.text = item.title;
+        contentTitle.text = item.summary//item.title;
         
         contentView.loadHTMLString(item.content, baseURL: nil);
         
@@ -33,4 +45,9 @@ class ItemViewController: UIViewController {
             contentImage.loadImage(url);
         }
     }
+    
+    func goBack() {
+        navigationController?.popViewControllerAnimated(true);
+    }
+    
 }

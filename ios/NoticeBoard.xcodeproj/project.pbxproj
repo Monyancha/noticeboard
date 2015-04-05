@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E67A9F6F28B0A9634F6C9C4 /* Pods_NoticeBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167EB85E832431E9A1CEE2AE /* Pods_NoticeBoard.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		AB2245FC1AC40BB800DC2619 /* StrechingParallaxScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2245FB1AC40BB800DC2619 /* StrechingParallaxScrollView.swift */; };
-		AB3416AF1ACBF24400812311 /* PagerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3416AE1ACBF24400812311 /* PagerSegue.swift */; };
 		AB37D5781ABAD763006851FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D5771ABAD763006851FA /* AppDelegate.swift */; };
 		AB37D57D1ABAD763006851FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB37D57B1ABAD763006851FA /* Main.storyboard */; };
 		AB37D57F1ABAD763006851FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB37D57E1ABAD763006851FA /* Images.xcassets */; };
@@ -22,6 +20,7 @@
 		AB3CE6981ABEB2920083E352 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3CE6951ABEB2920083E352 /* BoardViewController.swift */; };
 		AB3CE6991ABEB2920083E352 /* SSASideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3CE6971ABEB2920083E352 /* SSASideMenu.swift */; };
 		AB3CE69B1ABEBD010083E352 /* BoardFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3CE69A1ABEBD010083E352 /* BoardFeed.swift */; };
+		AB75C6CE1AD0516D00763456 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75C6CD1AD0516D00763456 /* UIColor+Extensions.swift */; };
 		AB7E79631ABC7A87000753BF /* BoardFeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E79621ABC7A87000753BF /* BoardFeedParser.swift */; };
 		AB8683171AC955890083A52D /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8683161AC955890083A52D /* ItemViewController.swift */; };
 		AB87FD4E1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87FD4D1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift */; };
@@ -47,8 +46,6 @@
 		08B9518CC434A17F0B997C8F /* Pods-NoticeBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoticeBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoticeBoard/Pods-NoticeBoard.release.xcconfig"; sourceTree = "<group>"; };
 		167EB85E832431E9A1CEE2AE /* Pods_NoticeBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoticeBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F198735689758139C18EE25 /* Pods-NoticeBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoticeBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoticeBoard/Pods-NoticeBoard.debug.xcconfig"; sourceTree = "<group>"; };
-		AB2245FB1AC40BB800DC2619 /* StrechingParallaxScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrechingParallaxScrollView.swift; sourceTree = "<group>"; };
-		AB3416AE1ACBF24400812311 /* PagerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerSegue.swift; sourceTree = "<group>"; };
 		AB37D5721ABAD763006851FA /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB37D5761ABAD763006851FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB37D5771ABAD763006851FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +64,7 @@
 		AB3CE6951ABEB2920083E352 /* BoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		AB3CE6971ABEB2920083E352 /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
 		AB3CE69A1ABEBD010083E352 /* BoardFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardFeed.swift; path = Data/BoardFeed.swift; sourceTree = "<group>"; };
+		AB75C6CD1AD0516D00763456 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB7E79621ABC7A87000753BF /* BoardFeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardFeedParser.swift; path = Data/BoardFeedParser.swift; sourceTree = "<group>"; };
 		AB8683161AC955890083A52D /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		AB87FD4D1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+dateFromInternetDateTimeString.swift"; sourceTree = "<group>"; };
@@ -207,9 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				AB3CE6971ABEB2920083E352 /* SSASideMenu.swift */,
-				AB2245FB1AC40BB800DC2619 /* StrechingParallaxScrollView.swift */,
 				ABB7BE9D1AC80F4A00ABD59C /* CardCell.swift */,
-				AB3416AE1ACBF24400812311 /* PagerSegue.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -221,6 +217,7 @@
 				AB87FD4D1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift */,
 				AB9A837F1AC717FB004F8C6C /* NSDate+TimeAgo.swift */,
 				ABB707021ACED0EF00865836 /* ImageLoader.swift */,
+				AB75C6CD1AD0516D00763456 /* UIColor+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -394,13 +391,12 @@
 				AB87FD4E1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift in Sources */,
 				AB8683171AC955890083A52D /* ItemViewController.swift in Sources */,
 				ABB707011ACEC24600865836 /* SideViewController.swift in Sources */,
-				AB3416AF1ACBF24400812311 /* PagerSegue.swift in Sources */,
 				AB3B19011ABC0A430008DEC1 /* Log.swift in Sources */,
 				AB3CE6991ABEB2920083E352 /* SSASideMenu.swift in Sources */,
 				ABB7BE9E1AC80F4A00ABD59C /* CardCell.swift in Sources */,
 				AB37D59B1ABADE24006851FA /* BoardItem.swift in Sources */,
 				AB37D5981ABADD7E006851FA /* DataManager.swift in Sources */,
-				AB2245FC1AC40BB800DC2619 /* StrechingParallaxScrollView.swift in Sources */,
+				AB75C6CE1AD0516D00763456 /* UIColor+Extensions.swift in Sources */,
 				AB37D5781ABAD763006851FA /* AppDelegate.swift in Sources */,
 				AB9A83801AC717FB004F8C6C /* NSDate+TimeAgo.swift in Sources */,
 				AB7E79631ABC7A87000753BF /* BoardFeedParser.swift in Sources */,

@@ -160,17 +160,12 @@ class BoardTableAdapter: NSObject, UITableViewDelegate, UITableViewDataSource {
 class BeatAnimator: PullToRefreshViewAnimator {
     
     private var layerLoader: CAShapeLayer = CAShapeLayer()
-    private var layerSeparator: CAShapeLayer = CAShapeLayer()
     
     init() {
         
         layerLoader.lineWidth = 4
-        layerLoader.strokeColor = UIColor(red: 0.13, green: 0.79, blue: 0.31, alpha: 1).CGColor
+        layerLoader.strokeColor = UIColor.usiuBlue().CGColor;
         layerLoader.strokeEnd = 0
-        
-        layerSeparator.lineWidth = 1
-        layerSeparator.strokeColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1).CGColor
-        
     }
     
     func startAnimation() {
@@ -193,7 +188,6 @@ class BeatAnimator: PullToRefreshViewAnimator {
     }
     
     func stopAnimation() {
-        
         self.layerLoader.removeAllAnimations()
     }
     
@@ -202,23 +196,15 @@ class BeatAnimator: PullToRefreshViewAnimator {
         if layerLoader.superlayer == nil {
             superview.layer.addSublayer(layerLoader)
         }
-        if layerSeparator.superlayer == nil {
-            superview.layer.addSublayer(layerSeparator)
-        }
+        
         var bezierPathLoader = UIBezierPath()
         bezierPathLoader.moveToPoint(CGPointMake(0, superview.frame.height - 3))
         bezierPathLoader.addLineToPoint(CGPoint(x: superview.frame.width, y: superview.frame.height - 3))
         
-        var bezierPathSeparator = UIBezierPath()
-        bezierPathSeparator.moveToPoint(CGPointMake(0, superview.frame.height - 1))
-        bezierPathSeparator.addLineToPoint(CGPoint(x: superview.frame.width, y: superview.frame.height - 1))
-        
         layerLoader.path = bezierPathLoader.CGPath
-        layerSeparator.path = bezierPathSeparator.CGPath
     }
     
     func changeProgress(progress: CGFloat) {
-        
         self.layerLoader.strokeEnd = progress
     }
 }

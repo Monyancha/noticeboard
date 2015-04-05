@@ -31,6 +31,11 @@ class SideViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.BlackOpaque;
+    }
+    
 }
 
 extension SideViewController: UITableViewDelegate, UITableViewDataSource {
@@ -51,10 +56,9 @@ extension SideViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.backgroundColor = UIColor.clearColor();
         cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 18);
-        cell.textLabel?.textColor = UIColor.blackColor();
+        cell.textLabel?.textColor = UIColor.whiteColor();
         cell.textLabel?.text  = feed?.title;
         cell.selectionStyle = .Default;
-        
         
         return cell
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SSASideMenuDelegate {
 
     let TAG = "AppDelegate";
     
@@ -52,6 +52,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    // SSASideMenu
+    func sideMenuWillShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Will Show \(menuViewController)")
+    }
+    
+    func sideMenuDidShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Did Show \(menuViewController)")
+    }
+    
+    func sideMenuDidHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Did Hide \(menuViewController)")
+    }
+    
+    func sideMenuWillHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Will Hide \(menuViewController)")
+    }
+    func sideMenuDidRecognizePanGesture(sideMenu: SSASideMenu, recongnizer: UIPanGestureRecognizer) {
+        println("Did Recognize PanGesture \(recongnizer)")
+    }
+
+    
     
     // APNS
     func application(application: UIApplication,
