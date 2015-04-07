@@ -41,8 +41,10 @@ class ItemViewController: UIViewController {
         
         contentView.loadHTMLString(item.content, baseURL: nil);
         
-        if let url = item.imageUrl?.absoluteString {
-            contentImage.loadImage(url);
+        if item.imageUrl != nil {
+            contentImage.load(item.imageUrl!, errorCallback: { (error) -> Void in
+                // TODO: Load placeholder?
+            });
         }
     }
     

@@ -134,8 +134,8 @@ class BoardTableAdapter: NSObject, UITableViewDelegate, UITableViewDataSource {
                     card.date.text = "\u{f017}   " + timeAgo;
                 }
                 
-                if let imgUrl = item.imageUrl {
-                    card.photo.loadImage(imgUrl.absoluteString!);
+                if item.imageUrl != nil {
+                    card.photo.load(item.imageUrl!);
                 }
             }
         }

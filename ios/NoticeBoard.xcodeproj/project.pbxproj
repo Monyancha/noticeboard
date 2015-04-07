@@ -27,7 +27,7 @@
 		AB9A83801AC717FB004F8C6C /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A837F1AC717FB004F8C6C /* NSDate+TimeAgo.swift */; };
 		ABB706FF1ACEAEBD00865836 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABB706FE1ACEAEBD00865836 /* fontawesome-webfont.ttf */; };
 		ABB707011ACEC24600865836 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB707001ACEC24600865836 /* SideViewController.swift */; };
-		ABB707031ACED0EF00865836 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB707021ACED0EF00865836 /* ImageLoader.swift */; };
+		ABB707031ACED0EF00865836 /* UIImageView+RemoteLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB707021ACED0EF00865836 /* UIImageView+RemoteLoad.swift */; };
 		ABB7BE9B1AC7EAEA00ABD59C /* BoardTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB7BE9A1AC7EAEA00ABD59C /* BoardTableAdapter.swift */; };
 		ABB7BE9E1AC80F4A00ABD59C /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB7BE9D1AC80F4A00ABD59C /* CardCell.swift */; };
 /* End PBXBuildFile section */
@@ -72,7 +72,7 @@
 		AB9A837F1AC717FB004F8C6C /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
 		ABB706FE1ACEAEBD00865836 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		ABB707001ACEC24600865836 /* SideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
-		ABB707021ACED0EF00865836 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		ABB707021ACED0EF00865836 /* UIImageView+RemoteLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteLoad.swift"; sourceTree = "<group>"; };
 		ABB7BE9A1AC7EAEA00ABD59C /* BoardTableAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableAdapter.swift; sourceTree = "<group>"; };
 		ABB7BE9D1AC80F4A00ABD59C /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,7 +216,7 @@
 				AB3B19001ABC0A430008DEC1 /* Log.swift */,
 				AB87FD4D1ABD6CCE00E423A8 /* NSDate+dateFromInternetDateTimeString.swift */,
 				AB9A837F1AC717FB004F8C6C /* NSDate+TimeAgo.swift */,
-				ABB707021ACED0EF00865836 /* ImageLoader.swift */,
+				ABB707021ACED0EF00865836 /* UIImageView+RemoteLoad.swift */,
 				AB75C6CD1AD0516D00763456 /* UIColor+Extensions.swift */,
 			);
 			path = Utils;
@@ -403,7 +403,7 @@
 				AB3CE6981ABEB2920083E352 /* BoardViewController.swift in Sources */,
 				AB3CE69B1ABEBD010083E352 /* BoardFeed.swift in Sources */,
 				ABB7BE9B1AC7EAEA00ABD59C /* BoardTableAdapter.swift in Sources */,
-				ABB707031ACED0EF00865836 /* ImageLoader.swift in Sources */,
+				ABB707031ACED0EF00865836 /* UIImageView+RemoteLoad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
