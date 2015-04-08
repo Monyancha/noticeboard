@@ -78,6 +78,10 @@ class Welcome extends CI_Controller {
         );
 		$this->load->view('welcome', array("team" => $team));
 	}
+
+    public function intro() {
+        $this->load->view('introduction');
+    }
 }
 
 /* End of file welcome.php */
