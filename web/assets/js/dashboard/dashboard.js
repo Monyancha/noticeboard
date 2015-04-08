@@ -108,11 +108,16 @@ var angular = window.angular;
             $scope.$parent.pageHeader = itemId ? 'Edit Post' : 'New Post';
             if(itemId) {
                 $scope.templateUrl = "/dashboard/partial/content_edit?content=" + itemId;
+
+                $scope.loadDone = function () {
+                    Toast.stopLoading();
+                };
+
+            } else {
+                Toast.stopLoading();
             }
 
-            $scope.loadDone = function () {
-                Toast.stopLoading();
-            };
+
 
             $scope.backToContent = function () {
                 Toast.startLoading();
