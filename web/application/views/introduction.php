@@ -55,6 +55,10 @@
         <h3 style="margin-top: 150px">
             Press <kbd>spacebar</kbd> to Start
         </h3>
+
+        <!-- Show only when not these -->
+        Viewed best in <code>safari</code> or <code>chrome</code>.
+
         <p class="text-info" style="padding:10px; position: absolute; bottom: 0; left: 0; right: 0;">
             use <code>&larr;</code> and <code>&rarr;</code> to navigate.
         </p>
