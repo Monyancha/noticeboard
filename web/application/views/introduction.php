@@ -51,11 +51,11 @@
 
 <div id="jmpress" data-template="auto">
 
-    <section id="first" class="text-center">
+    <section id="start" class="text-center">
         <h3 style="margin-top: 150px">
             Press <kbd>spacebar</kbd> to Start
         </h3>
-        <p class="text-info small" style="padding:10px; position: absolute; bottom: 0; left: 0; right: 0;">
+        <p class="text-info" style="padding:10px; position: absolute; bottom: 0; left: 0; right: 0;">
             use <code>&larr;</code> and <code>&rarr;</code> to navigate.
         </p>
     </section>
@@ -402,15 +402,21 @@
         <p data-jmpress="drive-down after 500ms"><i class="fa fa-apple fa-fw"></i> Complete the iOS version.</p>
         <p data-jmpress="drive-left after 500ms"><i class="fa fa-key fa-fw"></i> Proper API client authentication.</p>
         <p data-jmpress="drive-right after 500ms"><i class="fa fa-bug fa-fw"></i> Iron out as many bugs as we can find.</p>
-        <p data-jmpress="drive-up after 500ms"><i class="fa fa-server fa-fw"></i> Arrange for a trial by the university.</p>
+        <p data-jmpress="drive-up after 500ms"><i class="fa fa-server fa-fw"></i> Request deployment (trial) by the university.</p>
 
         <section id="end" class="text-center" data-rotate="90" data-x="0" data-y="800">
-            <h1 style="margin-top: 200px">Thank you.</h1>
+            <h1 style="margin-top: 100px; margin-bottom: 100px">Thank you!</h1>
 
-            <p>
-                App available for download from <code>http://usiu.aksalj.me</code>
+            <p data-jmpress="expand">
+                App available for download from <code>http://usiu.aksalj.me</code> <br/>
+                Source code available<sup>*</sup> at <code>https://bitbucket.org/usiu/noticeboard</code>
             </p>
 
+            <div class="text-muted" data-jmpress="fade after 500ms" style="font-size:.8em; position: absolute; bottom: 0; left: 0; right: 0;">
+                <p>
+                    <sup><b>*</b></sup> On invitation only.
+                </p>
+            </div>
         </section>
     </section>
 
@@ -420,7 +426,7 @@
     $(function() {
         $('#jmpress').jmpress({
             stepSelector: "section",
-            hash: { use: true }
+            hash: { use: false }
         });
     });
 </script>
