@@ -8,6 +8,6 @@ class Presentation extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('introduction');
+        $this->load->view('presentation');
     }
 }
