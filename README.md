@@ -1,6 +1,8 @@
 #USIU Notice Board
 
-####Idea
+######`Important`: This project was submitted as part of coursework for the *APT2080 class, Spring 2015*
+
+####Idea (`as submitted`)
 
 Not many people really take time to read the various notice boards on campus. Often, they contain timely and urgent information that many miss because they didn’t pass near a notice board, could not read the small black font on the bright white paper or simply because the information was buried under a tonne of other “non-important” information.
 
@@ -9,6 +11,7 @@ We would like to change that by supplementing and eventually replacing the physi
 ####Features
 
 The app would allow students to:
+
 - View messages, announcements and alerts.
 - View Sign-up sheets.
 - View Schedules and timetables and all kinds of information usually posted on notice boards.
